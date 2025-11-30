@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const SHELTERLUV_API_KEY = process.env.SHELTERLUV_API_KEY;
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
