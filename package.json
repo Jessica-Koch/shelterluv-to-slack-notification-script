@@ -1,0 +1,17 @@
+{
+  "name": "shelterluv-to-slack-notification-script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "node scripts/checkVaccines.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.11.1",
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
