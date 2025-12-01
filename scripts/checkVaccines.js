@@ -362,10 +362,10 @@ const buildSlackPayloadForDog = (dog) => {
 
   const summaryLine =
     overdueCount || needsAttentionCount || upcomingCount || currentCount
-      ? ` – ${overdueCount} overdue\n${
-          needsAttentionCount + upcomingCount
-        } within the month, ${currentCount} current`
-      : ' – no upcoming scheduled vaccines';
+      ? ` – ${overdueCount} overdue\n 
+          - ${needsAttentionCount + upcomingCount} within the month\n
+          - ${currentCount} current`
+      : 'No upcoming scheduled vaccines';
 
   const blocks = [];
 
@@ -374,7 +374,7 @@ const buildSlackPayloadForDog = (dog) => {
     type: 'header',
     text: {
       type: 'plain_text',
-      text: `${dog.name}'s Vaccine Status`,
+      text: `\n${dog.name}'s Vaccine Status`,
       emoji: true,
     },
   });
@@ -405,7 +405,7 @@ const buildSlackPayloadForDog = (dog) => {
     );
 
     let statusKey = 'none';
-    let statusText = `No ${label.toLowerCase()} vaccination record`;
+    let statusText = `**No ${label.toLowerCase()} vaccine recorded**`;
 
     if (vaccinesForType.length > 0) {
       // Pick the soonest scheduled vaccine for this type
@@ -473,7 +473,7 @@ const buildSlackPayloadForDog = (dog) => {
   });
 
   return {
-    text: `Shelterluv vaccine schedule check – ${dog.name}`,
+    text: `**Shelterluv vaccine schedule check**\n`,
     blocks,
   };
 };
