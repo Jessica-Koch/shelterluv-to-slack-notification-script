@@ -1,3 +1,6 @@
+const ICON_BASE =
+  'https://raw.githubusercontent.com/Jessica-Koch/shelterluv-to-slack-notification-script/main/assets';
+
 require('dotenv').config();
 
 const SHELTERLUV_API_KEY = process.env.SHELTERLUV_API_KEY;
@@ -5,8 +8,6 @@ const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
 const DAYS_BEFORE_DUE = 30; // how far ahead to look (outer window)
 const TWO_WEEKS_BEFORE_DUE = 14; // "needs attention" window
-const LILA_ID = '212173143'; /* her internal Shelterluv ID, e.g. 211045966 */
-const RICO_ID = '211522518';
 
 if (!SHELTERLUV_API_KEY) {
   console.error('Missing SHELTERLUV_API_KEY env var');
@@ -310,8 +311,20 @@ const groupVaccinesByDog = (buckets, animalsById) => {
   return dogs;
 };
 
-// ---------- Slack payload (grouped by dog, with picture) ----------
-// Build a Slack payload for a *single* dog
+// Map vaccine status -> icon URL (replace with your own hosted images)
+const VACCINE_STATUS_ICONS = {
+  overdue: `${ICON_BASE}/red_alert.png`,
+  needsAttention: `${ICON_BASE}/alert3.png`,
+  current: `${ICON_BASE}/check.png`,
+  none: `${ICON_BASE}/not_found.png`,
+  unknown: `${ICON_BASE}/question.png`,
+};
+
+const getVaccineIconUrl = (statusKey) => {
+  return VACCINE_STATUS_ICONS[statusKey] || VACCINE_STATUS_ICONS.unknown;
+};
+
+// ---------- Slack payload (one message per dog, with vaccine icons) ----------
 const buildSlackPayloadForDog = (dog) => {
   const overdueCount = dog.overdue.length;
   const needsAttentionCount = dog.needsAttention.length;
@@ -351,98 +364,6 @@ const buildSlackPayloadForDog = (dog) => {
     { key: 'bordetella', label: 'Bordetella' },
   ];
 
-  const lines = [];
-
-  // 1. Core vaccine lines
-  coreTypes.forEach(({ key, label }) => {
-    const vaccinesForType = allVaccines.filter(
-      (v) => classifyVaccineType(v.product) === key
-    );
-
-    if (vaccinesForType.length === 0) {
-      // Always show the line, even if nothing scheduled
-      lines.push(
-        `• *${label}:* _no upcoming ${label.toLowerCase()} scheduled_`
-      );
-      return;
-    }
-
-    const sorted = vaccinesForType.slice().sort((a, b) => {
-      const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
-      const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
-      return at - bt;
-    });
-
-    const rows = sorted.map((v) => {
-      const dateStr = v.scheduledFor
-        ? v.scheduledFor.toISOString().slice(0, 10)
-        : 'unknown date';
-
-      let statusEmoji = '✅';
-      let statusLabel = 'current';
-
-      if (v.status === 'overdue') {
-        statusEmoji = '❗';
-        const daysAgo =
-          v.diffDays != null ? Math.floor(Math.abs(v.diffDays)) : null;
-        statusLabel =
-          daysAgo != null
-            ? `overdue (${daysAgo} day${daysAgo === 1 ? '' : 's'})`
-            : 'overdue';
-      } else if (v.status === 'needsAttention') {
-        statusEmoji = '⚠️';
-        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
-        statusLabel =
-          days != null
-            ? `due in ${days} day${days === 1 ? '' : 's'}`
-            : 'due soon';
-      } else if (v.status === 'upcoming') {
-        statusEmoji = '⏰';
-        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
-        statusLabel =
-          days != null
-            ? `due in ${days} day${days === 1 ? '' : 's'}`
-            : 'due in the next month';
-      } else if (v.status === 'current') {
-        statusEmoji = '✅';
-        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
-        statusLabel =
-          days != null
-            ? `due in ${days} day${days === 1 ? '' : 's'}`
-            : 'scheduled later';
-      } else {
-        statusEmoji = '❓';
-        statusLabel = 'date unknown';
-      }
-
-      return `${statusEmoji} ${statusLabel} – *${dateStr}* (product: ${
-        v.product || 'unknown'
-      })`;
-    });
-
-    lines.push(`• *${label}:*\n   ${rows.join('\n   ')}`);
-  });
-
-  // 2. "Other vaccines" (Lepto, etc.) – only if present
-  const otherVaccines = allVaccines.filter(
-    (v) =>
-      !['rabies', 'dhpp_dapp', 'bordetella'].includes(
-        classifyVaccineType(v.product)
-      )
-  );
-
-  if (otherVaccines.length > 0) {
-    const rows = otherVaccines.map((v) => {
-      const dateStr = v.scheduledFor
-        ? v.scheduledFor.toISOString().slice(0, 10)
-        : 'unknown date';
-
-      return `• *${v.product || 'unknown'}* – *${dateStr}*`;
-    });
-
-    lines.push(`• *Other vaccines:*\n   ${rows.join('\n   ')}`);
-  }
-
   const summaryLine =
     overdueCount || needsAttentionCount || upcomingCount || currentCount
       ? ` – ${overdueCount} overdue, ${
@@ -452,35 +373,123 @@ const buildSlackPayloadForDog = (dog) => {
 
   const blocks = [];
 
-  // Small header for context
+  // Header
   blocks.push({
-    type: 'section',
+    type: 'header',
     text: {
-      type: 'mrkdwn',
-      text: `*Shelterluv vaccine schedule check – ${dog.name}*`,
+      type: 'plain_text',
+      text: `${dog.name}'s Vaccine Status`,
+      emoji: true,
     },
   });
 
   blocks.push({ type: 'divider' });
 
-  // Dog detail block
-  const sectionBlock = {
+  // Dog summary block with DOG PHOTO as accessory
+  const summaryBlock = {
     type: 'section',
     text: {
       type: 'mrkdwn',
-      text: `*${dog.name}*${summaryLine}\n\n${lines.join('\n')}`,
+      text: `*${dog.name}*${summaryLine}`,
     },
   };
 
   if (dog.photoUrl) {
-    sectionBlock.accessory = {
+    summaryBlock.accessory = {
       type: 'image',
       image_url: dog.photoUrl,
       alt_text: dog.name,
     };
   }
 
-  blocks.push(sectionBlock);
+  blocks.push(summaryBlock);
+  blocks.push({ type: 'divider' });
+
+  // For each vaccine type, create its own section with an icon accessory
+  coreTypes.forEach(({ key, label }) => {
+    const vaccinesForType = allVaccines.filter(
+      (v) => classifyVaccineType(v.product) === key
+    );
+
+    let statusKey = 'none';
+    let statusText = `_no upcoming ${label.toLowerCase()} scheduled_`;
+
+    if (vaccinesForType.length > 0) {
+      // Pick the soonest scheduled vaccine for this type
+      const soonest = vaccinesForType.reduce((a, b) => {
+        const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
+        const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
+        return bt < at ? b : a;
+      });
+
+      const dateStr = soonest.scheduledFor
+        ? soonest.scheduledFor.toISOString().slice(0, 10)
+        : 'unknown date';
+
+      // Determine status key + human-readable text
+      if (soonest.status === 'overdue') {
+        statusKey = 'overdue';
+        const daysAgo =
+          soonest.diffDays != null
+            ? Math.floor(Math.abs(soonest.diffDays))
+            : null;
+        const extra =
+          daysAgo != null
+            ? ` (${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue)`
+            : '';
+        statusText = `*Overdue*${extra} – *${dateStr}* (product: ${
+          soonest.product || 'unknown'
+        })`;
+      } else if (soonest.status === 'needsAttention') {
+        statusKey = 'needsAttention';
+        const days =
+          soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
+        const extra =
+          days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
+        statusText = `*Due soon*${extra} – *${dateStr}* (product: ${
+          soonest.product || 'unknown'
+        })`;
+      } else if (soonest.status === 'upcoming') {
+        statusKey = 'upcoming';
+        const days =
+          soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
+        const extra =
+          days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
+        statusText = `*Upcoming*${extra} – *${dateStr}* (product: ${
+          soonest.product || 'unknown'
+        })`;
+      } else if (soonest.status === 'current') {
+        statusKey = 'current';
+        const days =
+          soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
+        const extra =
+          days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
+        statusText = `*Scheduled*${extra} – *${dateStr}* (product: ${
+          soonest.product || 'unknown'
+        })`;
+      } else {
+        statusKey = 'unknown';
+        statusText = `*Date unknown* – (product: ${
+          soonest.product || 'unknown'
+        })`;
+      }
+    }
+
+    const vaccineBlock = {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*${label}*\n${statusText}`,
+      },
+      accessory: {
+        type: 'image',
+        image_url: getVaccineIconUrl(statusKey),
+        alt_text: `${label} ${statusKey}`,
+      },
+    };
+
+    blocks.push(vaccineBlock);
+  });
 
   return {
     text: `Shelterluv vaccine schedule check – ${dog.name}`,
@@ -496,39 +505,11 @@ async function main() {
   // 1. Fetch all scheduled vaccine records
   const scheduledVaccines = await fetchAllScheduledVaccines();
 
-  console.log('scheduledVaccines length:', scheduledVaccines.length);
-  console.log('First few scheduled vaccines:', scheduledVaccines.slice(0, 5));
-
-  // TEMP: log every scheduled Rabies-like vaccine
-  const rabiesScheduled = scheduledVaccines.filter((v) =>
-    /rabies|rabvac/i.test(v.product || '')
-  );
-
-  console.log(
-    'All scheduled Rabies-like vaccines:',
-    rabiesScheduled.map((v) => ({
-      vaccineId: v.id,
-      animal_id: v.animal_id,
-      product: v.product,
-      scheduled_for: v.scheduled_for,
-    }))
-  );
-
-  // TEMP: inspect Lila's scheduled vaccines
-  const lilaVaccines = scheduledVaccines.filter((v) => v.animal_id === LILA_ID);
-  console.log('Lila raw vaccines:', JSON.stringify(lilaVaccines, null, 2));
-
   // 2. Bucket into overdue / needs attention / upcoming / current
   const buckets = bucketScheduledVaccines(scheduledVaccines);
-  console.log(
-    `Found ${buckets.overdue.length} overdue, ${buckets.needsAttention.length} due within ${TWO_WEEKS_BEFORE_DUE} days, ${buckets.upcoming.length} due in the next ${DAYS_BEFORE_DUE} days, ${buckets.current.length} further out.`
-  );
 
   // 3. Fetch animal details
   const animalsById = await fetchAnimalsForBuckets(buckets);
-  console.log(
-    `Fetched details for ${Object.keys(animalsById).length} animals.`
-  );
 
   const dogsById = groupVaccinesByDog(buckets, animalsById);
   // After: const dogsById = groupVaccinesByDog(buckets, animalsById);
