@@ -5,6 +5,8 @@ const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
 const DAYS_BEFORE_DUE = 30; // how far ahead to look (outer window)
 const TWO_WEEKS_BEFORE_DUE = 14; // "needs attention" window
+const LILA_ID = '212173143'; /* her internal Shelterluv ID, e.g. 211045966 */
+const RICO_ID = '211522518';
 
 if (!SHELTERLUV_API_KEY) {
   console.error('Missing SHELTERLUV_API_KEY env var');
@@ -24,6 +26,32 @@ const unixStringToDate = (str) => {
   const seconds = Number(str);
   if (!Number.isFinite(seconds)) return null;
   return new Date(seconds * 1000);
+};
+
+// Fetch scheduled vaccines for a single animal
+const fetchScheduledVaccinesForAnimal = async (animalId) => {
+  const url = `https://new.shelterluv.com/api/v1/animals/${animalId}/vaccines?status=scheduled`;
+
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${SHELTERLUV_API_KEY}`,
+      Accept: 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    console.error(
+      `Failed to fetch scheduled vaccines for animal ${animalId}:`,
+      res.status,
+      await res.text()
+    );
+    throw new Error(`Scheduled vaccines fetch failed for ${animalId}`);
+  }
+
+  const json = await res.json();
+  // matches your sample: { success, vaccines, has_more, total_count }
+  return Array.isArray(json.vaccines) ? json.vaccines : [];
 };
 
 // ---------- Shelterluv API calls ----------
@@ -148,6 +176,35 @@ const fetchAnimalsForBuckets = async (buckets) => {
   return animalsById;
 };
 
+const classifyVaccineType = (product) => {
+  const p = (product || '').toLowerCase();
+
+  // Rabies family
+  if (p.includes('rabies') || p.includes('rabvac')) {
+    return 'rabies';
+  }
+
+  // DHPP / DAPP / DA2PP / DA2PPvL etc.
+  if (
+    p.includes('dhpp') ||
+    p.includes('dapp') ||
+    p.includes('da2pp') ||
+    p.includes('da2ppv') ||
+    p.includes('dappv') ||
+    p.includes('vanguard dapp') ||
+    p.includes('nobivac canine 1-dappv')
+  ) {
+    return 'dhpp_dapp';
+  }
+
+  // Bordetella family
+  if (p.includes('bordetella') || p.includes('trucan b')) {
+    return 'bordetella';
+  }
+
+  return 'other';
+};
+
 // ---------- Date classification ----------
 
 const classifyByDueWindow = (scheduledForStr) => {
@@ -178,6 +235,7 @@ const bucketScheduledVaccines = (vaccines) => {
   const upcoming = [];
   const needsAttention = [];
   const current = [];
+  const unknown = [];
 
   for (const v of vaccines) {
     const { status, diffDays, date } = classifyByDueWindow(v.scheduled_for);
@@ -190,6 +248,7 @@ const bucketScheduledVaccines = (vaccines) => {
       lot: v.lot,
       scheduledFor: date,
       diffDays,
+      status, // <-- keep this
     };
 
     if (status === 'overdue') {
@@ -200,23 +259,18 @@ const bucketScheduledVaccines = (vaccines) => {
       upcoming.push(base);
     } else if (status === 'current') {
       current.push(base);
+    } else {
+      unknown.push(base);
     }
   }
 
-  return { overdue, upcoming, needsAttention, current };
+  return { overdue, upcoming, needsAttention, current, unknown };
 };
-
 // ---------- Group by dog ----------
-
 const groupVaccinesByDog = (buckets, animalsById) => {
   const dogs = {};
 
-  const addToDogBucket = (vaccine, status) => {
-    const id = vaccine.animalId;
-    if (!id) return;
-
-    if (!animalsById[id]) return; // skip animals we didn't fetch / non-dogs
-
+  const ensureDog = (id) => {
     if (!dogs[id]) {
       dogs[id] = {
         animalId: id,
@@ -226,179 +280,210 @@ const groupVaccinesByDog = (buckets, animalsById) => {
         needsAttention: [],
         upcoming: [],
         current: [],
+        unknown: [], // <-- new
       };
     }
 
-    dogs[id][status].push(vaccine);
+    return dogs[id];
   };
 
-  for (const v of buckets.overdue) {
-    addToDogBucket(v, 'overdue');
-  }
-  for (const v of buckets.needsAttention) {
-    addToDogBucket(v, 'needsAttention');
-  }
-  for (const v of buckets.upcoming) {
-    addToDogBucket(v, 'upcoming');
-  }
-  for (const v of buckets.current) {
-    addToDogBucket(v, 'current');
-  }
+  const addToDogBucket = (vaccine, status) => {
+    const id = vaccine.animalId;
+    if (!id) return;
+    if (!animalsById[id]) return;
 
-  return dogs; // object keyed by animalId
+    const dog = ensureDog(id);
+
+    if (status === 'overdue') dog.overdue.push(vaccine);
+    else if (status === 'needsAttention') dog.needsAttention.push(vaccine);
+    else if (status === 'upcoming') dog.upcoming.push(vaccine);
+    else if (status === 'current') dog.current.push(vaccine);
+    else dog.unknown.push(vaccine);
+  };
+
+  for (const v of buckets.overdue) addToDogBucket(v, 'overdue');
+  for (const v of buckets.needsAttention) addToDogBucket(v, 'needsAttention');
+  for (const v of buckets.upcoming) addToDogBucket(v, 'upcoming');
+  for (const v of buckets.current) addToDogBucket(v, 'current');
+  for (const v of buckets.unknown || []) addToDogBucket(v, 'unknown');
+
+  return dogs;
 };
 
 // ---------- Slack payload (grouped by dog, with picture) ----------
-const buildSlackPayloadForDogs = (dogsById) => {
-  const dogEntries = Object.values(dogsById);
+// Build a Slack payload for a *single* dog
+const buildSlackPayloadForDog = (dog) => {
+  const overdueCount = dog.overdue.length;
+  const needsAttentionCount = dog.needsAttention.length;
+  const upcomingCount = dog.upcoming.length;
+  const currentCount = dog.current.length;
 
-  if (dogEntries.length === 0) {
-    return {
-      text: 'No dogs with vaccines overdue or due soon. 🎉',
-    };
+  // Debug log so you can see what the script thinks this dog has
+  console.log('Debug dog vaccines:', dog.name, {
+    overdue: dog.overdue.map((v) => ({ product: v.product, status: v.status })),
+    needsAttention: dog.needsAttention.map((v) => ({
+      product: v.product,
+      status: v.status,
+    })),
+    upcoming: dog.upcoming.map((v) => ({
+      product: v.product,
+      status: v.status,
+    })),
+    current: dog.current.map((v) => ({ product: v.product, status: v.status })),
+    unknown: (dog.unknown || []).map((v) => ({
+      product: v.product,
+      status: v.status,
+    })),
+  });
+
+  const allVaccines = [
+    ...dog.overdue,
+    ...dog.needsAttention,
+    ...dog.upcoming,
+    ...dog.current,
+    ...(dog.unknown || []),
+  ];
+
+  // The 3 core vaccine families we always want to show
+  const coreTypes = [
+    { key: 'rabies', label: 'Rabies' },
+    { key: 'dhpp_dapp', label: 'DHPP/DAPP' },
+    { key: 'bordetella', label: 'Bordetella' },
+  ];
+
+  const lines = [];
+
+  // 1. Core vaccine lines
+  coreTypes.forEach(({ key, label }) => {
+    const vaccinesForType = allVaccines.filter(
+      (v) => classifyVaccineType(v.product) === key
+    );
+
+    if (vaccinesForType.length === 0) {
+      // Always show the line, even if nothing scheduled
+      lines.push(
+        `• *${label}:* _no upcoming ${label.toLowerCase()} scheduled_`
+      );
+      return;
+    }
+
+    const sorted = vaccinesForType.slice().sort((a, b) => {
+      const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
+      const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
+      return at - bt;
+    });
+
+    const rows = sorted.map((v) => {
+      const dateStr = v.scheduledFor
+        ? v.scheduledFor.toISOString().slice(0, 10)
+        : 'unknown date';
+
+      let statusEmoji = '✅';
+      let statusLabel = 'current';
+
+      if (v.status === 'overdue') {
+        statusEmoji = '❗';
+        const daysAgo =
+          v.diffDays != null ? Math.floor(Math.abs(v.diffDays)) : null;
+        statusLabel =
+          daysAgo != null
+            ? `overdue (${daysAgo} day${daysAgo === 1 ? '' : 's'})`
+            : 'overdue';
+      } else if (v.status === 'needsAttention') {
+        statusEmoji = '⚠️';
+        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
+        statusLabel =
+          days != null
+            ? `due in ${days} day${days === 1 ? '' : 's'}`
+            : 'due soon';
+      } else if (v.status === 'upcoming') {
+        statusEmoji = '⏰';
+        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
+        statusLabel =
+          days != null
+            ? `due in ${days} day${days === 1 ? '' : 's'}`
+            : 'due in the next month';
+      } else if (v.status === 'current') {
+        statusEmoji = '✅';
+        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
+        statusLabel =
+          days != null
+            ? `due in ${days} day${days === 1 ? '' : 's'}`
+            : 'scheduled later';
+      } else {
+        statusEmoji = '❓';
+        statusLabel = 'date unknown';
+      }
+
+      return `${statusEmoji} ${statusLabel} – *${dateStr}* (product: ${
+        v.product || 'unknown'
+      })`;
+    });
+
+    lines.push(`• *${label}:*\n   ${rows.join('\n   ')}`);
+  });
+
+  // 2. "Other vaccines" (Lepto, etc.) – only if present
+  const otherVaccines = allVaccines.filter(
+    (v) =>
+      !['rabies', 'dhpp_dapp', 'bordetella'].includes(
+        classifyVaccineType(v.product)
+      )
+  );
+
+  if (otherVaccines.length > 0) {
+    const rows = otherVaccines.map((v) => {
+      const dateStr = v.scheduledFor
+        ? v.scheduledFor.toISOString().slice(0, 10)
+        : 'unknown date';
+
+      return `• *${v.product || 'unknown'}* – *${dateStr}*`;
+    });
+
+    lines.push(`• *Other vaccines:*\n   ${rows.join('\n   ')}`);
   }
+
+  const summaryLine =
+    overdueCount || needsAttentionCount || upcomingCount || currentCount
+      ? ` – ${overdueCount} overdue, ${
+          needsAttentionCount + upcomingCount
+        } within the month, ${currentCount} current`
+      : ' – no upcoming scheduled vaccines';
 
   const blocks = [];
 
+  // Small header for context
   blocks.push({
     type: 'section',
     text: {
       type: 'mrkdwn',
-      text: '*Shelterluv vaccine schedule check*',
+      text: `*Shelterluv vaccine schedule check – ${dog.name}*`,
     },
   });
 
   blocks.push({ type: 'divider' });
 
-  dogEntries.forEach((dog) => {
-    const overdueCount = dog.overdue.length;
-    const needsAttentionCount = dog.needsAttention.length;
-    const upcomingCount = dog.upcoming.length;
-    const currentCount = dog.current.length;
+  // Dog detail block
+  const sectionBlock = {
+    type: 'section',
+    text: {
+      type: 'mrkdwn',
+      text: `*${dog.name}*${summaryLine}\n\n${lines.join('\n')}`,
+    },
+  };
 
-    const lines = [];
-
-    // Overdue
-    if (overdueCount > 0) {
-      lines.push(`❗ *${overdueCount} overdue*`);
-      dog.overdue
-        .sort((a, b) => a.diffDays - b.diffDays)
-        .forEach((v) => {
-          const dateStr = v.scheduledFor
-            ? v.scheduledFor.toISOString().slice(0, 10)
-            : 'unknown date';
-          const daysAgo = Math.floor(Math.abs(v.diffDays));
-          lines.push(
-            `• *${v.product}* (lot: ${
-              v.lot || 'n/a'
-            }) – expires on *${dateStr}* (${daysAgo} day${
-              daysAgo === 1 ? '' : 's'
-            } overdue)`
-          );
-        });
-      lines.push('');
-    }
-
-    // Needs attention (<= TWO_WEEKS_BEFORE_DUE)
-    if (needsAttentionCount > 0) {
-      lines.push(
-        `⚠️ *${needsAttentionCount} due within ${TWO_WEEKS_BEFORE_DUE} days*`
-      );
-      dog.needsAttention
-        .sort((a, b) => a.diffDays - b.diffDays)
-        .forEach((v) => {
-          const dateStr = v.scheduledFor
-            ? v.scheduledFor.toISOString().slice(0, 10)
-            : 'unknown date';
-          const days = Math.ceil(v.diffDays);
-          lines.push(
-            `• *${v.product}* (lot: ${
-              v.lot || 'n/a'
-            }) – expires on: *${dateStr}* (in ${days} day${
-              days === 1 ? '' : 's'
-            })`
-          );
-        });
-      lines.push('');
-    }
-
-    // Upcoming (between TWO_WEEKS_BEFORE_DUE and DAYS_BEFORE_DUE)
-    if (upcomingCount > 0) {
-      lines.push(
-        `⏰ *${upcomingCount} due in ${
-          TWO_WEEKS_BEFORE_DUE + 1
-        }–${DAYS_BEFORE_DUE} days*`
-      );
-      dog.upcoming
-        .sort((a, b) => a.diffDays - b.diffDays)
-        .forEach((v) => {
-          const dateStr = v.scheduledFor
-            ? v.scheduledFor.toISOString().slice(0, 10)
-            : 'unknown date';
-          const days = Math.ceil(v.diffDays);
-          lines.push(
-            `• *${v.product}* (lot: ${
-              v.lot || 'n/a'
-            }) – expires on: *${dateStr}* (in ${days} day${
-              days === 1 ? '' : 's'
-            })`
-          );
-        });
-      lines.push('');
-    }
-
-    // Current (beyond DAYS_BEFORE_DUE) — for sanity-checking the classifier
-    if (currentCount > 0) {
-      lines.push(
-        `✅ *${currentCount} current (due later than ${DAYS_BEFORE_DUE} days)*`
-      );
-      dog.current
-        .sort((a, b) => a.diffDays - b.diffDays)
-        .forEach((v) => {
-          const dateStr = v.scheduledFor
-            ? v.scheduledFor.toISOString().slice(0, 10)
-            : 'unknown date';
-          const days = Math.ceil(v.diffDays);
-          lines.push(
-            `• *${v.product}* (lot: ${
-              v.lot || 'n/a'
-            }) – expires on: *${dateStr}* (in ${days} day${
-              days === 1 ? '' : 's'
-            })`
-          );
-        });
-    }
-
-    const sectionBlock = {
-      type: 'section',
-      text: {
-        type: 'mrkdwn',
-        text:
-          `*${dog.name}*` +
-          (overdueCount || needsAttentionCount || upcomingCount || currentCount
-            ? ` – ${overdueCount} overdue, ${
-                needsAttentionCount + upcomingCount
-              } within the month, ${currentCount} current`
-            : '') +
-          `\n\n` +
-          lines.join('\n'),
-      },
+  if (dog.photoUrl) {
+    sectionBlock.accessory = {
+      type: 'image',
+      image_url: dog.photoUrl,
+      alt_text: dog.name,
     };
+  }
 
-    if (dog.photoUrl) {
-      sectionBlock.accessory = {
-        type: 'image',
-        image_url: dog.photoUrl,
-        alt_text: dog.name,
-      };
-    }
-
-    blocks.push(sectionBlock);
-    blocks.push({ type: 'divider' });
-  });
+  blocks.push(sectionBlock);
 
   return {
-    text: 'Shelterluv vaccine schedule check',
+    text: `Shelterluv vaccine schedule check – ${dog.name}`,
     blocks,
   };
 };
@@ -414,6 +499,25 @@ async function main() {
   console.log('scheduledVaccines length:', scheduledVaccines.length);
   console.log('First few scheduled vaccines:', scheduledVaccines.slice(0, 5));
 
+  // TEMP: log every scheduled Rabies-like vaccine
+  const rabiesScheduled = scheduledVaccines.filter((v) =>
+    /rabies|rabvac/i.test(v.product || '')
+  );
+
+  console.log(
+    'All scheduled Rabies-like vaccines:',
+    rabiesScheduled.map((v) => ({
+      vaccineId: v.id,
+      animal_id: v.animal_id,
+      product: v.product,
+      scheduled_for: v.scheduled_for,
+    }))
+  );
+
+  // TEMP: inspect Lila's scheduled vaccines
+  const lilaVaccines = scheduledVaccines.filter((v) => v.animal_id === LILA_ID);
+  console.log('Lila raw vaccines:', JSON.stringify(lilaVaccines, null, 2));
+
   // 2. Bucket into overdue / needs attention / upcoming / current
   const buckets = bucketScheduledVaccines(scheduledVaccines);
   console.log(
@@ -426,29 +530,96 @@ async function main() {
     `Fetched details for ${Object.keys(animalsById).length} animals.`
   );
 
-  // 4. Group vaccines by dog
   const dogsById = groupVaccinesByDog(buckets, animalsById);
+  // After: const dogsById = groupVaccinesByDog(buckets, animalsById);
 
-  // 5. Build Slack payload (grouped by dog, with pictures)
-  const payload = buildSlackPayloadForDogs(dogsById);
-
-  // 6. Post to Slack via webhook
-  const res = await fetch(SLACK_WEBHOOK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-
-  if (!res.ok) {
-    console.error(
-      'Failed to send Slack message:',
-      res.status,
-      await res.text()
+  // Enrich each dog with per-animal scheduled vaccines
+  for (const dog of Object.values(dogsById)) {
+    // 1. Fetch per-animal scheduled vaccines
+    const perAnimalVaccines = await fetchScheduledVaccinesForAnimal(
+      dog.animalId
     );
-    process.exit(1);
+
+    // 2. Build a set of vaccine IDs we already know about, to avoid duplicates
+    const knownIds = new Set(
+      [
+        ...dog.overdue,
+        ...dog.needsAttention,
+        ...dog.upcoming,
+        ...dog.current,
+        ...(dog.unknown || []),
+      ].map((v) => v.vaccineId)
+    );
+
+    // 3. For each scheduled record, classify and add if it's new
+    for (const v of perAnimalVaccines) {
+      if (knownIds.has(v.id)) continue;
+
+      const { status, diffDays, date } = classifyByDueWindow(v.scheduled_for);
+
+      const normalized = {
+        vaccineId: v.id,
+        animalId: v.animal_id,
+        product: v.product,
+        manufacturer: v.manufacturer,
+        lot: v.lot,
+        scheduledFor: date,
+        diffDays,
+        status,
+      };
+
+      if (status === 'overdue') {
+        dog.overdue.push(normalized);
+      } else if (status === 'needsAttention') {
+        dog.needsAttention.push(normalized);
+      } else if (status === 'upcoming') {
+        dog.upcoming.push(normalized);
+      } else if (status === 'current') {
+        dog.current.push(normalized);
+      } else {
+        // unknown date / invalid timestamp
+        if (!dog.unknown) dog.unknown = [];
+        dog.unknown.push(normalized);
+      }
+
+      knownIds.add(v.id);
+    }
+
+    // Optional: debug just for certain dogs
+    if (dog.name === 'Rico' || dog.name === 'Lila') {
+      console.log('After per-animal enrichment:', dog.name, {
+        overdue: dog.overdue.map((v) => v.product),
+        needsAttention: dog.needsAttention.map((v) => v.product),
+        upcoming: dog.upcoming.map((v) => v.product),
+        current: dog.current.map((v) => v.product),
+        unknown: (dog.unknown || []).map((v) => v.product),
+      });
+    }
   }
 
-  console.log('Slack message sent.');
+  // 5. For each dog, build and send a separate Slack message
+  const dogEntries = Object.values(dogsById);
+
+  for (const dog of dogEntries) {
+    const payload = buildSlackPayloadForDog(dog);
+
+    const res = await fetch(SLACK_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+      console.error(
+        `Failed to send Slack message for ${dog.name}:`,
+        res.status,
+        await res.text()
+      );
+      process.exit(1);
+    }
+
+    console.log(`Slack message sent for ${dog.name}.`);
+  }
 }
 
 main().catch((err) => {
