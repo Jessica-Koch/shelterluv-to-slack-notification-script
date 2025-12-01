@@ -17,6 +17,13 @@ if (!SHELTERLUV_API_KEY || !SLACK_WEBHOOK_URL) {
 }
 
 // ---------- Helpers ----------
+const formatDateMMDDYYYY = (date) => {
+  if (!date) return 'unknown date';
+  const month = date.getMonth() + 1; // 0-based
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${month}/${day}/${year}`; // e.g. 12/1/2025
+};
 
 // Convert Shelterluv unix-string to JS Date
 const unixStringToDate = (str) => {
@@ -316,7 +323,7 @@ const STATUS_EMOJI = {
   needsAttention: ':warning:',
   upcoming: ':large_orange_circle:',
   current: ':white_check_mark:',
-  none: ':heavy_minus_sign:',
+  none: ':bangbang:',
   unknown: ':grey_question:',
 };
 
@@ -327,23 +334,16 @@ const buildSlackPayloadForDog = (dog) => {
   const upcomingCount = dog.upcoming.length;
   const currentCount = dog.current.length;
 
-  // Debug log so you can see what the script thinks this dog has
-  console.log('Debug dog vaccines:', dog.name, {
-    overdue: dog.overdue.map((v) => ({ product: v.product, status: v.status })),
-    needsAttention: dog.needsAttention.map((v) => ({
-      product: v.product,
-      status: v.status,
-    })),
-    upcoming: dog.upcoming.map((v) => ({
-      product: v.product,
-      status: v.status,
-    })),
-    current: dog.current.map((v) => ({ product: v.product, status: v.status })),
-    unknown: (dog.unknown || []).map((v) => ({
-      product: v.product,
-      status: v.status,
-    })),
-  });
+  // Local date formatter: 12/1/2025
+  const formatDate = (date) => {
+    if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+      return 'unknown date';
+    }
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
 
   const allVaccines = [
     ...dog.overdue,
@@ -353,18 +353,23 @@ const buildSlackPayloadForDog = (dog) => {
     ...(dog.unknown || []),
   ];
 
-  // The 3 core vaccine families we always want to show
+  // Core vaccine types
   const coreTypes = [
     { key: 'rabies', label: 'Rabies' },
     { key: 'dhpp_dapp', label: 'DHPP/DAPP' },
     { key: 'bordetella', label: 'Bordetella' },
   ];
 
+  // Other vaccines (everything classifyVaccineType() !== rabies/dhpp/bordetella)
+  const otherVaccines = allVaccines.filter(
+    (v) => classifyVaccineType(v.product) === 'other'
+  );
+
   const summaryLine =
     overdueCount || needsAttentionCount || upcomingCount || currentCount
-      ? ` – ${overdueCount} overdue\n 
-          - ${needsAttentionCount + upcomingCount} within the month\n
-          - ${currentCount} current`
+      ? `– ${overdueCount} overdue\n` +
+        `- ${needsAttentionCount + upcomingCount} due within the month\n` +
+        `- ${currentCount} current`
       : 'No upcoming scheduled vaccines';
 
   const blocks = [];
@@ -374,17 +379,17 @@ const buildSlackPayloadForDog = (dog) => {
     type: 'header',
     text: {
       type: 'plain_text',
-      text: `\n${dog.name}'s Vaccine Status`,
+      text: `${dog.name}'s Vaccine Status`,
       emoji: true,
     },
   });
 
-  // Dog summary block with DOG PHOTO as accessory
+  // Summary section with dog photo
   const summaryBlock = {
     type: 'section',
     text: {
       type: 'mrkdwn',
-      text: `${summaryLine}`,
+      text: summaryLine,
     },
   };
 
@@ -398,28 +403,25 @@ const buildSlackPayloadForDog = (dog) => {
 
   blocks.push(summaryBlock);
 
-  // For each vaccine type, create its own section, prefixing with an emoji
+  // ---------- CORE VACCINES ----------
   coreTypes.forEach(({ key, label }) => {
     const vaccinesForType = allVaccines.filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
     let statusKey = 'none';
-    let statusText = `**No ${label.toLowerCase()} vaccine recorded**`;
+    let statusText = `_No ${label.toLowerCase()} vaccine on file_`;
 
     if (vaccinesForType.length > 0) {
-      // Pick the soonest scheduled vaccine for this type
+      // Soonest scheduled vaccine for this type
       const soonest = vaccinesForType.reduce((a, b) => {
         const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
         const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
         return bt < at ? b : a;
       });
 
-      const dateStr = soonest.scheduledFor
-        ? soonest.scheduledFor.toISOString().slice(0, 10)
-        : 'unknown date';
+      const dateStr = formatDate(soonest.scheduledFor);
 
-      // Determine status key + human-readable text
       if (soonest.status === 'overdue') {
         statusKey = 'overdue';
         const daysAgo =
@@ -428,9 +430,9 @@ const buildSlackPayloadForDog = (dog) => {
             : null;
         const extra =
           daysAgo != null
-            ? ` (${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue)`
+            ? `*${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue*`
             : '';
-        statusText = `*Overdue*${extra} – ${dateStr}`;
+        statusText = `${extra} – ${dateStr}`;
       } else if (soonest.status === 'needsAttention') {
         statusKey = 'needsAttention';
         const days =
@@ -454,26 +456,78 @@ const buildSlackPayloadForDog = (dog) => {
         statusText = `Due${extra} – ${dateStr}`;
       } else {
         statusKey = 'unknown';
-        statusText = `*Date unknown* –`;
+        statusText = `*Date unknown*`;
       }
     }
 
     const emoji = STATUS_EMOJI[statusKey] || STATUS_EMOJI.unknown;
 
-    const vaccineBlock = {
+    blocks.push({
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: `${emoji} *${label}*\n${statusText}\n\n`,
+        text: `${emoji} *${label}*\n${statusText}\n`,
       },
-    };
-
-    blocks.push(vaccineBlock);
+    });
   });
+
+  // ---------- OTHER VACCINES (with status + date per vaccine) ----------
+  if (otherVaccines.length > 0) {
+    const rows = otherVaccines.map((v) => {
+      const dateStr = formatDate(v.scheduledFor);
+
+      let statusKey = v.status || 'unknown';
+      if (!STATUS_EMOJI[statusKey]) statusKey = 'unknown';
+      const emoji = STATUS_EMOJI[statusKey];
+
+      let label;
+      if (v.status === 'overdue') {
+        const daysAgo =
+          v.diffDays != null ? Math.floor(Math.abs(v.diffDays)) : null;
+        label =
+          daysAgo != null
+            ? `Overdue (${daysAgo} day${daysAgo === 1 ? '' : 's'} ago)`
+            : 'Overdue';
+      } else if (v.status === 'needsAttention') {
+        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
+        label =
+          days != null
+            ? `Due soon (in ${days} day${days === 1 ? '' : 's'})`
+            : 'Due soon';
+      } else if (v.status === 'upcoming') {
+        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
+        label =
+          days != null
+            ? `Upcoming (in ${days} day${days === 1 ? '' : 's'})`
+            : 'Upcoming';
+      } else if (v.status === 'current') {
+        const days = v.diffDays != null ? Math.ceil(v.diffDays) : null;
+        label =
+          days != null
+            ? `Scheduled (in ${days} day${days === 1 ? '' : 's'})`
+            : 'Scheduled';
+      } else {
+        label = 'Date unknown';
+      }
+
+      return `${emoji} ${label} – ${dateStr} (product: ${
+        v.product || 'Unknown product'
+      })`;
+    });
+
+    blocks.push({
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*Other Vaccines*\n${rows.join('\n')}\n`,
+      },
+    });
+  }
+
   blocks.push({ type: 'divider' });
 
   return {
-    text: `**Shelterluv vaccine schedule check**\n`,
+    text: `Shelterluv vaccine schedule check – ${dog.name}`,
     blocks,
   };
 };
