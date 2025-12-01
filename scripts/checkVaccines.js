@@ -312,11 +312,11 @@ const groupVaccinesByDog = (buckets, animalsById) => {
 // ---------- Emoji mapping instead of icons ----------
 
 const STATUS_EMOJI = {
-  overdue: ':red_circle:',
+  overdue: ':alert:',
   needsAttention: ':warning:',
   upcoming: ':large_orange_circle:',
   current: ':white_check_mark:',
-  none: ':white_small_square:',
+  none: ':heavy_minus_sign:',
   unknown: ':grey_question:',
 };
 
@@ -362,7 +362,7 @@ const buildSlackPayloadForDog = (dog) => {
 
   const summaryLine =
     overdueCount || needsAttentionCount || upcomingCount || currentCount
-      ? ` – ${overdueCount} overdue, ${
+      ? ` – ${overdueCount} overdue\n${
           needsAttentionCount + upcomingCount
         } within the month, ${currentCount} current`
       : ' – no upcoming scheduled vaccines';
@@ -379,14 +379,12 @@ const buildSlackPayloadForDog = (dog) => {
     },
   });
 
-  blocks.push({ type: 'divider' });
-
   // Dog summary block with DOG PHOTO as accessory
   const summaryBlock = {
     type: 'section',
     text: {
       type: 'mrkdwn',
-      text: `*${dog.name}*${summaryLine}`,
+      text: `${summaryLine}`,
     },
   };
 
@@ -399,7 +397,6 @@ const buildSlackPayloadForDog = (dog) => {
   }
 
   blocks.push(summaryBlock);
-  blocks.push({ type: 'divider' });
 
   // For each vaccine type, create its own section, prefixing with an emoji
   coreTypes.forEach(({ key, label }) => {
@@ -408,7 +405,7 @@ const buildSlackPayloadForDog = (dog) => {
     );
 
     let statusKey = 'none';
-    let statusText = `_no ${label.toLowerCase()} vaccination record`;
+    let statusText = `No ${label.toLowerCase()} vaccination record`;
 
     if (vaccinesForType.length > 0) {
       // Pick the soonest scheduled vaccine for this type
