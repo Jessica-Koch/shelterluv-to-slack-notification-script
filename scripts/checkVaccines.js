@@ -469,8 +469,8 @@ const buildSlackPayloadForDog = (dog) => {
     };
 
     blocks.push(vaccineBlock);
-    blocks.push({ type: 'divider' });
   });
+  blocks.push({ type: 'divider' });
 
   return {
     text: `**Shelterluv vaccine schedule check**\n`,
