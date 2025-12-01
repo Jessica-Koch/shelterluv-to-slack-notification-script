@@ -1,6 +1,3 @@
-const ICON_BASE =
-  'https://raw.githubusercontent.com/Jessica-Koch/shelterluv-to-slack-notification-script/main/assets';
-
 require('dotenv').config();
 
 const SHELTERLUV_API_KEY = process.env.SHELTERLUV_API_KEY;
@@ -118,7 +115,7 @@ const fetchAnimalById = async (internalId) => {
 
   if (!res.ok) {
     console.error(
-      `Failed to fetch animal ${internalId}:`,
+      `Failed to fetch animal ${internalId}: `,
       res.status,
       await res.text()
     );
@@ -267,6 +264,7 @@ const bucketScheduledVaccines = (vaccines) => {
 
   return { overdue, upcoming, needsAttention, current, unknown };
 };
+
 // ---------- Group by dog ----------
 const groupVaccinesByDog = (buckets, animalsById) => {
   const dogs = {};
@@ -311,20 +309,18 @@ const groupVaccinesByDog = (buckets, animalsById) => {
   return dogs;
 };
 
-// Map vaccine status -> icon URL (replace with your own hosted images)
-const VACCINE_STATUS_ICONS = {
-  overdue: `${ICON_BASE}/red_alert.png`,
-  needsAttention: `${ICON_BASE}/alert3.png`,
-  current: `${ICON_BASE}/check.png`,
-  none: `${ICON_BASE}/not_found.png`,
-  unknown: `${ICON_BASE}/question.png`,
+// ---------- Emoji mapping instead of icons ----------
+
+const STATUS_EMOJI = {
+  overdue: ':red_circle:',
+  needsAttention: ':warning:',
+  upcoming: ':large_orange_circle:',
+  current: ':white_check_mark:',
+  none: ':white_small_square:',
+  unknown: ':grey_question:',
 };
 
-const getVaccineIconUrl = (statusKey) => {
-  return VACCINE_STATUS_ICONS[statusKey] || VACCINE_STATUS_ICONS.unknown;
-};
-
-// ---------- Slack payload (one message per dog, with vaccine icons) ----------
+// ---------- Slack payload (one message per dog, using emojis) ----------
 const buildSlackPayloadForDog = (dog) => {
   const overdueCount = dog.overdue.length;
   const needsAttentionCount = dog.needsAttention.length;
@@ -405,14 +401,14 @@ const buildSlackPayloadForDog = (dog) => {
   blocks.push(summaryBlock);
   blocks.push({ type: 'divider' });
 
-  // For each vaccine type, create its own section with an icon accessory
+  // For each vaccine type, create its own section, prefixing with an emoji
   coreTypes.forEach(({ key, label }) => {
     const vaccinesForType = allVaccines.filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
     let statusKey = 'none';
-    let statusText = `_no upcoming ${label.toLowerCase()} scheduled_`;
+    let statusText = `_no ${label.toLowerCase()} vaccination record`;
 
     if (vaccinesForType.length > 0) {
       // Pick the soonest scheduled vaccine for this type
@@ -437,58 +433,46 @@ const buildSlackPayloadForDog = (dog) => {
           daysAgo != null
             ? ` (${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue)`
             : '';
-        statusText = `*Overdue*${extra} – *${dateStr}* (product: ${
-          soonest.product || 'unknown'
-        })`;
+        statusText = `*Overdue*${extra} – ${dateStr}`;
       } else if (soonest.status === 'needsAttention') {
         statusKey = 'needsAttention';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
-        statusText = `*Due soon*${extra} – *${dateStr}* (product: ${
-          soonest.product || 'unknown'
-        })`;
+        statusText = `*Due soon*${extra} – *${dateStr}*`;
       } else if (soonest.status === 'upcoming') {
         statusKey = 'upcoming';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
-        statusText = `*Upcoming*${extra} – *${dateStr}* (product: ${
-          soonest.product || 'unknown'
-        })`;
+        statusText = `*Upcoming*${extra} – *${dateStr}*`;
       } else if (soonest.status === 'current') {
         statusKey = 'current';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
-        statusText = `*Scheduled*${extra} – *${dateStr}* (product: ${
-          soonest.product || 'unknown'
-        })`;
+        statusText = `Due${extra} – ${dateStr}`;
       } else {
         statusKey = 'unknown';
-        statusText = `*Date unknown* – (product: ${
-          soonest.product || 'unknown'
-        })`;
+        statusText = `*Date unknown* –`;
       }
     }
+
+    const emoji = STATUS_EMOJI[statusKey] || STATUS_EMOJI.unknown;
 
     const vaccineBlock = {
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: `*${label}*\n${statusText}`,
-      },
-      accessory: {
-        type: 'image',
-        image_url: getVaccineIconUrl(statusKey),
-        alt_text: `${label} ${statusKey}`,
+        text: `${emoji} *${label}*\n${statusText}\n\n`,
       },
     };
 
     blocks.push(vaccineBlock);
+    blocks.push({ type: 'divider' });
   });
 
   return {
@@ -512,16 +496,13 @@ async function main() {
   const animalsById = await fetchAnimalsForBuckets(buckets);
 
   const dogsById = groupVaccinesByDog(buckets, animalsById);
-  // After: const dogsById = groupVaccinesByDog(buckets, animalsById);
 
   // Enrich each dog with per-animal scheduled vaccines
   for (const dog of Object.values(dogsById)) {
-    // 1. Fetch per-animal scheduled vaccines
     const perAnimalVaccines = await fetchScheduledVaccinesForAnimal(
       dog.animalId
     );
 
-    // 2. Build a set of vaccine IDs we already know about, to avoid duplicates
     const knownIds = new Set(
       [
         ...dog.overdue,
@@ -532,7 +513,6 @@ async function main() {
       ].map((v) => v.vaccineId)
     );
 
-    // 3. For each scheduled record, classify and add if it's new
     for (const v of perAnimalVaccines) {
       if (knownIds.has(v.id)) continue;
 
@@ -558,7 +538,6 @@ async function main() {
       } else if (status === 'current') {
         dog.current.push(normalized);
       } else {
-        // unknown date / invalid timestamp
         if (!dog.unknown) dog.unknown = [];
         dog.unknown.push(normalized);
       }
@@ -566,7 +545,6 @@ async function main() {
       knownIds.add(v.id);
     }
 
-    // Optional: debug just for certain dogs
     if (dog.name === 'Rico' || dog.name === 'Lila') {
       console.log('After per-animal enrichment:', dog.name, {
         overdue: dog.overdue.map((v) => v.product),
@@ -578,7 +556,6 @@ async function main() {
     }
   }
 
-  // 5. For each dog, build and send a separate Slack message
   const dogEntries = Object.values(dogsById);
 
   for (const dog of dogEntries) {
