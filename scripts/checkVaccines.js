@@ -70,7 +70,7 @@ const getVaccineInternalIdFromAnimal = (animal) => {
 const classifyVaccineType = (product) => {
   const p = (product || '').toLowerCase();
 
-  if (p.includes('rabies') || p.includes('rabvac') || p.includes('MRAB')) {
+  if (p.includes('rabies') || p.includes('rabvac') || p.includes('mrab')) {
     return 'rabies';
   }
 
@@ -412,18 +412,20 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
 
   blocks.push(summaryBlock);
 
-  // ---------- CORE VACCINES (last given + next scheduled) ----------
+  // ---------- CORE VACCINES (focus on expiry/next due) ----------
   coreTypes.forEach(({ key, label }) => {
+    // Full history (completed + scheduled) for this vaccine family
     const historyForType = (allVaccines || []).filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
+    // Only scheduled entries for this vaccine family
     const scheduledForType = scheduledVaccines.filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
-    // 1) Last given (from COMPLETED history)
-    let lastGivenPart = '';
+    // 1) Last given (from COMPLETED history) – optional, secondary line
+    let lastGivenLine = '';
     if (historyForType.length > 0) {
       const completedDates = historyForType
         .map((v) => (v.completed_at ? unixStringToDate(v.completed_at) : null))
@@ -432,17 +434,17 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
 
       if (completedDates[0]) {
         const lastDateStr = formatDate(completedDates[0]);
-        lastGivenPart = `Last given ${lastDateStr}. `;
+        lastGivenLine = `Last given ${lastDateStr}.`;
       }
     }
 
-    // 2) Next scheduled (from SCHEDULED buckets)
+    // 2) Next due / expiry (from SCHEDULED buckets) – primary line
     let statusKey = 'none';
-    let duePart = '';
+    let dueLine = '';
     let statusText = '';
 
     if (scheduledForType.length > 0) {
-      // There is at least one scheduled dose → use the soonest to determine status + icon
+      // There is at least one scheduled dose → use the soonest as the "expiry/next due"
       const soonest = scheduledForType.reduce((a, b) => {
         const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
         const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
@@ -460,39 +462,46 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
         const extra =
           daysAgo != null
             ? `${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue`
-            : 'Overdue';
-        duePart = `Next dose: *${extra}* – ${dateStr}`;
+            : 'overdue';
+        // Treat scheduled_for as the date it *expired / was due*
+        dueLine = `*Past due* – was due ${dateStr} (${extra}).`;
       } else if (soonest.status === 'needsAttention') {
         statusKey = 'needsAttention';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'due soon';
-        duePart = `Next dose: *${extra}* – ${dateStr}`;
+        // This is the expiry/next due date inside the 14-day window
+        dueLine = `*Due soon* – due ${dateStr} (${extra}).`;
       } else if (soonest.status === 'upcoming') {
         statusKey = 'upcoming';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'upcoming';
-        duePart = `Next dose: *${extra}* – ${dateStr}`;
+        // Due, but >14 days out and within 30-day window
+        dueLine = `*Upcoming* – due ${dateStr} (${extra}).`;
       } else if (soonest.status === 'current') {
         statusKey = 'current';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'scheduled';
-        duePart = `Next dose: ${extra} – ${dateStr}`;
+        // Scheduled but outside your 30-day attention window
+        dueLine = `Scheduled – due ${dateStr} (${extra}).`;
       } else {
         statusKey = 'unknown';
-        duePart = `Next dose date unknown`;
+        dueLine = `Next due date unknown.`;
       }
 
-      statusText = `${lastGivenPart}${duePart}`;
+      statusText = lastGivenLine ? `${dueLine}\n${lastGivenLine}` : dueLine;
     } else if (historyForType.length > 0) {
-      // Has vaccine on file, but no future scheduled
+      // Has vaccine on file, but no future scheduled → you *don't* know expiry,
+      // only that it was given on lastDateStr.
       statusKey = 'current';
-      statusText = `${lastGivenPart}No upcoming dose scheduled.`;
+      statusText = lastGivenLine
+        ? `${lastGivenLine}\nNo upcoming dose scheduled.`
+        : 'No upcoming dose scheduled.';
     } else {
       // Nothing on file at all
       statusKey = 'none';
@@ -520,7 +529,11 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
         : 'unknown date';
 
       let statusKey = v.status || 'unknown';
+
+      // Treat completed as "current"/good so it shows ✅, not ❓
+      if (statusKey === 'completed') statusKey = 'current';
       if (!STATUS_EMOJI[statusKey]) statusKey = 'unknown';
+
       const emoji = STATUS_EMOJI[statusKey];
 
       return `${emoji} ${v.product || 'Unknown product'} – ${dateStr}`;
