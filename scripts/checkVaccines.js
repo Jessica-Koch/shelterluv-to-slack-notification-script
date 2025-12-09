@@ -346,7 +346,7 @@ const fetchAllScheduledVaccines = async () => {
 
 // dog: contains the bucketed scheduled vaccines
 // allVaccines: raw list from /animals/{id}/vaccines (completed + scheduled)
-const buildSlackPayloadForDog = (dog, allVaccines) => {
+const buildSlackPayloadForDog = (dog, allVaccines = []) => {
   const overdueCount = dog.overdue.length;
   const needsAttentionCount = dog.needsAttention.length;
   const upcomingCount = dog.upcoming.length;
@@ -368,7 +368,7 @@ const buildSlackPayloadForDog = (dog, allVaccines) => {
     { key: 'bordetella', label: 'Bordetella' },
   ];
 
-  // "Other" vaccines (for separate listing)
+  // "Other" vaccines from full history
   const otherVaccines = (allVaccines || []).filter(
     (v) => classifyVaccineType(v.product) === 'other'
   );
@@ -411,41 +411,38 @@ const buildSlackPayloadForDog = (dog, allVaccines) => {
 
   blocks.push(summaryBlock);
 
-  // ---------- CORE VACCINES ----------
+  // ---------- CORE VACCINES (last given + next scheduled) ----------
   coreTypes.forEach(({ key, label }) => {
-    // All records of this type (completed + scheduled)
-    const vaccinesForTypeAll = (allVaccines || []).filter(
+    const historyForType = (allVaccines || []).filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
-    // Only scheduled vaccines of this type (for due/overdue logic)
-    const vaccinesForTypeScheduled = scheduledVaccines.filter(
+    const scheduledForType = scheduledVaccines.filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
-    let statusKey = 'none';
-    let statusText;
-
-    if (vaccinesForTypeAll.length === 0) {
-      // Truly nothing on file at all
-      statusText = `_No ${label.toLowerCase()} vaccine on file_`;
-    } else if (vaccinesForTypeScheduled.length === 0) {
-      // There IS a vaccine on file, but nothing upcoming
-      // Show the most recent COMPLETED date if we can
-      const completedDates = vaccinesForTypeAll
+    // 1) Last given (from COMPLETED history)
+    let lastGivenPart = '';
+    if (historyForType.length > 0) {
+      const completedDates = historyForType
         .map((v) => (v.completed_at ? unixStringToDate(v.completed_at) : null))
         .filter((d) => d instanceof Date && !isNaN(d.getTime()))
         .sort((a, b) => b.getTime() - a.getTime()); // newest first
 
-      const lastDate = completedDates[0]
-        ? formatDate(completedDates[0])
-        : 'unknown date';
+      if (completedDates[0]) {
+        const lastDateStr = formatDate(completedDates[0]);
+        lastGivenPart = `Last given ${lastDateStr}. `;
+      }
+    }
 
-      statusKey = 'current'; // treat as "ok / on file"
-      statusText = `On file – last given ${lastDate}`;
-    } else {
-      // There IS at least one scheduled dose – reuse your original "soonest scheduled" logic
-      const soonest = vaccinesForTypeScheduled.reduce((a, b) => {
+    // 2) Next scheduled (from SCHEDULED buckets)
+    let statusKey = 'none';
+    let duePart = '';
+    let statusText = '';
+
+    if (scheduledForType.length > 0) {
+      // There is at least one scheduled dose → use the soonest to determine status + icon
+      const soonest = scheduledForType.reduce((a, b) => {
         const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
         const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
         return bt < at ? b : a;
@@ -461,34 +458,44 @@ const buildSlackPayloadForDog = (dog, allVaccines) => {
             : null;
         const extra =
           daysAgo != null
-            ? `*${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue*`
-            : '';
-        statusText = `${extra} – ${dateStr}`;
+            ? `${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue`
+            : 'Overdue';
+        duePart = `Next dose: *${extra}* – ${dateStr}`;
       } else if (soonest.status === 'needsAttention') {
         statusKey = 'needsAttention';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
-          days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
-        statusText = `*Due soon*${extra} – *${dateStr}*`;
+          days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'due soon';
+        duePart = `Next dose: *${extra}* – ${dateStr}`;
       } else if (soonest.status === 'upcoming') {
         statusKey = 'upcoming';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
-          days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
-        statusText = `*Upcoming*${extra} – *${dateStr}*`;
+          days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'upcoming';
+        duePart = `Next dose: *${extra}* – ${dateStr}`;
       } else if (soonest.status === 'current') {
         statusKey = 'current';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
-          days != null ? ` (in ${days} day${days === 1 ? '' : 's'})` : '';
-        statusText = `Due${extra} – ${dateStr}`;
+          days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'scheduled';
+        duePart = `Next dose: ${extra} – ${dateStr}`;
       } else {
         statusKey = 'unknown';
-        statusText = `*Date unknown*`;
+        duePart = `Next dose date unknown`;
       }
+
+      statusText = `${lastGivenPart}${duePart}`;
+    } else if (historyForType.length > 0) {
+      // Has vaccine on file, but no future scheduled
+      statusKey = 'current';
+      statusText = `${lastGivenPart}No upcoming dose scheduled.`;
+    } else {
+      // Nothing on file at all
+      statusKey = 'none';
+      statusText = `_No ${label.toLowerCase()} vaccine on file_`;
     }
 
     const emoji = STATUS_EMOJI[statusKey] || STATUS_EMOJI.unknown;
@@ -502,7 +509,7 @@ const buildSlackPayloadForDog = (dog, allVaccines) => {
     });
   });
 
-  // ---------- OTHER VACCINES ----------
+  // ---------- OTHER VACCINES (optional detail) ----------
   if (otherVaccines.length > 0) {
     const rows = otherVaccines.map((v) => {
       const dateStr = v.scheduled_for
@@ -515,37 +522,7 @@ const buildSlackPayloadForDog = (dog, allVaccines) => {
       if (!STATUS_EMOJI[statusKey]) statusKey = 'unknown';
       const emoji = STATUS_EMOJI[statusKey];
 
-      let label;
-      if (v.status === 'overdue') {
-        const diff = classifyByDueWindow(v.scheduled_for).diffDays;
-        const daysAgo = diff != null ? Math.floor(Math.abs(diff)) : null;
-        label =
-          daysAgo != null
-            ? `Overdue (${daysAgo} day${daysAgo === 1 ? '' : 's'} ago)`
-            : 'Overdue';
-      } else if (v.status === 'needsAttention') {
-        const diff = classifyByDueWindow(v.scheduled_for).diffDays;
-        const days = diff != null ? Math.ceil(diff) : null;
-        label =
-          days != null
-            ? `Due soon (in ${days} day${days === 1 ? '' : 's'})`
-            : 'Due soon';
-      } else if (v.status === 'upcoming') {
-        const diff = classifyByDueWindow(v.scheduled_for).diffDays;
-        const days = diff != null ? Math.ceil(diff) : null;
-        label =
-          days != null
-            ? `Upcoming (in ${days} day${days === 1 ? '' : 's'})`
-            : 'Upcoming';
-      } else if (v.status === 'current') {
-        label = 'Scheduled';
-      } else {
-        label = 'Date unknown';
-      }
-
-      return `${emoji} ${label} – ${dateStr} (product: ${
-        v.product || 'Unknown product'
-      })`;
+      return `${emoji} ${v.product || 'Unknown product'} – ${dateStr}`;
     });
 
     blocks.push({
