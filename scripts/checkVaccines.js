@@ -70,12 +70,13 @@ const getVaccineInternalIdFromAnimal = (animal) => {
 const classifyVaccineType = (product) => {
   const p = (product || '').toLowerCase();
 
-  if (p.includes('rabies') || p.includes('rabvac')) {
+  if (p.includes('rabies') || p.includes('rabvac') || p.includes('MRAB')) {
     return 'rabies';
   }
 
   if (
     p.includes('dhpp') ||
+    p.includes('dhp') ||
     p.includes('dapp') ||
     p.includes('da2pp') ||
     p.includes('da2ppv') ||
@@ -378,7 +379,7 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
       ? `– ${overdueCount} overdue\n` +
         `- ${needsAttentionCount + upcomingCount} due within the month\n` +
         `- ${currentCount} current`
-      : 'No upcoming scheduled vaccines';
+      : 'No vaccines due';
 
   const blocks = [];
 
