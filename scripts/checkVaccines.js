@@ -333,6 +333,7 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
   const upcomingCount = dog.upcoming.length;
   const currentCount = dog.current.length;
 
+  // Only scheduled vaccines (from your buckets)
   const scheduledVaccines = [
     ...dog.overdue,
     ...dog.needsAttention,
@@ -341,22 +342,39 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
     ...(dog.unknown || []),
   ];
 
+  const hasAnyHistory = Array.isArray(allVaccines) && allVaccines.length > 0;
+  const hasAnyScheduled = scheduledVaccines.length > 0;
+
+  // Core vaccine families
   const coreTypes = [
     { key: 'rabies', label: 'Rabies' },
     { key: 'dhpp_dapp', label: 'DHPP/DAPP' },
     { key: 'bordetella', label: 'Bordetella' },
   ];
 
+  // "Other" vaccines from full history
   const otherVaccines = (allVaccines || []).filter(
     (v) => classifyVaccineType(v.product) === 'other'
   );
 
-  const summaryLine =
-    overdueCount || needsAttentionCount || upcomingCount || currentCount
-      ? `– ${overdueCount} overdue\n` +
-        `- ${needsAttentionCount + upcomingCount} due within the month\n` +
-        `- ${currentCount} current`
-      : 'No vaccines due';
+  // ---------- SUMMARY LINE ----------
+  let summaryLine;
+
+  if (!hasAnyHistory) {
+    // Absolutely no vaccine records in Shelterluv for this dog
+    summaryLine =
+      ':warning: *No vaccine records on file in Shelterluv.* ' +
+      'Please verify this dog’s vaccination history.';
+  } else if (!hasAnyScheduled) {
+    // Has some vaccine history, but nothing scheduled in the future
+    summaryLine = 'No upcoming doses scheduled.';
+  } else {
+    // Normal “counts” view when there ARE scheduled vaccines
+    summaryLine =
+      `– ${overdueCount} overdue\n` +
+      `- ${needsAttentionCount + upcomingCount} due within the month\n` +
+      `- ${currentCount} current`;
+  }
 
   const blocks = [];
 
@@ -405,7 +423,7 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
       const completedDates = historyForType
         .map((v) => (v.completed_at ? unixStringToDate(v.completed_at) : null))
         .filter((d) => d instanceof Date && !isNaN(d.getTime()))
-        .sort((a, b) => b.getTime() - a.getTime());
+        .sort((a, b) => b.getTime() - a.getTime()); // newest first
 
       if (completedDates[0]) {
         const lastDateStr = formatDate(completedDates[0]);
@@ -413,12 +431,13 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
       }
     }
 
-    // 2) Next scheduled (from per-animal SCHEDULED endpoint)
+    // 2) Next scheduled (from SCHEDULED buckets)
     let statusKey = 'none';
     let duePart = '';
     let statusText = '';
 
     if (scheduledForType.length > 0) {
+      // There is at least one scheduled dose → use the soonest to determine status + icon
       const soonest = scheduledForType.reduce((a, b) => {
         const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
         const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
@@ -470,7 +489,7 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
       statusKey = 'current';
       statusText = `${lastGivenPart}No upcoming dose scheduled.`;
     } else {
-      // Nothing on file at all
+      // Nothing on file at all for this vaccine type
       statusKey = 'none';
       statusText = `_No ${label.toLowerCase()} vaccine on file_`;
     }
