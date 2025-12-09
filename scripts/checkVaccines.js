@@ -94,7 +94,7 @@ const classifyVaccineType = (product) => {
   return 'other';
 };
 
-// ---------- Date classification ----------
+// ---------- Date classification (for scheduled vaccines) ----------
 
 const classifyByDueWindow = (scheduledForStr) => {
   const date = unixStringToDate(scheduledForStr);
@@ -259,11 +259,11 @@ const fetchAllInCustodyDogs = async () => {
   return dogsWithIds;
 };
 
-// Fetch **all** vaccines (completed + scheduled) for a dog
+// Fetch **all** vaccines (completed + scheduled) for a dog (for history)
 const fetchAllVaccinesForAnimal = async (animalId) => {
   const url = `https://new.shelterluv.com/api/v1/animals/${animalId}/vaccines`;
 
-  console.log('Calling vaccines endpoint:', url);
+  console.log('Calling ALL vaccines endpoint:', url);
 
   const res = await fetch(url, {
     method: 'GET',
@@ -284,7 +284,6 @@ const fetchAllVaccinesForAnimal = async (animalId) => {
 
   const json = await res.json();
 
-  // Some Shelterluv responses are { vaccines: [...] }, others are just [...]
   return Array.isArray(json.vaccines)
     ? json.vaccines
     : Array.isArray(json)
@@ -292,55 +291,36 @@ const fetchAllVaccinesForAnimal = async (animalId) => {
     : [];
 };
 
-// Fetch ALL scheduled vaccines across the org
-const fetchAllScheduledVaccines = async () => {
-  const baseUrl = 'https://new.shelterluv.com/api/v1/vaccines';
-  const limit = 200;
-  let offset = 0;
-  const all = [];
+// Fetch **scheduled** vaccines for a dog (for next due / expiring)
+const fetchScheduledVaccinesForAnimal = async (animalId) => {
+  const url = `https://new.shelterluv.com/api/v1/animals/${animalId}/vaccines?status=scheduled`;
 
-  while (true) {
-    const url = `${baseUrl}?status=scheduled&limit=${limit}&offset=${offset}`;
+  console.log('Calling SCHEDULED vaccines endpoint:', url);
 
-    console.log('Fetching scheduled vaccines from Shelterluv:', url);
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${SHELTERLUV_API_KEY}`,
+      Accept: 'application/json',
+    },
+  });
 
-    const res = await fetch(url, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${SHELTERLUV_API_KEY}`,
-        Accept: 'application/json',
-      },
-    });
-
-    if (!res.ok) {
-      console.error(
-        'Shelterluv vaccines API error:',
-        res.status,
-        await res.text()
-      );
-      throw new Error(`Vaccines API request failed with ${res.status}`);
-    }
-
-    const json = await res.json();
-
-    // Typical shape: { success, vaccines, has_more, total_count }
-    const batch = Array.isArray(json.vaccines) ? json.vaccines : json;
-
-    if (!Array.isArray(batch) || batch.length === 0) {
-      break;
-    }
-
-    all.push(...batch);
-
-    if (json.has_more === false || batch.length < limit) {
-      break;
-    }
-
-    offset += limit;
+  if (!res.ok) {
+    console.error(
+      `Failed to fetch SCHEDULED vaccines for animal ${animalId}:`,
+      res.status,
+      await res.text()
+    );
+    throw new Error(`Scheduled-vaccines fetch failed for ${animalId}`);
   }
 
-  console.log('Total scheduled vaccines fetched:', all.length);
-  return all;
+  const json = await res.json();
+
+  return Array.isArray(json.vaccines)
+    ? json.vaccines
+    : Array.isArray(json)
+    ? json
+    : [];
 };
 
 // ---------- Slack payload: formatted ----------
@@ -353,7 +333,6 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
   const upcomingCount = dog.upcoming.length;
   const currentCount = dog.current.length;
 
-  // Only scheduled vaccines (from your buckets)
   const scheduledVaccines = [
     ...dog.overdue,
     ...dog.needsAttention,
@@ -362,14 +341,12 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
     ...(dog.unknown || []),
   ];
 
-  // Core vaccine families
   const coreTypes = [
     { key: 'rabies', label: 'Rabies' },
     { key: 'dhpp_dapp', label: 'DHPP/DAPP' },
     { key: 'bordetella', label: 'Bordetella' },
   ];
 
-  // "Other" vaccines from full history
   const otherVaccines = (allVaccines || []).filter(
     (v) => classifyVaccineType(v.product) === 'other'
   );
@@ -412,39 +389,36 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
 
   blocks.push(summaryBlock);
 
-  // ---------- CORE VACCINES (focus on expiry/next due) ----------
+  // ---------- CORE VACCINES (last given + next scheduled) ----------
   coreTypes.forEach(({ key, label }) => {
-    // Full history (completed + scheduled) for this vaccine family
     const historyForType = (allVaccines || []).filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
-    // Only scheduled entries for this vaccine family
     const scheduledForType = scheduledVaccines.filter(
       (v) => classifyVaccineType(v.product) === key
     );
 
-    // 1) Last given (from COMPLETED history) – optional, secondary line
-    let lastGivenLine = '';
+    // 1) Last given (from COMPLETED history)
+    let lastGivenPart = '';
     if (historyForType.length > 0) {
       const completedDates = historyForType
         .map((v) => (v.completed_at ? unixStringToDate(v.completed_at) : null))
         .filter((d) => d instanceof Date && !isNaN(d.getTime()))
-        .sort((a, b) => b.getTime() - a.getTime()); // newest first
+        .sort((a, b) => b.getTime() - a.getTime());
 
       if (completedDates[0]) {
         const lastDateStr = formatDate(completedDates[0]);
-        lastGivenLine = `Last given ${lastDateStr}.`;
+        lastGivenPart = `Last given ${lastDateStr}. `;
       }
     }
 
-    // 2) Next due / expiry (from SCHEDULED buckets) – primary line
+    // 2) Next scheduled (from per-animal SCHEDULED endpoint)
     let statusKey = 'none';
-    let dueLine = '';
+    let duePart = '';
     let statusText = '';
 
     if (scheduledForType.length > 0) {
-      // There is at least one scheduled dose → use the soonest as the "expiry/next due"
       const soonest = scheduledForType.reduce((a, b) => {
         const at = a.scheduledFor ? a.scheduledFor.getTime() : Infinity;
         const bt = b.scheduledFor ? b.scheduledFor.getTime() : Infinity;
@@ -462,46 +436,39 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
         const extra =
           daysAgo != null
             ? `${daysAgo} day${daysAgo === 1 ? '' : 's'} overdue`
-            : 'overdue';
-        // Treat scheduled_for as the date it *expired / was due*
-        dueLine = `*Past due* – was due ${dateStr} (${extra}).`;
+            : 'Overdue';
+        duePart = `Next dose: *${extra}* – ${dateStr}`;
       } else if (soonest.status === 'needsAttention') {
         statusKey = 'needsAttention';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'due soon';
-        // This is the expiry/next due date inside the 14-day window
-        dueLine = `*Due soon* – due ${dateStr} (${extra}).`;
+        duePart = `Next dose: *${extra}* – ${dateStr}`;
       } else if (soonest.status === 'upcoming') {
         statusKey = 'upcoming';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'upcoming';
-        // Due, but >14 days out and within 30-day window
-        dueLine = `*Upcoming* – due ${dateStr} (${extra}).`;
+        duePart = `Next dose: *${extra}* – ${dateStr}`;
       } else if (soonest.status === 'current') {
         statusKey = 'current';
         const days =
           soonest.diffDays != null ? Math.ceil(soonest.diffDays) : null;
         const extra =
           days != null ? `in ${days} day${days === 1 ? '' : 's'}` : 'scheduled';
-        // Scheduled but outside your 30-day attention window
-        dueLine = `Scheduled – due ${dateStr} (${extra}).`;
+        duePart = `Next dose: ${extra} – ${dateStr}`;
       } else {
         statusKey = 'unknown';
-        dueLine = `Next due date unknown.`;
+        duePart = `Next dose date unknown`;
       }
 
-      statusText = lastGivenLine ? `${dueLine}\n${lastGivenLine}` : dueLine;
+      statusText = `${lastGivenPart}${duePart}`;
     } else if (historyForType.length > 0) {
-      // Has vaccine on file, but no future scheduled → you *don't* know expiry,
-      // only that it was given on lastDateStr.
+      // Has vaccine on file, but no future scheduled
       statusKey = 'current';
-      statusText = lastGivenLine
-        ? `${lastGivenLine}\nNo upcoming dose scheduled.`
-        : 'No upcoming dose scheduled.';
+      statusText = `${lastGivenPart}No upcoming dose scheduled.`;
     } else {
       // Nothing on file at all
       statusKey = 'none';
@@ -529,11 +496,7 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
         : 'unknown date';
 
       let statusKey = v.status || 'unknown';
-
-      // Treat completed as "current"/good so it shows ✅, not ❓
-      if (statusKey === 'completed') statusKey = 'current';
       if (!STATUS_EMOJI[statusKey]) statusKey = 'unknown';
-
       const emoji = STATUS_EMOJI[statusKey];
 
       return `${emoji} ${v.product || 'Unknown product'} – ${dateStr}`;
@@ -558,12 +521,9 @@ const buildSlackPayloadForDog = (dog, allVaccines = []) => {
 
 // ---------- Main ----------
 
-// ---------- Main ----------
-
 async function main() {
   console.log('Running vaccine schedule check...');
 
-  // 1. All in-custody dogs (with vaccineAnimalId attached)
   const inCustodyDogs = await fetchAllInCustodyDogs();
 
   for (const animal of inCustodyDogs) {
@@ -584,12 +544,15 @@ async function main() {
       null;
 
     console.log(
-      `\nFetching ALL vaccines for ${name} (vaccine ID: ${animalId})...`
+      `\nFetching ALL + SCHEDULED vaccines for ${name} (vaccine ID: ${animalId})...`
     );
 
     let allVaccines;
+    let scheduledVaccines;
+
     try {
       allVaccines = await fetchAllVaccinesForAnimal(animalId);
+      scheduledVaccines = await fetchScheduledVaccinesForAnimal(animalId);
     } catch (err) {
       console.error(
         `Error fetching vaccines for ${name} (${animalId}), skipping:`,
@@ -598,8 +561,11 @@ async function main() {
       continue;
     }
 
-    // Only those with a scheduled_for timestamp get bucketed for due windows
-    const scheduledVaccines = allVaccines.filter((v) => v.scheduled_for);
+    // Debug a specific dog if you want, e.g. Bolt
+    if (name === 'Bolt') {
+      console.log('DEBUG Bolt – allVaccines:', allVaccines);
+      console.log('DEBUG Bolt – scheduledVaccines:', scheduledVaccines);
+    }
 
     const buckets = bucketScheduledVaccines(scheduledVaccines);
 
