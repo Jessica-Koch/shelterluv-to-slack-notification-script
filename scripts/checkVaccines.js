@@ -444,6 +444,12 @@ const buildSlackPayloadForDog = (
     missingVaccineTypes.push(label);
   });
 
+  const allCoreCurrent =
+    actualOverdueCount === 0 &&
+    actualNeedsAttentionCount === 0 &&
+    actualUpcomingCount === 0 &&
+    missingCoreVaccinesCount === 0;
+
   // "Other" vaccines from full history
   const otherVaccines = (allVaccines || []).filter(
     (v) => classifyVaccineType(v.product) === 'other'
@@ -621,6 +627,52 @@ const buildSlackPayloadForDog = (
   return {
     text: `Shelterluv vaccine schedule check – ${dog.name}`,
     blocks,
+    allCoreCurrent,
+  };
+};
+
+const buildSlackSummaryPayload = (dogs) => {
+  const rows = dogs.map((dog) => {
+    const block = {
+      type: 'section',
+      text: {
+        type: 'mrkdwn',
+        text: `*${dog.name}* — 3 core vaccines current`,
+      },
+    };
+
+    if (dog.photoUrl) {
+      block.accessory = {
+        type: 'image',
+        image_url: dog.photoUrl,
+        alt_text: dog.name,
+      };
+    }
+
+    return block;
+  });
+
+  return {
+    text: `Shelterluv vaccine schedule check – ${dogs.length} all current`,
+    blocks: [
+      {
+        type: 'header',
+        text: {
+          type: 'plain_text',
+          text: `${dogs.length} dogs whose vaccines are all up to date`,
+          emoji: true,
+        },
+      },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: 'Dogs with all 3 core vaccines current:',
+        },
+      },
+      ...rows,
+      { type: 'divider' },
+    ],
   };
 };
 
@@ -630,6 +682,8 @@ async function main() {
   console.log('Running vaccine schedule check...');
 
   const inCustodyDogs = await fetchAllInCustodyDogs();
+  const allCoreCurrentDogs = [];
+  const fullPayloads = [];
 
   for (const animal of inCustodyDogs) {
     const animalId = animal.vaccineAnimalId;
@@ -754,6 +808,40 @@ async function main() {
       overdueVaccines
     );
 
+    if (payload.allCoreCurrent) {
+      allCoreCurrentDogs.push({
+        name: dog.name,
+        animalId: dog.animalId,
+        photoUrl: dog.photoUrl,
+      });
+    } else {
+      fullPayloads.push(payload);
+    }
+  }
+
+  if (allCoreCurrentDogs.length > 0) {
+    const summaryPayload = buildSlackSummaryPayload(allCoreCurrentDogs);
+    const res = await fetch(SLACK_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(summaryPayload),
+    });
+
+    if (!res.ok) {
+      console.error(
+        'Failed to send Slack summary message:',
+        res.status,
+        await res.text()
+      );
+      return;
+    }
+
+    console.log(
+      `Slack summary sent for ${allCoreCurrentDogs.length} dogs.`
+    );
+  }
+
+  for (const payload of fullPayloads) {
     const res = await fetch(SLACK_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -762,14 +850,14 @@ async function main() {
 
     if (!res.ok) {
       console.error(
-        `Failed to send Slack message for ${dog.name}:`,
+        `Failed to send Slack message for ${payload.text}:`,
         res.status,
         await res.text()
       );
       continue;
     }
 
-    console.log(`Slack message sent for ${dog.name}.`);
+    console.log(`Slack message sent for ${payload.text}.`);
   }
 }
 
