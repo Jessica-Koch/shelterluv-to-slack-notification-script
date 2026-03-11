@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 const SHELTERLUV_API_KEY = process.env.SHELTERLUV_API_KEY;
-const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
+const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
+const SLACK_CHANNEL_ID = process.env.SLACK_CHANNEL_ID;
 
 const DAYS_BEFORE_DUE = 30; // how far ahead to look (outer window)
 const TWO_WEEKS_BEFORE_DUE = 14; // "needs attention" window
@@ -9,10 +10,13 @@ const TWO_WEEKS_BEFORE_DUE = 14; // "needs attention" window
 if (!SHELTERLUV_API_KEY) {
   console.error('Missing SHELTERLUV_API_KEY env var');
 }
-if (!SLACK_WEBHOOK_URL) {
-  console.error('Missing SLACK_WEBHOOK_URL env var');
+if (!SLACK_BOT_TOKEN) {
+  console.error('Missing SLACK_BOT_TOKEN env var');
 }
-if (!SHELTERLUV_API_KEY || !SLACK_WEBHOOK_URL) {
+if (!SLACK_CHANNEL_ID) {
+  console.error('Missing SLACK_CHANNEL_ID env var');
+}
+if (!SHELTERLUV_API_KEY || !SLACK_BOT_TOKEN || !SLACK_CHANNEL_ID) {
   process.exit(1);
 }
 
@@ -79,6 +83,7 @@ const classifyVaccineType = (product) => {
     p.includes('dhp') ||
     p.includes('dapp') ||
     p.includes('da2pp') ||
+    p.includes('da2lpp') ||
     p.includes('da2ppv') ||
     p.includes('dappv') ||
     p.includes('vanguard dapp') ||
@@ -193,7 +198,7 @@ const fetchAllInCustodyDogs = async () => {
       console.error(
         'Shelterluv animals API error:',
         res.status,
-        await res.text()
+        await res.text(),
       );
       throw new Error(`Animals API request failed with ${res.status}`);
     }
@@ -233,7 +238,7 @@ const fetchAllInCustodyDogs = async () => {
               ID: animal.ID,
               id: animal.id,
             },
-          }
+          },
         );
       }
 
@@ -253,7 +258,7 @@ const fetchAllInCustodyDogs = async () => {
           Name: dogsWithIds[0].Name,
           vaccineAnimalId: dogsWithIds[0].vaccineAnimalId,
         }
-      : null
+      : null,
   );
 
   return dogsWithIds;
@@ -277,7 +282,7 @@ const fetchAllVaccinesForAnimal = async (animalId) => {
     console.error(
       `Failed to fetch ALL vaccines for animal ${animalId}:`,
       res.status,
-      await res.text()
+      await res.text(),
     );
     throw new Error(`All-vaccines fetch failed for ${animalId}`);
   }
@@ -287,8 +292,8 @@ const fetchAllVaccinesForAnimal = async (animalId) => {
   return Array.isArray(json.vaccines)
     ? json.vaccines
     : Array.isArray(json)
-    ? json
-    : [];
+      ? json
+      : [];
 };
 
 // Fetch **scheduled** vaccines for a dog (for next due / expiring)
@@ -309,7 +314,7 @@ const fetchScheduledVaccinesForAnimal = async (animalId) => {
     console.error(
       `Failed to fetch SCHEDULED vaccines for animal ${animalId}:`,
       res.status,
-      await res.text()
+      await res.text(),
     );
     throw new Error(`Scheduled-vaccines fetch failed for ${animalId}`);
   }
@@ -319,8 +324,8 @@ const fetchScheduledVaccinesForAnimal = async (animalId) => {
   return Array.isArray(json.vaccines)
     ? json.vaccines
     : Array.isArray(json)
-    ? json
-    : [];
+      ? json
+      : [];
 };
 
 // Fetch **overdue** vaccines for a dog (authoritative overdue status)
@@ -341,7 +346,7 @@ const fetchOverdueVaccinesForAnimal = async (animalId) => {
     console.error(
       `Failed to fetch OVERDUE vaccines for animal ${animalId}:`,
       res.status,
-      await res.text()
+      await res.text(),
     );
     throw new Error(`Overdue-vaccines fetch failed for ${animalId}`);
   }
@@ -351,8 +356,8 @@ const fetchOverdueVaccinesForAnimal = async (animalId) => {
   return Array.isArray(json.vaccines)
     ? json.vaccines
     : Array.isArray(json)
-    ? json
-    : [];
+      ? json
+      : [];
 };
 
 // ---------- Slack payload: formatted ----------
@@ -360,7 +365,7 @@ const buildSlackPayloadForDog = (
   dog,
   allVaccines = [],
   scheduledVaccines = [],
-  overdueVaccines = []
+  overdueVaccines = [],
 ) => {
   const nextScheduledByType = new Map();
 
@@ -394,11 +399,11 @@ const buildSlackPayloadForDog = (
 
   coreTypes.forEach(({ key, label }) => {
     const historyForType = (allVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key
+      (v) => classifyVaccineType(v.product) === key,
     );
 
     const scheduledForType = (scheduledVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key
+      (v) => classifyVaccineType(v.product) === key,
     );
     const hasFutureScheduled = scheduledForType.some((v) => {
       const date = unixStringToDate(v.scheduled_for);
@@ -409,7 +414,7 @@ const buildSlackPayloadForDog = (
       !hasFutureScheduled &&
       (historyForType.some((v) => v.status === 'overdue') ||
         (overdueVaccines || []).some(
-          (v) => classifyVaccineType(v.product) === key
+          (v) => classifyVaccineType(v.product) === key,
         ));
     if (hasOverdue) {
       actualOverdueCount++;
@@ -423,7 +428,7 @@ const buildSlackPayloadForDog = (
         .sort((a, b) => a.getTime() - b.getTime())[0];
 
       const { status } = classifyByDueWindow(
-        earliestScheduled ? earliestScheduled.getTime() / 1000 : null
+        earliestScheduled ? earliestScheduled.getTime() / 1000 : null,
       );
 
       if (status === 'overdue') actualOverdueCount++;
@@ -452,7 +457,7 @@ const buildSlackPayloadForDog = (
 
   // "Other" vaccines from full history
   const otherVaccines = (allVaccines || []).filter(
-    (v) => classifyVaccineType(v.product) === 'other'
+    (v) => classifyVaccineType(v.product) === 'other',
   );
 
   // ---------- SUMMARY LINE ----------
@@ -467,7 +472,7 @@ const buildSlackPayloadForDog = (
     let overdueText = `– ${actualOverdueCount} overdue`;
     if (missingCoreVaccinesCount > 0) {
       overdueText += ` (${missingCoreVaccinesCount} missing: ${missingVaccineTypes.join(
-        ', '
+        ', ',
       )})`;
     }
 
@@ -515,7 +520,7 @@ const buildSlackPayloadForDog = (
   // ---------- CORE VACCINES (last given + next scheduled) ----------
   coreTypes.forEach(({ key, label }) => {
     const historyForType = (allVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key
+      (v) => classifyVaccineType(v.product) === key,
     );
 
     // Find the most recent completed vaccine
@@ -534,7 +539,7 @@ const buildSlackPayloadForDog = (
     let statusText = '';
 
     const scheduledForType = (scheduledVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key
+      (v) => classifyVaccineType(v.product) === key,
     );
     const hasFutureScheduled = scheduledForType.some((v) => {
       const date = unixStringToDate(v.scheduled_for);
@@ -545,7 +550,7 @@ const buildSlackPayloadForDog = (
       !hasFutureScheduled &&
       (historyForType.some((v) => v.status === 'overdue') ||
         (overdueVaccines || []).some(
-          (v) => classifyVaccineType(v.product) === key
+          (v) => classifyVaccineType(v.product) === key,
         ));
     if (hasOverdue) {
       statusKey = 'overdue';
@@ -555,7 +560,7 @@ const buildSlackPayloadForDog = (
       const now = new Date();
       const nextDueDate = nextScheduledByType.get(key);
       const daysUntilDue = Math.ceil(
-        (nextDueDate - now) / (1000 * 60 * 60 * 24)
+        (nextDueDate - now) / (1000 * 60 * 60 * 24),
       );
       const lastDateStr = mostRecent
         ? formatDate(mostRecent.completedDate)
@@ -579,7 +584,7 @@ const buildSlackPayloadForDog = (
     } else if (mostRecent) {
       statusKey = 'current';
       statusText = `Last given ${formatDate(
-        mostRecent.completedDate
+        mostRecent.completedDate,
       )}. Next due not scheduled`;
     } else {
       statusKey = 'unknown';
@@ -603,8 +608,8 @@ const buildSlackPayloadForDog = (
       const dateStr = v.scheduled_for
         ? formatDate(unixStringToDate(v.scheduled_for))
         : v.completed_at
-        ? formatDate(unixStringToDate(v.completed_at))
-        : 'unknown date';
+          ? formatDate(unixStringToDate(v.completed_at))
+          : 'unknown date';
 
       let statusKey = v.status || 'unknown';
       if (!STATUS_EMOJI[statusKey]) statusKey = 'unknown';
@@ -676,10 +681,55 @@ const buildSlackSummaryPayload = (dogs) => {
   };
 };
 
+// ---------- Slack channel clearing ----------
+
+const clearSlackChannel = async () => {
+  let cursor;
+  let deleted = 0;
+
+  do {
+    const params = new URLSearchParams({ channel: SLACK_CHANNEL_ID, limit: '200' });
+    if (cursor) params.set('cursor', cursor);
+
+    const historyRes = await fetch(
+      `https://slack.com/api/conversations.history?${params}`,
+      { headers: { Authorization: `Bearer ${SLACK_BOT_TOKEN}` } },
+    );
+    const history = await historyRes.json();
+
+    if (!history.ok) {
+      console.error('Failed to fetch channel history:', history.error);
+      return;
+    }
+
+    for (const msg of (history.messages || []).filter((m) => !m.subtype)) {
+      const delRes = await fetch('https://slack.com/api/chat.delete', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${SLACK_BOT_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ channel: SLACK_CHANNEL_ID, ts: msg.ts }),
+      });
+      const delJson = await delRes.json();
+      if (!delJson.ok) {
+        console.warn(`Failed to delete message ${msg.ts}:`, delJson.error);
+      } else {
+        deleted++;
+      }
+    }
+
+    cursor = history.response_metadata?.next_cursor;
+  } while (cursor);
+
+  console.log(`Cleared ${deleted} messages from Slack channel.`);
+};
+
 // ---------- Main ----------
 
 async function main() {
   console.log('Running vaccine schedule check...');
+  await clearSlackChannel();
 
   const inCustodyDogs = await fetchAllInCustodyDogs();
   const allCoreCurrentDogs = [];
@@ -691,7 +741,7 @@ async function main() {
     if (!animalId) {
       console.warn(
         'Skipping animal with no vaccineAnimalId after filtering:',
-        animal.Name
+        animal.Name,
       );
       continue;
     }
@@ -703,7 +753,7 @@ async function main() {
       null;
 
     console.log(
-      `\nFetching ALL + SCHEDULED vaccines for ${name} (vaccine ID: ${animalId})...`
+      `\nFetching ALL + SCHEDULED vaccines for ${name} (vaccine ID: ${animalId})...`,
     );
 
     let allVaccines;
@@ -717,7 +767,7 @@ async function main() {
     } catch (err) {
       console.error(
         `Error fetching vaccines for ${name} (${animalId}), skipping:`,
-        err.message
+        err.message,
       );
       continue;
     }
@@ -733,7 +783,7 @@ async function main() {
             (v) =>
               classifyVaccineType(v.product) === vaccineType &&
               v.completed_at &&
-              v.status !== 'scheduled'
+              v.status !== 'scheduled',
           )
           .map((v) => ({
             ...v,
@@ -741,7 +791,7 @@ async function main() {
           }))
           .filter((v) => v.completedDate)
           .sort(
-            (a, b) => b.completedDate.getTime() - a.completedDate.getTime()
+            (a, b) => b.completedDate.getTime() - a.completedDate.getTime(),
           );
 
         if (completedOfSameType.length > 0) {
@@ -761,11 +811,11 @@ async function main() {
               console.log(
                 `Filtering out stale scheduled ${vaccineType} for ${name}: ` +
                   `scheduled ${formatDate(
-                    scheduledDate
+                    scheduledDate,
                   )} but already completed ${formatDate(
-                    mostRecentCompleted
+                    mostRecentCompleted,
                   )} ` +
-                  `(${Math.abs(Math.round(diffDays))} days apart)`
+                  `(${Math.abs(Math.round(diffDays))} days apart)`,
               );
               return false;
             }
@@ -775,8 +825,8 @@ async function main() {
               console.log(
                 `Filtering out old scheduled ${vaccineType} for ${name}: ` +
                   `scheduled ${formatDate(
-                    scheduledDate
-                  )} is before completed ${formatDate(mostRecentCompleted)}`
+                    scheduledDate,
+                  )} is before completed ${formatDate(mostRecentCompleted)}`,
               );
               return false;
             }
@@ -784,7 +834,7 @@ async function main() {
         }
 
         return true;
-      }
+      },
     );
 
     // Use filteredScheduledVaccines instead of scheduledVaccines
@@ -805,7 +855,7 @@ async function main() {
       dog,
       allVaccines,
       filteredScheduledVaccines,
-      overdueVaccines
+      overdueVaccines,
     );
 
     if (payload.allCoreCurrent) {
@@ -819,45 +869,38 @@ async function main() {
     }
   }
 
+  const postToSlack = async (payload) => {
+    const res = await fetch('https://slack.com/api/chat.postMessage', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${SLACK_BOT_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ channel: SLACK_CHANNEL_ID, ...payload }),
+    });
+    const json = await res.json();
+    if (!json.ok) throw new Error(json.error);
+    return json;
+  };
+
   if (allCoreCurrentDogs.length > 0) {
     const summaryPayload = buildSlackSummaryPayload(allCoreCurrentDogs);
-    const res = await fetch(SLACK_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(summaryPayload),
-    });
-
-    if (!res.ok) {
-      console.error(
-        'Failed to send Slack summary message:',
-        res.status,
-        await res.text()
-      );
+    try {
+      await postToSlack(summaryPayload);
+      console.log(`Slack summary sent for ${allCoreCurrentDogs.length} dogs.`);
+    } catch (err) {
+      console.error('Failed to send Slack summary message:', err.message);
       return;
     }
-
-    console.log(
-      `Slack summary sent for ${allCoreCurrentDogs.length} dogs.`
-    );
   }
 
   for (const payload of fullPayloads) {
-    const res = await fetch(SLACK_WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) {
-      console.error(
-        `Failed to send Slack message for ${payload.text}:`,
-        res.status,
-        await res.text()
-      );
-      continue;
+    try {
+      await postToSlack(payload);
+      console.log(`Slack message sent for ${payload.text}.`);
+    } catch (err) {
+      console.error(`Failed to send Slack message for ${payload.text}:`, err.message);
     }
-
-    console.log(`Slack message sent for ${payload.text}.`);
   }
 }
 
