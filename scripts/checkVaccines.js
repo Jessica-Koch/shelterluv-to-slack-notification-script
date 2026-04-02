@@ -851,6 +851,27 @@ async function main() {
               );
               return false;
             }
+
+            // If this entry is within 30 days after the last completion AND there's
+            // already a far-future scheduled entry (>6 months) for the same type,
+            // this is a stale booster-series remnant superseded by the later schedule
+            if (diffDays <= 30) {
+              const sixMonthsMs = 180 * 24 * 60 * 60 * 1000;
+              const hasFarFutureEntry = scheduledVaccines.some((other) => {
+                if (other.id === scheduledVax.id) return false;
+                if (classifyVaccineType(other.product) !== vaccineType) return false;
+                const otherDate = unixStringToDate(other.scheduled_for);
+                return otherDate && otherDate.getTime() - Date.now() > sixMonthsMs;
+              });
+              if (hasFarFutureEntry) {
+                console.log(
+                  `Filtering out stale booster-series ${vaccineType} for ${name}: ` +
+                    `scheduled ${formatDate(scheduledDate)} is superseded ` +
+                    `(completed ${formatDate(mostRecentCompleted)}, far-future entry exists)`,
+                );
+                return false;
+              }
+            }
           }
         }
 
