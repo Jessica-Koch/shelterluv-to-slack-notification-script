@@ -410,9 +410,10 @@ const buildSlackPayloadForDog = (
       return date && !isNaN(date.getTime()) && date.getTime() >= Date.now();
     });
 
+    const hasAnyCompleted = historyForType.some((v) => v.completed_at);
     const hasOverdue =
       !hasFutureScheduled &&
-      (historyForType.some((v) => v.status === 'overdue') ||
+      ((!hasAnyCompleted && historyForType.some((v) => v.status === 'overdue')) ||
         (overdueVaccines || []).some(
           (v) => classifyVaccineType(v.product) === key,
         ));
@@ -546,9 +547,10 @@ const buildSlackPayloadForDog = (
       return date && !isNaN(date.getTime()) && date.getTime() >= Date.now();
     });
 
+    const hasAnyCompletedForBlock = historyForType.some((v) => v.completed_at);
     const hasOverdue =
       !hasFutureScheduled &&
-      (historyForType.some((v) => v.status === 'overdue') ||
+      ((!hasAnyCompletedForBlock && historyForType.some((v) => v.status === 'overdue')) ||
         (overdueVaccines || []).some(
           (v) => classifyVaccineType(v.product) === key,
         ));
@@ -804,10 +806,9 @@ async function main() {
               scheduledDate.getTime() - mostRecentCompleted.getTime();
             const diffDays = diffMs / (1000 * 60 * 60 * 24);
 
-            // If this scheduled vaccine is within 60 days BEFORE or AFTER the completed vaccine,
-            // it's likely the same vaccination event and should be filtered out
-            // (accounts for vaccines given early or scheduled doses not properly cleaned up)
-            if (Math.abs(diffDays) < 60) {
+            // If this scheduled vaccine is within 7 days after the completed vaccine,
+            // it's likely a duplicate entry for the same event and should be filtered out
+            if (diffDays < 7) {
               console.log(
                 `Filtering out stale scheduled ${vaccineType} for ${name}: ` +
                   `scheduled ${formatDate(
