@@ -410,13 +410,23 @@ const buildSlackPayloadForDog = (
       return date && !isNaN(date.getTime()) && date.getTime() >= Date.now();
     });
 
-    const hasAnyCompleted = historyForType.some((v) => v.completed_at);
+    const completedDatesForType = historyForType
+      .filter((v) => v.completed_at)
+      .map((v) => unixStringToDate(v.completed_at))
+      .filter((d) => d && !isNaN(d.getTime()));
+    const mostRecentCompleted = completedDatesForType.length > 0
+      ? completedDatesForType.reduce((max, d) => (d > max ? d : max))
+      : null;
+
     const hasOverdue =
       !hasFutureScheduled &&
-      ((!hasAnyCompleted && historyForType.some((v) => v.status === 'overdue')) ||
-        (overdueVaccines || []).some(
-          (v) => classifyVaccineType(v.product) === key,
-        ));
+      ((!mostRecentCompleted && historyForType.some((v) => v.status === 'overdue')) ||
+        (overdueVaccines || []).some((v) => {
+          if (classifyVaccineType(v.product) !== key) return false;
+          if (!mostRecentCompleted) return true;
+          const overdueDate = unixStringToDate(v.scheduled_for);
+          return !overdueDate || mostRecentCompleted < overdueDate;
+        }));
     if (hasOverdue) {
       actualOverdueCount++;
       return;
@@ -547,13 +557,23 @@ const buildSlackPayloadForDog = (
       return date && !isNaN(date.getTime()) && date.getTime() >= Date.now();
     });
 
-    const hasAnyCompletedForBlock = historyForType.some((v) => v.completed_at);
+    const completedDatesForBlock = historyForType
+      .filter((v) => v.completed_at)
+      .map((v) => unixStringToDate(v.completed_at))
+      .filter((d) => d && !isNaN(d.getTime()));
+    const mostRecentCompletedForBlock = completedDatesForBlock.length > 0
+      ? completedDatesForBlock.reduce((max, d) => (d > max ? d : max))
+      : null;
+
     const hasOverdue =
       !hasFutureScheduled &&
-      ((!hasAnyCompletedForBlock && historyForType.some((v) => v.status === 'overdue')) ||
-        (overdueVaccines || []).some(
-          (v) => classifyVaccineType(v.product) === key,
-        ));
+      ((!mostRecentCompletedForBlock && historyForType.some((v) => v.status === 'overdue')) ||
+        (overdueVaccines || []).some((v) => {
+          if (classifyVaccineType(v.product) !== key) return false;
+          if (!mostRecentCompletedForBlock) return true;
+          const overdueDate = unixStringToDate(v.scheduled_for);
+          return !overdueDate || mostRecentCompletedForBlock < overdueDate;
+        }));
     if (hasOverdue) {
       statusKey = 'overdue';
       statusText = '*Marked overdue in Shelterluv.*';
