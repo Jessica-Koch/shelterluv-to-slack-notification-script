@@ -798,6 +798,7 @@ async function main() {
     const filteredScheduledVaccines = scheduledVaccines.filter(
       (scheduledVax) => {
         const vaccineType = classifyVaccineType(scheduledVax.product);
+        const scheduledDate = unixStringToDate(scheduledVax.scheduled_for);
 
         // Find the most recent completed vaccine of the same type
         const completedOfSameType = allVaccines
@@ -818,7 +819,6 @@ async function main() {
 
         if (completedOfSameType.length > 0) {
           const mostRecentCompleted = completedOfSameType[0].completedDate;
-          const scheduledDate = unixStringToDate(scheduledVax.scheduled_for);
 
           if (scheduledDate && mostRecentCompleted) {
             // Calculate the difference in days
