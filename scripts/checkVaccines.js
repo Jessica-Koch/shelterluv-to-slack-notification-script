@@ -826,52 +826,35 @@ async function main() {
               scheduledDate.getTime() - mostRecentCompleted.getTime();
             const diffDays = diffMs / (1000 * 60 * 60 * 24);
 
-            // If this scheduled vaccine is within 7 days after the completed vaccine,
-            // it's likely a duplicate entry for the same event and should be filtered out
+            // Filter if the scheduled date is before or within 7 days after the most
+            // recent completion — it's the same vaccination event with bad data
             if (diffDays < 7) {
               console.log(
                 `Filtering out stale scheduled ${vaccineType} for ${name}: ` +
-                  `scheduled ${formatDate(
-                    scheduledDate,
-                  )} but already completed ${formatDate(
-                    mostRecentCompleted,
-                  )} ` +
-                  `(${Math.abs(Math.round(diffDays))} days apart)`,
+                  `scheduled ${formatDate(scheduledDate)} but already completed ` +
+                  `${formatDate(mostRecentCompleted)} (${Math.abs(Math.round(diffDays))} days apart)`,
               );
               return false;
             }
+          }
+        }
 
-            // Also filter if scheduled date is any time in the past relative to completed date
-            if (scheduledDate < mostRecentCompleted) {
-              console.log(
-                `Filtering out old scheduled ${vaccineType} for ${name}: ` +
-                  `scheduled ${formatDate(
-                    scheduledDate,
-                  )} is before completed ${formatDate(mostRecentCompleted)}`,
-              );
-              return false;
-            }
-
-            // If this entry is within 30 days after the last completion AND there's
-            // already a far-future scheduled entry (>6 months) for the same type,
-            // this is a stale booster-series remnant superseded by the later schedule
-            if (diffDays <= 30) {
-              const sixMonthsMs = 180 * 24 * 60 * 60 * 1000;
-              const hasFarFutureEntry = scheduledVaccines.some((other) => {
-                if (other.id === scheduledVax.id) return false;
-                if (classifyVaccineType(other.product) !== vaccineType) return false;
-                const otherDate = unixStringToDate(other.scheduled_for);
-                return otherDate && otherDate.getTime() - Date.now() > sixMonthsMs;
-              });
-              if (hasFarFutureEntry) {
-                console.log(
-                  `Filtering out stale booster-series ${vaccineType} for ${name}: ` +
-                    `scheduled ${formatDate(scheduledDate)} is superseded ` +
-                    `(completed ${formatDate(mostRecentCompleted)}, far-future entry exists)`,
-                );
-                return false;
-              }
-            }
+        // Filter if another scheduled entry of the same type exists more than 6 months
+        // later — that entry is the real next due date, making this one superseded
+        const sixMonthsMs = 180 * 24 * 60 * 60 * 1000;
+        if (scheduledDate) {
+          const hasLaterEntry = scheduledVaccines.some((other) => {
+            if (other.id === scheduledVax.id) return false;
+            if (classifyVaccineType(other.product) !== vaccineType) return false;
+            const otherDate = unixStringToDate(other.scheduled_for);
+            return otherDate && otherDate.getTime() - scheduledDate.getTime() > sixMonthsMs;
+          });
+          if (hasLaterEntry) {
+            console.log(
+              `Filtering out superseded scheduled ${vaccineType} for ${name}: ` +
+                `scheduled ${formatDate(scheduledDate)}, a later entry exists`,
+            );
+            return false;
           }
         }
 
