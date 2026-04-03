@@ -70,12 +70,14 @@ const getVaccineInternalIdFromAnimal = (animal) => {
   return null;
 };
 
-// Classify vaccine product into main families
+// Classify vaccine product into main families — returns an array since combo
+// products (e.g. DAPP/L4) cover multiple core types simultaneously.
 const classifyVaccineType = (product) => {
   const p = (product || '').toLowerCase();
+  const types = [];
 
   if (p.includes('rabies') || p.includes('rabvac') || p.includes('mrab')) {
-    return 'rabies';
+    types.push('rabies');
   }
 
   if (
@@ -89,14 +91,31 @@ const classifyVaccineType = (product) => {
     p.includes('vanguard dapp') ||
     p.includes('nobivac canine 1-dappv')
   ) {
-    return 'dhpp_dapp';
+    types.push('dhpp_dapp');
   }
 
   if (p.includes('bordetella') || p.includes('trucan b')) {
-    return 'bordetella';
+    types.push('bordetella');
   }
 
-  return 'other';
+  if (
+    p.includes('lepto') ||
+    p.includes('4l') ||
+    p.includes('/l4') ||
+    p.includes('+l4') ||
+    p.includes(' l4') ||
+    p.includes('-l4') ||
+    p.includes('cl4') ||
+    p.includes('dhppl') ||
+    p.includes('da2ppvl') ||
+    p.includes('nobivac rl') ||
+    p.includes('recombitek canine corona') ||
+    p.includes('recombitek canine parvo')
+  ) {
+    types.push('lepto');
+  }
+
+  return types.length > 0 ? types : ['other'];
 };
 
 // ---------- Date classification (for scheduled vaccines) ----------
@@ -370,13 +389,15 @@ const buildSlackPayloadForDog = (
   const nextScheduledByType = new Map();
 
   for (const v of scheduledVaccines || []) {
-    const type = classifyVaccineType(v.product);
+    const types = classifyVaccineType(v.product);
     const date = unixStringToDate(v.scheduled_for);
     if (!date || isNaN(date.getTime())) continue;
 
-    const prev = nextScheduledByType.get(type);
-    if (!prev || date.getTime() < prev.getTime()) {
-      nextScheduledByType.set(type, date);
+    for (const type of types) {
+      const prev = nextScheduledByType.get(type);
+      if (!prev || date.getTime() < prev.getTime()) {
+        nextScheduledByType.set(type, date);
+      }
     }
   }
 
@@ -387,6 +408,7 @@ const buildSlackPayloadForDog = (
     { key: 'rabies', label: 'Rabies' },
     { key: 'dhpp_dapp', label: 'DHPP/DAPP' },
     { key: 'bordetella', label: 'Bordetella' },
+    { key: 'lepto', label: 'Lepto' },
   ];
 
   // Calculate actual status based on Shelterluv statuses + schedules
@@ -399,11 +421,11 @@ const buildSlackPayloadForDog = (
 
   coreTypes.forEach(({ key, label }) => {
     const historyForType = (allVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key,
+      (v) => classifyVaccineType(v.product).includes(key),
     );
 
     const scheduledForType = (scheduledVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key,
+      (v) => classifyVaccineType(v.product).includes(key),
     );
     const hasFutureScheduled = scheduledForType.some((v) => {
       const date = unixStringToDate(v.scheduled_for);
@@ -422,7 +444,7 @@ const buildSlackPayloadForDog = (
       !hasFutureScheduled &&
       ((!mostRecentCompleted && historyForType.some((v) => v.status === 'overdue')) ||
         (overdueVaccines || []).some((v) => {
-          if (classifyVaccineType(v.product) !== key) return false;
+          if (!classifyVaccineType(v.product).includes(key)) return false;
           if (!mostRecentCompleted) return true;
           const overdueDate = unixStringToDate(v.scheduled_for);
           return !overdueDate || mostRecentCompleted < overdueDate;
@@ -468,7 +490,7 @@ const buildSlackPayloadForDog = (
 
   // "Other" vaccines from full history
   const otherVaccines = (allVaccines || []).filter(
-    (v) => classifyVaccineType(v.product) === 'other',
+    (v) => classifyVaccineType(v.product).includes('other'),
   );
 
   // ---------- SUMMARY LINE ----------
@@ -531,7 +553,7 @@ const buildSlackPayloadForDog = (
   // ---------- CORE VACCINES (last given + next scheduled) ----------
   coreTypes.forEach(({ key, label }) => {
     const historyForType = (allVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key,
+      (v) => classifyVaccineType(v.product).includes(key),
     );
 
     // Find the most recent completed vaccine
@@ -550,7 +572,7 @@ const buildSlackPayloadForDog = (
     let statusText = '';
 
     const scheduledForType = (scheduledVaccines || []).filter(
-      (v) => classifyVaccineType(v.product) === key,
+      (v) => classifyVaccineType(v.product).includes(key),
     );
     const hasFutureScheduled = scheduledForType.some((v) => {
       const date = unixStringToDate(v.scheduled_for);
@@ -569,7 +591,7 @@ const buildSlackPayloadForDog = (
       !hasFutureScheduled &&
       ((!mostRecentCompletedForBlock && historyForType.some((v) => v.status === 'overdue')) ||
         (overdueVaccines || []).some((v) => {
-          if (classifyVaccineType(v.product) !== key) return false;
+          if (!classifyVaccineType(v.product).includes(key)) return false;
           if (!mostRecentCompletedForBlock) return true;
           const overdueDate = unixStringToDate(v.scheduled_for);
           return !overdueDate || mostRecentCompletedForBlock < overdueDate;
@@ -664,7 +686,7 @@ const buildSlackSummaryPayload = (dogs) => {
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: `*${dog.name}* — 3 core vaccines current`,
+        text: `*${dog.name}* — 4 core vaccines current`,
       },
     };
 
@@ -686,7 +708,7 @@ const buildSlackSummaryPayload = (dogs) => {
         type: 'header',
         text: {
           type: 'plain_text',
-          text: `${dogs.length} dogs whose vaccines are all up to date`,
+          text: `${dogs.length} dogs whose vaccines are all up to date (4 core)`,
           emoji: true,
         },
       },
@@ -694,7 +716,7 @@ const buildSlackSummaryPayload = (dogs) => {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: 'Dogs with all 3 core vaccines current:',
+          text: 'Dogs with all 4 core vaccines current:',
         },
       },
       ...rows,
@@ -797,16 +819,18 @@ async function main() {
     // After fetching allVaccines and scheduledVaccines, filter out stale scheduled ones
     const filteredScheduledVaccines = scheduledVaccines.filter(
       (scheduledVax) => {
-        const vaccineType = classifyVaccineType(scheduledVax.product);
+        const scheduledTypes = classifyVaccineType(scheduledVax.product);
         const scheduledDate = unixStringToDate(scheduledVax.scheduled_for);
 
-        // Find the most recent completed vaccine of the same type
+        // Find the most recent completed vaccine of the same type (type overlap)
         const completedOfSameType = allVaccines
           .filter(
-            (v) =>
-              classifyVaccineType(v.product) === vaccineType &&
-              v.completed_at &&
-              v.status !== 'scheduled',
+            (v) => {
+              const completedTypes = classifyVaccineType(v.product);
+              return completedTypes.some((t) => scheduledTypes.includes(t)) &&
+                v.completed_at &&
+                v.status !== 'scheduled';
+            },
           )
           .map((v) => ({
             ...v,
@@ -830,7 +854,7 @@ async function main() {
             // recent completion — it's the same vaccination event with bad data
             if (diffDays < 7) {
               console.log(
-                `Filtering out stale scheduled ${vaccineType} for ${name}: ` +
+                `Filtering out stale scheduled ${scheduledTypes.join('+')} for ${name}: ` +
                   `scheduled ${formatDate(scheduledDate)} but already completed ` +
                   `${formatDate(mostRecentCompleted)} (${Math.abs(Math.round(diffDays))} days apart)`,
               );
@@ -845,13 +869,14 @@ async function main() {
         if (scheduledDate) {
           const hasLaterEntry = scheduledVaccines.some((other) => {
             if (other.id === scheduledVax.id) return false;
-            if (classifyVaccineType(other.product) !== vaccineType) return false;
+            const otherTypes = classifyVaccineType(other.product);
+            if (!otherTypes.some((t) => scheduledTypes.includes(t))) return false;
             const otherDate = unixStringToDate(other.scheduled_for);
             return otherDate && otherDate.getTime() - scheduledDate.getTime() > sixMonthsMs;
           });
           if (hasLaterEntry) {
             console.log(
-              `Filtering out superseded scheduled ${vaccineType} for ${name}: ` +
+              `Filtering out superseded scheduled ${scheduledTypes.join('+')} for ${name}: ` +
                 `scheduled ${formatDate(scheduledDate)}, a later entry exists`,
             );
             return false;
