@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "check": "node scripts/checkVaccines.js"
+    "check": "node scripts/checkVaccines.js",
+    "weekly": "node scripts/weeklySummary.js"
   },
   "keywords": [],
   "author": "",
