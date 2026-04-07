@@ -2,8 +2,7 @@ require('dotenv').config();
 
 const SHELTERLUV_API_KEY = process.env.SHELTERLUV_API_KEY;
 const SLACK_BOT_TOKEN = process.env.SLACK_BOT_TOKEN;
-const SLACK_CHANNEL_ID =
-  process.env.SLACK_WEEKLY_CHANNEL_ID || process.env.SLACK_CHANNEL_ID;
+const SLACK_CHANNEL_ID = process.env.SLACK_WEEKLY_CHANNEL_ID;
 
 if (!SHELTERLUV_API_KEY) {
   console.error('Missing SHELTERLUV_API_KEY env var');
@@ -12,7 +11,9 @@ if (!SLACK_BOT_TOKEN) {
   console.error('Missing SLACK_BOT_TOKEN env var');
 }
 if (!SLACK_CHANNEL_ID) {
-  console.error('Missing SLACK_WEEKLY_CHANNEL_ID (or SLACK_CHANNEL_ID) env var');
+  console.error(
+    'Missing SLACK_WEEKLY_CHANNEL_ID (or SLACK_CHANNEL_ID) env var',
+  );
 }
 if (!SHELTERLUV_API_KEY || !SLACK_BOT_TOKEN || !SLACK_CHANNEL_ID) {
   process.exit(1);
@@ -34,50 +35,18 @@ const formatDate = (date) => {
   return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 
-// Extract intake date from an animal record — Shelterluv uses several field names
-const getIntakeDate = (animal) =>
-  unixStringToDate(
-    animal.IntakeDate ??
-    animal.DateComeIn ??
-    animal.InDate ??
-    animal.intake_date ??
-    null,
-  );
-
-// Extract outcome/adoption date from an animal record
-const getOutcomeDate = (animal) =>
-  unixStringToDate(
-    animal.AdoptionDate ??
-    animal.OutDate ??
-    animal.outcome_date ??
-    animal.DateGoOut ??
-    null,
-  );
-
-// Extract foster placement date from an animal record
-const getFosterDate = (animal) =>
-  unixStringToDate(
-    animal.FosterDate ??
-    animal.FosterStartDate ??
-    animal.foster_date ??
-    animal.DateFoster ??
-    // Fall back to the intake date if the animal is in foster status
-    animal.IntakeDate ??
-    animal.DateComeIn ??
-    null,
-  );
-
 // ---------- Shelterluv API ----------
 
-const fetchAnimalsByStatus = async (statusType) => {
-  const baseUrl = 'https://new.shelterluv.com/api/v1/animals';
+const fetchAnimals = async (statusType, since = 0) => {
   const limit = 200;
   let offset = 0;
   const all = [];
 
   while (true) {
-    const url = `${baseUrl}?status_type=${encodeURIComponent(statusType)}&limit=${limit}&offset=${offset}`;
-    console.log(`Fetching animals (${statusType}) from Shelterluv:`, url);
+    const statusParam = statusType
+      ? `&status_type=${encodeURIComponent(statusType)}`
+      : '';
+    const url = `https://new.shelterluv.com/api/v1/animals?since=${since}${statusParam}&limit=${limit}&offset=${offset}`;
 
     const res = await fetch(url, {
       method: 'GET',
@@ -89,7 +58,11 @@ const fetchAnimalsByStatus = async (statusType) => {
 
     if (!res.ok) {
       const text = await res.text();
-      console.error(`Shelterluv animals API error (${statusType}):`, res.status, text);
+      console.error(
+        `Shelterluv animals API error (${statusType}):`,
+        res.status,
+        text,
+      );
       throw new Error(`Animals API request failed with ${res.status}`);
     }
 
@@ -105,8 +78,7 @@ const fetchAnimalsByStatus = async (statusType) => {
     offset += limit;
   }
 
-  console.log(`Total animals fetched for status "${statusType}":`, all.length);
-  return all.filter((a) => a.Type === 'Dog');
+  return all;
 };
 
 // ---------- Slack ----------
@@ -129,26 +101,19 @@ const postToSlack = async (payload) => {
 const dogListBlock = (dogs) => {
   if (dogs.length === 0) return null;
 
-  // Show up to 8 dogs; each with an optional photo as accessory on its own section
   const blocks = [];
-  for (const dog of dogs.slice(0, 8)) {
+  for (const dog of dogs) {
     const name = dog.Name || 'Unknown';
     const block = {
       type: 'section',
       text: { type: 'mrkdwn', text: `• *${name}*` },
     };
-    const photo = dog.CoverPhoto || (Array.isArray(dog.Photos) && dog.Photos[0]) || null;
+    const photo =
+      dog.CoverPhoto || (Array.isArray(dog.Photos) && dog.Photos[0]) || null;
     if (photo) {
       block.accessory = { type: 'image', image_url: photo, alt_text: name };
     }
     blocks.push(block);
-  }
-
-  if (dogs.length > 8) {
-    blocks.push({
-      type: 'section',
-      text: { type: 'mrkdwn', text: `_...and ${dogs.length - 8} more_` },
-    });
   }
 
   return blocks;
@@ -156,7 +121,6 @@ const dogListBlock = (dogs) => {
 
 const buildWeeklySummaryPayload = ({
   newIntakes,
-  movedToFoster,
   needsFoster,
   adoptions,
   weekStart,
@@ -180,7 +144,6 @@ const buildWeeklySummaryPayload = ({
       type: 'mrkdwn',
       text:
         `*:dog: New intakes:* ${newIntakes.length}     ` +
-        `*:house_with_garden: Moved to foster:* ${movedToFoster.length}     ` +
         `*:paw_prints: Adoptions:* ${adoptions.length}     ` +
         `*:sos: Still needs foster:* ${needsFoster.length}`,
     },
@@ -204,26 +167,6 @@ const buildWeeklySummaryPayload = ({
   } else {
     const intakeBlocks = dogListBlock(newIntakes);
     if (intakeBlocks) blocks.push(...intakeBlocks);
-  }
-
-  blocks.push({ type: 'divider' });
-
-  // Moved to foster this week
-  blocks.push({
-    type: 'section',
-    text: {
-      type: 'mrkdwn',
-      text: `*:house_with_garden: Moved to Foster This Week (${movedToFoster.length})*`,
-    },
-  });
-  if (movedToFoster.length === 0) {
-    blocks.push({
-      type: 'section',
-      text: { type: 'mrkdwn', text: '_No new foster placements this week._' },
-    });
-  } else {
-    const fosterBlocks = dogListBlock(movedToFoster);
-    if (fosterBlocks) blocks.push(...fosterBlocks);
   }
 
   blocks.push({ type: 'divider' });
@@ -279,43 +222,37 @@ async function main() {
 
   const now = new Date();
   const weekStart = new Date(now.getTime() - ONE_WEEK_MS);
+  const weekStartTimestamp = Math.floor(weekStart.getTime() / 1000);
 
-  // Fetch data in parallel where possible
-  const [inCustodyDogs, fosterDogs, adoptedDogs] = await Promise.all([
-    fetchAnimalsByStatus('in custody'),
-    fetchAnimalsByStatus('foster'),
-    fetchAnimalsByStatus('adopted'),
+  // Fetch data in parallel
+  const [inCustodyDogs, thisWeeksDogs] = await Promise.all([
+    fetchAnimals('in custody'),
+    fetchAnimals(null, weekStartTimestamp),
   ]);
 
-  // New intakes: in-custody dogs with an intake date in the past 7 days
-  const newIntakes = inCustodyDogs.filter((dog) => {
-    const d = getIntakeDate(dog);
-    return d && d >= weekStart;
-  });
+  const newIntakes = thisWeeksDogs;
 
-  // Moved to foster this week: foster dogs with a foster/intake date in the past 7 days
-  const movedToFoster = fosterDogs.filter((dog) => {
-    const d = getFosterDate(dog);
-    return d && d >= weekStart;
-  });
+  // Adoptions this week: dogs with Status === "Healthy in Home"
+  const adoptions = thisWeeksDogs.filter(
+    (dog) => dog.Status === 'Healthy in Home',
+  );
 
-  // Still needs foster: all dogs currently in custody at the shelter
-  const needsFoster = inCustodyDogs;
-
-  // Adoptions this week: adopted dogs with an outcome date in the past 7 days
-  const adoptions = adoptedDogs.filter((dog) => {
-    const d = getOutcomeDate(dog);
-    return d && d >= weekStart;
+  // Still needs foster: dogs at boarding locations (not yet in a foster home)
+  const NEEDS_FOSTER_LOCATIONS = new Set([
+    'paradise pet resort',
+    "love's legacy rescue",
+  ]);
+  const needsFoster = inCustodyDogs.filter((dog) => {
+    const loc = (dog.CurrentLocation?.Tier1 || '').toLowerCase();
+    return !dog.InFoster && NEEDS_FOSTER_LOCATIONS.has(loc);
   });
 
   console.log(
-    `Summary — new intakes: ${newIntakes.length}, moved to foster: ${movedToFoster.length}, ` +
-    `still needs foster: ${needsFoster.length}, adoptions: ${adoptions.length}`,
+    `Summary — new intakes: ${newIntakes.length}, still needs foster: ${needsFoster.length}, adoptions: ${adoptions.length}`,
   );
 
   const payload = buildWeeklySummaryPayload({
     newIntakes,
-    movedToFoster,
     needsFoster,
     adoptions,
     weekStart,
