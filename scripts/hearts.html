@@ -1,0 +1,286 @@
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  #heart-zone {
+    padding-bottom: 3.3vmax;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .top-container {
+    padding-top: 3.3vmax;
+    max-width: var(--sqs-site-max-width, 1500px);
+    margin: 0 auto;
+    padding: 0 var(--sqs-site-gutter, 4vw);
+  }
+
+  .zone-inner {
+    background-color: hsla(var(--darkAccent-hsl), 1);
+  }
+
+  .bubble {
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+    min-width: 70px;
+    min-height: 70px;
+    max-width: 150px;
+    max-height: 150px;
+    color: #3a8de0;
+    border-radius: 50%;
+  }
+
+  .bubble-dummy {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+    border: 0.2em solid currentColor;
+  }
+
+  @keyframes bubbleUp {
+    from {
+      opacity: 0;
+      transform: scale(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+
+  .heart {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+  }
+
+  .heart path {
+    stroke: none;
+    fill: #ffcfc9;
+  }
+
+  .ty-heading {
+    text-align: center;
+    color: hsl(var(--black-hsl));
+  }
+  .confirm-subtext {
+    text-align: center;
+    font-size: calc(var(--normal-text-size-value) * 1rem);
+    font-family: var(--body-font-font-family);
+    font-style: var(--body-font-font-style);
+    color: hsl(var(--accent-hsl));
+  }
+
+  .ty-body,
+  .mid-text,
+  .bottom-body {
+    font-size: calc(var(--large-text-size-value) * 1rem);
+    line-height: var(--body-font-line-height);
+    text-align: center;
+    font-family: var(--body-font-font-family);
+    font-style: var(--body-font-font-style);
+  }
+
+  .ty-body {
+    color: hsl(var(--black-hsl));
+    font-size: calc(var(--large-text-size-value) * 1rem);
+  }
+
+  .mid-text {
+    color: hsl(var(--accent-hsl));
+  }
+
+  .bottom {
+    background-color: hsl(var(--black-hsl));
+    padding: 30px var(--sqs-site-gutter, 4vw);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .bottom-inner {
+    max-width: var(--sqs-site-max-width, 1500px);
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .emphasized-text {
+    color: hsl(var(--accent-hsl));
+    font-style: italic;
+  }
+
+  .bottom-body {
+    color: var(--primaryButtonBackgroundColor);
+  }
+</style>
+
+<div id="heart-zone">
+  <div class="zone-inner">
+    <div class="top-container">
+      <div class="confirm-subtext">Donation confirmed</div>
+      <h1 class="ty-heading">Thank you.</h1>
+      <div class="ty-body">
+        Your gift goes directly to the dogs in our care — food, medical
+        treatment, and a safe place to land while they wait for their forever
+        home.
+      </div>
+    </div>
+  </div>
+  <div class="middle">
+    <div class="mid-text">
+      Want to stay involved? Meet the dogs your donation is helping, or consider
+      opening your home as a foster.
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="bottom-inner">
+      <div class="bottom-header">
+        <div class="text-line">From all of us —</div>
+        <div class="text-line">
+          and <span class="emphasized-text">all of them</span> —
+        </div>
+        <div class="text-line">thank you.</div>
+      </div>
+      <div class="bottom-body">
+        You didn't just donate. You decided that a dog's life matters. That's
+        not nothing. That's everything.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var zone = document.getElementById('heart-zone');
+
+    function getRandomColor() {
+      var colors = [
+        '#E1EDFF',
+        '#FFF7AD',
+        '#4B548B',
+        '#6182B3',
+        'tomato',
+        '#ABCFFE',
+        '#FFF7AD',
+        '#DDFFC8',
+        '#C8F0D6',
+        '#ABCFFE',
+        '#E8CCFF',
+        '#FFD6E0',
+        '#FFD6E0',
+        '#E1EDFF',
+        '#DDFFC8',
+        '#FFF7AD',
+        '#C8DFFF',
+        '#E8CCFF',
+      ];
+      return colors[Math.floor(colors.length * Math.random())];
+    }
+
+    function animateIt(el, dur, delay) {
+      return el.animate(
+        [
+          { opacity: 0, transform: 'translate(-50%, -50%) scale(0)' },
+          { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+          { opacity: 0, transform: 'translate(-50%, -50%) scale(1.1)' },
+        ],
+        {
+          duration: dur,
+          easing: 'ease-out',
+          fill: 'forwards',
+          delay: delay || 0,
+        },
+      );
+    }
+
+    function createBubble() {
+      var ns = 'http://www.w3.org/2000/svg',
+        bubble = document.createElement('div'),
+        bubbleDummy = document.createElement('div'),
+        heart = document.createElementNS(ns, 'svg'),
+        heartPath = document.createElementNS(ns, 'path');
+
+      heart.setAttribute('viewBox', '0 0 600 500');
+      heartPath.setAttribute(
+        'd',
+        'M300,150 C500,10, 600,300 300,400 C0,300 100,10 300,150',
+      );
+      bubble.classList.add('bubble');
+      bubble.style.color = getRandomColor();
+      bubbleDummy.classList.add('bubble-dummy');
+      heart.classList.add('heart');
+
+      heart.appendChild(heartPath);
+      bubble.appendChild(bubbleDummy);
+      bubble.appendChild(heart);
+      zone.appendChild(bubble);
+
+      return {
+        setPosition: function (x, y) {
+          bubble.style.left = x + 'px';
+          bubble.style.top = y + 'px';
+        },
+        _animate: function () {
+          animateIt(bubbleDummy, 2000);
+          animateIt(heart, 3500);
+          return { bubbleDur: 2000, heartDur: 3500 };
+        },
+        remove: function () {
+          bubble.remove();
+        },
+      };
+    }
+
+    function handleDown(e) {
+      var rect = zone.getBoundingClientRect();
+      var clientX = e.clientX !== undefined ? e.clientX : e.touches[0].clientX;
+      var clientY = e.clientY !== undefined ? e.clientY : e.touches[0].clientY;
+      var _x = clientX - rect.left;
+      var _y = clientY - rect.top;
+
+      var bubble = createBubble();
+      bubble.setPosition(_x, _y);
+      var animation = bubble._animate();
+      setTimeout(
+        () => bubble.remove(),
+        animation.bubbleDur + animation.heartDur,
+      );
+    }
+
+    zone.addEventListener('click', handleDown, false);
+    zone.addEventListener('touchstart', handleDown, false);
+
+    function bubbleUp() {
+      var rect = zone.getBoundingClientRect();
+      handleDown({
+        clientX: rect.left + Math.random() * zone.clientWidth,
+        clientY: rect.top + Math.random() * zone.clientHeight,
+      });
+      setTimeout(bubbleUp, 800);
+    }
+
+    setTimeout(bubbleUp, 100);
+
+    window.addEventListener(
+      'resize',
+      function () {
+        w = zone.clientWidth;
+        h = zone.clientHeight;
+      },
+      false,
+    );
+  })();
+</script>

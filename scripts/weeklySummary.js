@@ -37,8 +37,8 @@ const formatDate = (date) => {
 
 // ---------- Shelterluv API ----------
 
-const fetchAnimals = async (statusType, since = 0) => {
-  const limit = 200;
+const fetchAnimals = async (statusType, since = 0, sortByUpdated = false) => {
+  const limit = 100;
   let offset = 0;
   const all = [];
 
@@ -46,7 +46,8 @@ const fetchAnimals = async (statusType, since = 0) => {
     const statusParam = statusType
       ? `&status_type=${encodeURIComponent(statusType)}`
       : '';
-    const url = `https://new.shelterluv.com/api/v1/animals?since=${since}${statusParam}&limit=${limit}&offset=${offset}`;
+    const sortParam = sortByUpdated ? '&sort=updated_at' : '';
+    const url = `https://new.shelterluv.com/api/v1/animals?since=${since}${statusParam}${sortParam}&limit=${limit}&offset=${offset}`;
 
     const res = await fetch(url, {
       method: 'GET',
@@ -224,17 +225,21 @@ async function main() {
   const weekStart = new Date(now.getTime() - ONE_WEEK_MS);
   const weekStartTimestamp = Math.floor(weekStart.getTime() / 1000);
 
-  // Fetch data in parallel
-  const [inCustodyDogs, thisWeeksDogs] = await Promise.all([
+  // Fetch data in parallel.
+  // sort=updated_at makes `since` filter on LastUpdatedUnixTime rather than
+  // intake time, so recently-adopted dogs (updated this week) are included.
+  const [inCustodyDogs, updatedThisWeek] = await Promise.all([
     fetchAnimals('in custody'),
-    fetchAnimals(null, weekStartTimestamp),
+    fetchAnimals(null, weekStartTimestamp, true),
   ]);
 
-  const newIntakes = thisWeeksDogs;
+  const newIntakes = updatedThisWeek.filter(
+    (dog) => dog.Type === 'Dog' && Number(dog.LastIntakeUnixTime) >= weekStartTimestamp,
+  );
 
-  // Adoptions this week: dogs with Status === "Healthy in Home"
-  const adoptions = thisWeeksDogs.filter(
-    (dog) => dog.Status === 'Healthy in Home',
+  // Adoptions: dogs updated this week whose status changed to "Healthy in Home"
+  const adoptions = updatedThisWeek.filter(
+    (dog) => dog.Type === 'Dog' && dog.Status === 'Healthy in Home',
   );
 
   // Still needs foster: dogs at boarding locations (not yet in a foster home)

@@ -1,0 +1,3563 @@
+{
+  "success": 1,
+  "animals": [
+    {
+      "ID": "33",
+      "Internal-ID": "211073874",
+      "Name": "Rosie",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jessica",
+        "LastName": "Schwarz",
+        "OutDateUnixTime": "1767454918",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "45",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1558249200,
+      "Age": 82,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/14b71837bda5b17aa818354eb5e55ef6/69705cabd8486cb40c3070fac48d9c48.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/14b71837bda5b17aa818354eb5e55ef6/69705cabd8486cb40c3070fac48d9c48.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ba996e1df363a5000881fd9d55cb2cb7/2ba72d72b1eea6765c6026675ef6d350.png",
+        "https://new-s3.shelterluv.com/profile-pictures/3a1b11a6974fb5c58804226cc30bf1c1/32af92045123fa71c208e0189d6a195a.png",
+        "https://new-s3.shelterluv.com/profile-pictures/3ca5eac04780286ffbb45a735f9c8663/28421be3ef4c687de4b677a3ceeaad26.png",
+        "https://new-s3.shelterluv.com/profile-pictures/8acbf0039f693894cdf9a74739c73d02/6fa6af1312294a9857eaf159fccacd58.png",
+        "https://new-s3.shelterluv.com/profile-pictures/647c9a1ea31cadace586c3f21eb00d5e/ed43765ed7c5e8a727fc34d1290205dd.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b99931e5b5032772909ac95a6bc69777/e53b788990102d487c053baa9e3ed865.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b77c74571052712e4b9b89024c77d448/a44d09277862c0b41662a762240b8446.png",
+        "https://new-s3.shelterluv.com/profile-pictures/eb86a21d4489d300a92ca29c65f62dd6/ff8c6be99dabb95d185eef21862acfa2.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b253d295335c5d1ecdc703b3ef9fc1e9/24fb4e7b8ffe3a3301a014112a540181.png",
+        "https://new-s3.shelterluv.com/profile-pictures/819b282fb511fddd15eb721b7215c782/3bfb81b0fca909b63b0ad3806dd95b53.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a49dea6760c0ef01dfef26d3028f7725/d816d24369623cce2159103e7c861276.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Grey/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Rosie is a sweet Siberian Husky with a touch of sass and wild spirit—true to her name, inspired by the Wild Rose, the official flower of Alberta, where she’s been fostered for the past three months.\n\nRosie’s story almost ended too soon. She was abandoned by her owner at a crowded shelter and placed on the euthanasia list after she stopped eating out of depression. Thankfully, she was rescued just in time—and it turns out she does eat (and loves every bite)!\n\nWe believe Rosie spent much of her early life tied up outside, with little exercise and minimal human contact. She also shows signs of past mistreatment. When she first arrived, she was terrified of everything. Over time, with love and patience, she’s begun to open up in the most heartwarming ways. But her progress is still ongoing—she’s shy, skittish around new experiences, and will need a home that understands that healing takes time.\n\nRosie is terrified of children, so she needs a calm, stable, and kid-free home. She’ll thrive best with patient, loving adults who can provide structure and reassurance. She also loves having a dog best friend—another gentle, confident dog helps her feel more secure and playful.\n\nAs Rosie’s confidence has grown, so has her personality. Once thought to be low energy, she’s now showing her mischievous, funny side. She adores running, exploring, and chasing squirrels—and when she feels safe, she’ll seek out belly rubs and snuggles that will melt your heart.\n\nShe may not know all her commands yet, but she’s clever in her own way, and with love and consistency, she’ll continue to blossom. Rosie’s looking for a home where she can feel truly safe and finally learn that the world isn’t such a scary place after all.",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1747718017",
+      "Attributes": [
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290744",
+          "AttributeName": "Athletic",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290746",
+          "AttributeName": "Brave",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290755",
+          "AttributeName": "Independent",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290756",
+          "AttributeName": "Loyal",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290760",
+          "AttributeName": "Smart",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290765",
+          "AttributeName": "Housetrained",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267815",
+          "AttributeName": "Adult-Only Home Preferred",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1771353981"
+    },
+    {
+      "ID": "34",
+      "Internal-ID": "211073876",
+      "Name": "Remy",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Marinna",
+        "LastName": "Radloff",
+        "OutDateUnixTime": "1762973992",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "60",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1679209200,
+      "Age": 36,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/e109e25d5f33234227e02f3d75bdbaf0/57e79c481901af0e66a5fc3187bc029b.JPG",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/e109e25d5f33234227e02f3d75bdbaf0/57e79c481901af0e66a5fc3187bc029b.JPG",
+        "https://new-s3.shelterluv.com/profile-pictures/72aef0a298f42e3353bcf970aaa88cd0/bd924367fac31c60827f946e0bb7da93.png",
+        "https://new-s3.shelterluv.com/profile-pictures/84016852cf291bb2a38204cefae9818c/1ede89d9aa4563cb7a32d0b2c78b62c6.png",
+        "https://new-s3.shelterluv.com/profile-pictures/494c6800239d926a8b274abadb33a36a/864e3bb9e0ac0bf96d7ac905eb9758be.png",
+        "https://new-s3.shelterluv.com/profile-pictures/0ab98fe9a80194cd2fbefda6ec21795c/32ccc76bd8df4d930bb662e8066ff8ef.png",
+        "https://new-s3.shelterluv.com/profile-pictures/3a3e70feb9a192df86b03c794747009a/e0d9f3657c58e485f8ff8aa6efc22670.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b3ac4fd4bd123a08c18c546eb6fe29ff/3d024e52b9e3ce1d8903452fd2a129ac.png",
+        "https://new-s3.shelterluv.com/profile-pictures/161085c9143a4ff9ba8ead19536dcd7d/b6b00583ddae28bb9e4161dfa4160cc3.JPG",
+        "https://new-s3.shelterluv.com/profile-pictures/dba85c159e70fbd1398ba335eacf7b1b/54ce9105ae4fa34410cb1729e5175f27.JPG",
+        "https://new-s3.shelterluv.com/profile-pictures/f25d8d4eded56a47a992418a39d61365/44e08be7688b85519f679d7b4930f78c.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Bulldog, American",
+      "Color": "White/Blue",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Remy: Resilient, Radiant, and Ready for the Right Person\n\nRemy is a 3–4-year-old bully girl with a heart as big as her comeback story. Once a discarded, underage-bred mama dog surrendered in terrible condition (emaciated, mange, sick), she’s now thriving in her foster home—healthy, furry, and finally learning what love and safety feel like. She’s sensitive, goofy, and deeply affectionate, with a loyal streak that makes her truly unforgettable.\n\nRemy missed out on structure and human affection in her early years, so she’s still learning the ropes. She’s eager to please and food-motivated, but can be impulsive, especially when meeting new dogs—her excitement can overwhelm her manners. While she’s shown some resource guarding around toys in the past, consistent training and boundaries have helped her coexist peacefully with her calm XL Bully male foster brother and a variety of doggy housemates (both male and female, large and small). She’s crate-trained, highly trainable, and would thrive in a home with space to roam (a large yard would be ideal!) and a person who can match her energy and invest in her continued growth and training.\n\nShe’s had a few training sessions and has already overcome a lot. Jumping has nearly vanished, and she’s learning to curb her “eat everything on walks” habit. She’s also a vocal gal who isn’t shy about telling you when she wants something, and has a natural protective instinct that shines when she senses true danger (an immaculate guard dog)—but she’s incredibly friendly with safe, trusted humans.\n\nRemy needs an adult-only home with a confident handler who’s experienced with bully and/or power breeds. She does well with calm, tolerant dogs but would not be a match for small kids or highly reactive pets that would be perturbed by her energetic spirit. She is currently being cat-tested.\n\nThe bottom line? Remy isn’t for a first-time dog owner—but for someone patient, committed, and understanding of dogs with rough starts, she’s a hidden gem. She wants nothing more than to belong to someone who believes in her. If you’re looking for a meaningful, life-changing bond with a dog who will love you fiercely in return, and make you laugh with her silly antics, Remy just might be your girl.",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1747718439",
+      "Attributes": [
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290744",
+          "AttributeName": "Athletic",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290746",
+          "AttributeName": "Brave",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290755",
+          "AttributeName": "Independent",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290756",
+          "AttributeName": "Loyal",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290760",
+          "AttributeName": "Smart",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290765",
+          "AttributeName": "Housetrained",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1771353968"
+    },
+    {
+      "ID": "64",
+      "Internal-ID": "211143384",
+      "Name": "Luna",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jackie ",
+        "LastName": "Brazil",
+        "OutDateUnixTime": "1774769825",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "45",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1653980400,
+      "Age": 46,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/1cb0338f5c3833c4b6e4d03a8ebe8d16/d7daac9fd8b7870a4fc68fe507390821.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/1cb0338f5c3833c4b6e4d03a8ebe8d16/d7daac9fd8b7870a4fc68fe507390821.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/7cfdecbdc79bef500b264bbe6c8b6c87/2b8fa632300b5ddecfc435aac9b0cf93.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/66bce89ad69dbb77f025e8415b53c58d/3ed02bea5b793cd6ed12a0134c8ac301.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/b5c80d1b648da769c04f87cbec801b84/95ec93fd34c8539cf26d6e25316ec727.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/20f3aac5afb63102530b6cedb6e10d84/fce8ceadd4f75e5457c36485ccacfa0c.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/501bbcadeb771a73168c94d4f0532ed3/2bda27f43d76201e23c41a8b46ee7eda.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/1497a248a5a6e840f30b993330c89c55/374662cd4a041b19329c04e3cda93f04.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Grey/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "985112012156342",
+          "Issuer": "Home Again",
+          "ImplantUnixTime": "1650610800"
+        }
+      ],
+      "LastIntakeUnixTime": "1774769825",
+      "Attributes": [
+        {
+          "Internal-ID": "290744",
+          "AttributeName": "Athletic",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290746",
+          "AttributeName": "Brave",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290756",
+          "AttributeName": "Loyal",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290755",
+          "AttributeName": "Independent",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290765",
+          "AttributeName": "Housetrained",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290760",
+          "AttributeName": "Smart",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775152185"
+    },
+    {
+      "ID": "80",
+      "Internal-ID": "211494197",
+      "Name": "Sammy",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jessica ",
+        "LastName": "Koch",
+        "OutDateUnixTime": "1760924052",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "65",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1721107820,
+      "Age": 20,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/a5e16845ffac8fa596fa94149992715b/a7a7ca3ee3e898f6f9c6c6680654ae13.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/a5e16845ffac8fa596fa94149992715b/a7a7ca3ee3e898f6f9c6c6680654ae13.png",
+        "https://new-s3.shelterluv.com/profile-pictures/76dced49c2c41aa856c5837f5b0a80fc/09cea584fae07b9a15fd61eb45ff9619.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/9f25ccc595f7bd7a92cd5882f84d4f97/70af2d79147983d8783fd194030f389f.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/36bc3140b05a5d853b3f6eec41764fa6/fa245258771da74f776917d4dcf26635.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/cd4bd1bc932484524b23f58cc599a739/d5b620f98fe2dfb3a2a0214912925b50.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/52c81249fdc7e5b8019b6e5994e10c94/8684e09e3b8812b1f3c96dcbd606ca46.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/bdaaa3afd08357642ffd7845e238d054/ef92159bdd32ba07dbafb4a719ace68a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/e2ea1d643e44bdbd8a763961b4b11e38/99e1ba7b00ce32006be010cf29bf8dac.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/660c954dec1b8f0cba659c78fbab4d9c/c1ce65119aa8fbbfdd94a4f4972b07fe.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/b16848ca19288fce27d35771c7e5c092/e50a38f03672f8d60e41ca7a7b06948d.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/43d058550e54074421d0ca5ae68d4a8d/14c633f49f6a6dd5e7dd022f7c946a5b.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/cb7f384b1ca1040f3b24ad3b306d1408/37449560591a949c30f83c2ca8736175.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/8be4d47df44429f4fe01544c6809d8c8/23c01a964a11373cd1ef747f5c128de4.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/12e21ae0697b0466e56ca893080c9a1e/7038419a468105329794442f5e197c28.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/cc92aeda5e02fa66385dec9b8e8bb4cf/959a16bb58faf07aa66ad6a104e68fb2.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/a4455c7aece5d912929b3afabe57f532/c2cb245a574668f2b19ee9f2f5417bca.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/56b6821810ec0235c9e70908520809ea/66b99282a3e256bb22da5dfe29a2b42c.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/fac5fdf02b4d4e2e9c4a95e5dfc4905c/5c706c2f49f874095567814c5c294b4f.png",
+        "https://new-s3.shelterluv.com/profile-pictures/661fe3cbb08e807386e35bf61a9d5f0a/8b2735a094d8bf5ff89da8e9da9aedb4.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ad301413a83179528dfe95bb876074d2/7cc6b053feef4930031a24c518f132f0.png",
+        "https://new-s3.shelterluv.com/profile-pictures/11b39b9ff71fbfdcc215abd68a0d27df/d773253e28de6e686299404e2a795fc1.png",
+        "https://new-s3.shelterluv.com/profile-pictures/f18b66c3ef1894fa321c62b8a7fbfd4d/330152f8516750a772d1839f9a4e1cb7.png",
+        "https://new-s3.shelterluv.com/profile-pictures/19ee946d63625bb4768092cedc2bcb75/c73e0e848d463de88835738a6cd91f53.png",
+        "https://new-s3.shelterluv.com/profile-pictures/0ff2f8df29eef6deb3bc6c226a80ca22/6a0c6d9f8a7a1346c82491359c054e69.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian/Husky",
+      "Color": "Red/Mahogany/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Sammy 🐺💙\n\nSammy is the kind of dog who quietly steals your heart. He is a young Husky, likely around a year old, with a beautiful athletic build and an exceptional temperament that makes him a joy to be around. When you first meet him, he may seem a little reserved, but it does not take long at all for him to warm up. Once he does, Sammy becomes deeply loving and eager to be your friend.\n\nSammy has wonderful manners and an easygoing nature. He is potty trained, knows his basic commands, and is non reactive and very friendly. He loves to play fetch and will happily trot back with his toy, proud and graceful, but his favorite moments are the quiet ones. Sammy adores cuddling in bed in the morning and gives the most gentle little kisses, as if he knows exactly how to make you smile.\n\nYou will often find him leaning into you for affection or settling beside you just to be close. He does not ask for much attention, yet he gives so much love in return. Sammy is extremely affectionate, calm, and loyal, and he simply wants to belong to someone who will cherish him.\n\nIf you are looking for a peaceful, loving young Husky who enjoys both playtime and cozy mornings, Sammy might be the dog you have been waiting for. Once he chooses you, he will be by your side with quiet devotion and a heart full of love. 🐾💙\n",
+      "PreviousIds": [
+        {
+          "IdValue": "A5702869",
+          "IssuingShelter": null,
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000018750236",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1748847600"
+        }
+      ],
+      "LastIntakeUnixTime": "1752626206",
+      "Attributes": [
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290744",
+          "AttributeName": "Athletic",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267842",
+          "AttributeName": "Good with Kids",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290750",
+          "AttributeName": "Goofy",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290756",
+          "AttributeName": "Loyal",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290760",
+          "AttributeName": "Smart",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "288191",
+          "AttributeName": "Small Dog Friendly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "569252",
+          "AttributeName": "Even Tempered",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290759",
+          "AttributeName": "Quiet",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775178551"
+    },
+    {
+      "ID": "81",
+      "Internal-ID": "211522518",
+      "Name": "Rico",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Tammy",
+        "LastName": "Turner",
+        "OutDateUnixTime": "1768492413",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "55",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1695538800,
+      "Age": 30,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/14cd80eeab93de12060fe82bec34cf55/a5b58b06c9c61a089a9ed9401c0d7f5b.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/14cd80eeab93de12060fe82bec34cf55/a5b58b06c9c61a089a9ed9401c0d7f5b.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a2043d8fd85b7ec708a2d90f80a33b88/d8d846e8dcba6a62a911cdb8a0c4c110.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/e394abb5d1ef9313990c8d42ab2933e7/1065503d7d142238558f7f5a6bd74438.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/8fc9f14dd8ad8279b87ae89fd97a8d06/625faab95043129e4f57a88848b11329.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/62f75c99a9a920330a90e44f6c9f4de5/66418813b41429bfd2bf4cc05eef1b9c.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/cf5092ec4ca9e1fa2969a7c16200bfa0/cfe393b20906e2e70b7fd48020befb71.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/05f272e444965c508b22cf1834c2232f/c5e20cd616e29c283bc3fdf66ed2d463.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/c3ea6bd8b5d08c2c6ae419a6a5a0d56f/cf3eda4a353c66cbd0a5fc070fe3b704.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/e760e6df0a4a4363dc974776324be502/43c46b250ac86913025cfb76f34df981.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/6890018de004ee811c7b807a36dfe717/3dad5d36ca3d12dda6e4d5c57353ef57.png",
+        "https://new-s3.shelterluv.com/profile-pictures/57d628e28406a7fec170cd509ccc7fd7/4de96fb2e7058b2e9ac26b9380187ba1.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Rico is a striking black and white Siberian Husky who came to us from the Desert Hot Springs shelter. With his bright eyes and soft coat, he turns heads wherever he goes, but it’s his personality that really wins people over.\n\nRico is a curious explorer who loves sniffing out new adventures. Whether it’s a walk through the neighborhood or a trip to the park, he’s always eager to tag along. He’s also pretty easygoing and settles in nicely after some movement. He’s the perfect blend of playful and chill.\n\nHe’s friendly with other dogs, enjoys toys, and loves a good game of “what’s that over there?” If you’re looking for a loyal, medium-energy companion who will keep you smiling and never let you walk alone, Rico might be your guy.\n\nCome meet Rico and see why everyone falls in love with him. He’s ready to trade shelter life for a soft bed and a forever family.",
+      "PreviousIds": [
+        {
+          "IdValue": "A0055367897",
+          "IssuingShelter": "Desert Hot Springs Animal Care and Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "941010002077832",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1742281200"
+        }
+      ],
+      "LastIntakeUnixTime": "1753152449",
+      "Attributes": [
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1773101662"
+    },
+    {
+      "ID": "82",
+      "Internal-ID": "211528795",
+      "Name": "Nyra",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jessica ",
+        "LastName": "Koch",
+        "OutDateUnixTime": "1773198802",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "40",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1721631600,
+      "Age": 20,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/97221645ad3c75403576267a0dd3290b/691ff81e4900d1995b402d4f808d29b2.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/97221645ad3c75403576267a0dd3290b/691ff81e4900d1995b402d4f808d29b2.png",
+        "https://new-s3.shelterluv.com/profile-pictures/5565b69edc94efacf17d226ead70b256/1303f56bab305eeec62b5cb493f62e5b.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/07937a6f726d74c23a6a01176d8d3fd4/9cd2bc0095210641cb9276b80b657e1a.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/fe0a41ce7098c7f22241d8420c17ad16/ab7d90f8a96dced15945ee7f9e2436b0.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/1d8659163e1d2e9a52b458393b4eb377/bb198d622cba33661fff2e3fc01e3703.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/5e9653442955323a596db81a539a5708/34f2edd6311722b2fcf8d898ec7abd55.png",
+        "https://new-s3.shelterluv.com/profile-pictures/6a3cb693ed399f74caf0569c0f5275ee/cee334bd8da406f10fbbeda75f359e4f.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e96a19a1d5b57c55efd11e05b5cf5a83/eae45e6c5c22879020b01cf378225ee6.png",
+        "https://new-s3.shelterluv.com/profile-pictures/273bd681b6843af23e49e75dbade0b5b/69e6ccf4deb7da68e915c3eb1229e3e6.png",
+        "https://new-s3.shelterluv.com/profile-pictures/38709cdf2f6e14b0b53f30c7f6c866c2/d7e8e810c8115a9e0a5e2d8d371dd32d.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a2fb2004e3d6c3c240e9d590ffb92100/deacf39cb7bd2a6fed6a212beb061af1.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky",
+      "Color": "Grey/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Nyra, the Main Character of Your Story\n\nNyra (short for Rhaenyra, because yes, she’s that regal) is a beautiful, spirited girl who’s ready to claim her rightful place on the throne of your heart. Pulled from a hoarding situation in Mexico, Nyra came to us through a special collaboration with our friends at The Animal Pad. With so many dogs in need, Love’s Legacy stepped in to help, and we’re so glad we did.\n\nNyra is the definition of the main character. She’s playful, expressive, and loves being the center of attention. She’s people-sweet, always happy to soak up pets and love, and she’s especially fond of a good game of fetch or rolling around in the grass like it’s her own royal garden.\n\nShe knows how to sit (a queen must have some manners), but beyond that, she’s still learning the ropes. Luckily, she’s eager to please and is doing well in her crate so far. With a little structure and a lot of love, Nyra will shine.\n\nIf you’re ready for a loyal companion with a queen-sized heart and a sparkle of sass, Nyra is waiting to meet you.",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "985113009667010",
+          "Issuer": "Home Again",
+          "ImplantUnixTime": "1753167600"
+        }
+      ],
+      "LastIntakeUnixTime": "1773198802",
+      "Attributes": [
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290747",
+          "AttributeName": "Couch potato",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290750",
+          "AttributeName": "Goofy",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290756",
+          "AttributeName": "Loyal",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290752",
+          "AttributeName": "Submissive",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1773198997"
+    },
+    {
+      "ID": "84",
+      "Internal-ID": "211533789",
+      "Name": "Victor",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jackie ",
+        "LastName": "Brazil",
+        "OutDateUnixTime": "1753321179",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "55",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1690095600,
+      "Age": 32,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/a8c212321bb17c73144d244f4aefbb0f/23af97936f4c34c8bb6164721b990ff9.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/a8c212321bb17c73144d244f4aefbb0f/23af97936f4c34c8bb6164721b990ff9.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/3206d33a77fd34faf79b800d93c8d0b8/5f3001504adb8da75a149b40847b16f1.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/471711f832981cf8eb2ddcccc3c8c2b4/e8f8e8602091b86818191312e04e0c50.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e123fba8646edc6af926fbe3a887b38c/036a3d1de7ff4feda64bde6a4b78c13d.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/b6b98e11d7440216fc73d58b4a919400/2f1496b6cc1daa9b0e29a6a28fd50810.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e606938db5e43663da9db96b1ec40f40/ba56c8fd51e41ea864c00af94c2c0516.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/a2273cf7545d4712f28ffb4676239cf3/c5935a905918d644052ed387601c1b05.png",
+        "https://new-s3.shelterluv.com/profile-pictures/be9291cb2d1b0f43af31d0083532b0c2/f3a58c8fcf725018cb194b5ac3f3427d.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/8f7c3e8a690f95e50cec958a65078158/c3df1f1f2c44059162b442e9f57a61ab.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/370596a61da966114f30a7ba833b8875/fba01d44fda34a539824ad2721a9d317.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/bd21e46a7b6860d87019fff9e8c30019/c611e6f1c22a30583ef68e573fefe8d9.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/8d9c327767272f7903a986bb904d2817/2301e8e2071b3e6dce933d28ef239fe1.png"
+      ],
+      "Videos": [],
+      "Breed": "Terrier, Pit Bull/Husky",
+      "Color": "Fawn/Blue Black",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Victor – A Gentle Soul with a Playful Heart\n\nVictor is the kind of dog who makes everyone feel at ease. This sweet pitbull mix is a true good boy — calm, gentle, and always happy to be part of the pack.\n\nHe gets along beautifully with other dogs and prefers to follow rather than lead, making him an easygoing companion for confident pups and playful pals alike. Victor enjoys playtime but isn’t over-the-top. He knows how to have fun and then settle down for some quiet time. He’s also great with kids, making him an ideal family dog.\n\nVictor is still learning how to walk nicely on a leash, so he’ll need a little patience and encouragement. But when it comes to mealtime, he’s a tot al gentleman — polite and happy to share space with other dogs.\n\nQuiet, affectionate, and eager to please, Victor is looking for a home where he can be loved, guided, and included. If you’re looking for a low-drama, high-sweetness kind of pup, Victor might just be your perfect match.\n\nCome meet the goodest boy around — Victor is ready to be your loyal companion. ",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1753321179",
+      "Attributes": [
+        {
+          "Internal-ID": "267842",
+          "AttributeName": "Good with Kids",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290750",
+          "AttributeName": "Goofy",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290747",
+          "AttributeName": "Couch potato",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1771353910"
+    },
+    {
+      "ID": "96",
+      "Internal-ID": "211653381",
+      "Name": "Abby",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "George",
+        "LastName": "Swiggum",
+        "OutDateUnixTime": "1764539457",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "45",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1534026385,
+      "Age": 91,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/2ba240da0803b85f805f63f622bcdaf7/0479e8156e430131ba208fe20cc68b65.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/2ba240da0803b85f805f63f622bcdaf7/0479e8156e430131ba208fe20cc68b65.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/4255d33a8f7517927a41c4411d1a992c/62127f2ab7bc72bd820593dde201f0b3.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/16759e958c7e2629c06f69cb063c1c00/09f68be7bb0d176baad6d867d5c5a8b6.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/6372120e10bb3d505fba8e6951211e4b/3d8c69e4c4b68c05943352b3fc94dd19.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/8fae2c95336a14dd79f50125a271ec96/bf7a8b80778aed47ad7add26932e8bb1.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/b0c407964d74a6d90e9dc1a760af9975/65a5f26e6d107628b9394f2835e6f454.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/e708f7b44f56bb9e46ece5d73bbe3a3e/cc5eca0e32c7e15d9484561de3652617.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/42c5873d3fdac63be3130df54b194f52/5309e514da4167f07fa60f68267a40bd.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/62de6ac320e3b1f082ca6fa48662dfec/dd1ee7dc15342824ca2506223c691e0f.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/483a684d6e7df4611aa24a4940ced0c3/90c47c58a314682e1e12f0ca6129f03f.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ea87e22f2e6f403f35b301d72dd0ac9e/446629f00b617690828cb312543f8165.png",
+        "https://new-s3.shelterluv.com/profile-pictures/51989f768a8aca1ba44fa0f114c624fe/90f3881085f92bd1f2cd33a7971fb5b3.png",
+        "https://new-s3.shelterluv.com/profile-pictures/c03ad0fffd8997414bf2ffc16bfdd769/d25267e7320cbe7e912a11fb48eea629.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b6ee0b02d070deea97ffa62008fb5f75/6aac5336d9fa11fa01f2877f2c1a6779.png",
+        "https://new-s3.shelterluv.com/profile-pictures/fd9f1f8e6c7d85f9cb712c8de263bada/a14e68ce9fe4de390b6ac7e4f0e2e25c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/fa0053c40662aa85ba4469f82c460b74/632816d7582e5d7fe9937de9a96b6282.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/5cdfa4096c529b52822286b091fcc790/612878444db2c6a4318c69b21cc225d0.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/d7a34d242be34cf8033362028e32ceb9/8313f9591e97ffe5449942def9b9fb45.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Abby is a Siberian Husky who was saved from a heartbreaking fate, and she’s making the most of every second of her second chance. With her soulful brown eyes and gentle spirit, she’s the kind of dog who quietly wins over everyone she meets.\n\nAbby is just sooo chill and relaxed. She’s a little bit of a shadow, always wanting to be near her people but never in a needy way. She’s fully potty trained, well-mannered, and has mastered the art of simply being a good girl. Belly rubs make her melt with happiness, and she’ll happily flop over for more.\n\nOne of Abby’s most charming quirks is her love for her crate. Whether it’s from past training or simply seeing another dog do it and catching on, she’ll head into her crate on her own just to relax. It’s become her safe space, and the door is always open. That alone can be such a huge hurdle for many dogs so it’s truly a gift with Abby.\n\nShe’s not a picky eater, not high maintenance, and not demanding, just a sweet soul looking for a safe, loving home where she can enjoy her golden years.\n\nIf you’ve been searching for a loyal, easygoing, and affectionate companion, Abby is waiting to meet you. Could she be your perfect match?\n",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1754959405",
+      "Attributes": [
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290747",
+          "AttributeName": "Couch potato",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290755",
+          "AttributeName": "Independent",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290759",
+          "AttributeName": "Quiet",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775179401"
+    },
+    {
+      "ID": "123",
+      "Internal-ID": "212173143",
+      "Name": "Lila",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jasmine",
+        "LastName": "De Haro",
+        "OutDateUnixTime": "1762728695",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "58",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1508655600,
+      "Age": 101,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/f8f4ba98cce6ab3f9171c12d4c345029/a2b9c69055043e52ab3c5ca9863a791c.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/f8f4ba98cce6ab3f9171c12d4c345029/a2b9c69055043e52ab3c5ca9863a791c.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/da76b2dbb1bbe44ce6fb222c4cec81a4/41f9895b8b42714634802cfb38346920.png",
+        "https://new-s3.shelterluv.com/profile-pictures/81816f78f369913a27aff356a9b4ece5/eaf628147b0678831f35800cb109027d.png",
+        "https://new-s3.shelterluv.com/profile-pictures/69607158e810f049143907bd159c8709/6b1ce05242aec9c131d79b9200702c7e.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/2d9677784e13920f68d67f913f28218e/3065de16beba22384e4850f0990339b6.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/53b8c563f2a963788f98080a19a20bd0/30a4fd7aa642c86f6e2ce20f3a23e964.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/509313946ec04a94cec98805ca8144c8/ebb9aa729451695d6706954c5015a6f3.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/a9dccbe3df060e3ea95be4f032117d01/5647b43fd692c36cef985c3f259a7aac.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/5ba581a35d662fcbda06a74b090a8b1d/0e9bfb0a6875e3c275a2dc4a4717efe7.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/2a17862a1d21a319d5996aa8395bf1b9/6b322c186ceafe276d8b1c214c8af511.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/5b5839bca6d3a827d3fd2084d5034c7b/6d44aca5c426c3983b4ac3ce0741e74b.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/aad78b1f6bac87634ff63962fd024424/b5e8c31cbd23e3d8cddfd93626f86e3c.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/ce8689b9ebc510ac3d32cf58565cc53c/83d9beb6e7110b6f34947514403fa422.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/da81485c219ef2acdf6ef98125ad74c1/09bae3ae54d0516d09aafda180158f36.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/f9356a3145345a872004f5a9d85d9f8f/c0932eca048c06fe92ca40869ad39d2d.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/bac6e051a55ef2a2b6ecbfe56a91987e/3459a3c9f72bf5cae64e08d608e215bc.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Bulldog, Old English",
+      "Color": "Brown/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Sweet Lila has known the hardest side of life, but she’s finally getting her chance to start over. When she was found in the shelter, it was clear she had been used for breeding and neglected for years. Her teeth were in terrible shape, her body showed signs of long-term strain, and she struggled to walk comfortably due to moderate lameness. Despite it all, Lila’s gentle heart never gave up.\n\nNow that she’s safe, Lila is soaking up every bit of kindness that comes her way. She adores soft beds, belly rubs, and being told she’s a good girl because she truly is. Her favorite moments are the quiet ones, just being near the people who love her. She’s learning that the world can be gentle, and she’s blossoming more each day.\n\nLila doesn’t need much, just a calm, loving home where she can rest, heal, and be treated like the treasured companion she’s always deserved to be. After everything she’s endured, she’s ready for the simple joys: cozy naps, short strolls, and endless affection.\n\nIf you’ve ever wanted to make a difference in a dog’s life, Lila is the one. She’s waited long enough for someone to show her what love truly feels like.",
+      "PreviousIds": [
+        {
+          "IdValue": "A831205",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020059166876",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1762558531"
+        }
+      ],
+      "LastIntakeUnixTime": "1762586396",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1773376707"
+    },
+    {
+      "ID": "125",
+      "Internal-ID": "212266053",
+      "Name": "Nala",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Cassie",
+        "LastName": "Morales",
+        "OutDateUnixTime": "1766443320",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "50",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1447574400,
+      "Age": 124,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/3ababbaaaf11f7a9b5c06189b292e0f4/786cdf29b133fb0fee1829440a985279.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/3ababbaaaf11f7a9b5c06189b292e0f4/786cdf29b133fb0fee1829440a985279.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/ccb316575d76955ee6ea86f93e68577c/c2453c72872d0ec8ef16da39082a6e1e.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/c45f3d93effaa1403dbcb398723fd8b7/4534b406f897d27d0abdc8e12a9d8c78.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/ce7d0ff344fbb0fdd487db0b94f007a3/2d019162e0bcc767191525d6435df589.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/bf532da5a0e0a8f116372647c79b9252/030f483bec5a69094fd9f0d8ca7466f5.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/ce46f62d5ff4cd9b382c1e8860a2fd64/04c260bb104bfe57ef04697332ad2665.png"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, White German",
+      "Color": "White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 67320,
+        "Name": "Senior adoption fee",
+        "Price": 200,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Say hello to Nala, a stunning cream-colored Shepsky (German Shepherd/Husky mix) with a heart as soft as her coat. Nala is a gentle soul who wins everyone over with her calm, affectionate nature. She’s not the kind of dog to cause a stir — she’d much rather curl up by your side and soak up the love.\n\nNala is docile, sweet, and incredibly loyal, making her a perfect companion for someone who enjoys peaceful walks, cozy evenings, and quiet companionship. She’s happy just being near her people and has a calm presence that makes every space feel a little more like home.\n\nWhether she’s resting at your feet or gazing at you with her warm, soulful eyes, Nala’s gentle spirit shines through. She’s ready to find a forever family who will cherish her for the loving, easygoing girl she is.\n\nIf you’re looking for a loyal friend with a heart of gold, Nala is your girl. Come meet her — she can’t wait to share her love with you!",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "981020059227087",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1763320983"
+        }
+      ],
+      "LastIntakeUnixTime": "1763236525",
+      "Attributes": [
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1772059140"
+    },
+    {
+      "ID": "135",
+      "Internal-ID": "212348957",
+      "Name": "Bolt",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Bonnie",
+        "LastName": "Miller",
+        "OutDateUnixTime": "1763946401",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "36",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1699948800,
+      "Age": 28,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/e82023069130a667eb9c8cdcc9583813/bc1aa7668b7ce2821c6c48607b52323c.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/e82023069130a667eb9c8cdcc9583813/bc1aa7668b7ce2821c6c48607b52323c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/3a9c09bfc6429b64c413758e22142721/ebc4b9bed9032b5298e5def20f60fec5.png",
+        "https://new-s3.shelterluv.com/profile-pictures/d3a1510723f0e6f60f2e25c6cd9fe5da/37eaa022a8315f3896188223b9b18c7c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/6d4a74c639ed35951e1c39461bbd2632/3116ac22758aeb4f4e864f01820d28f9.png",
+        "https://new-s3.shelterluv.com/profile-pictures/738c42ec7d714a8557babe9e75d4285e/2a2f49e2f560a8c04bfe82e2557c2eec.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b5688da570aeed12b6e17f8e01800542/ce2968be1ceb1a361c9ea906d3032358.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b9569068742c309b69a7caa700c24797/41e8a08c1575606b24a93207aac94a32.png",
+        "https://new-s3.shelterluv.com/profile-pictures/f20633f166030710ff14f9b5f18f7582/3f69f099aa0498da840f12e8053b7bf2.png",
+        "https://new-s3.shelterluv.com/profile-pictures/4f78d24f9b5c082325e083561f38d6fa/7ae18af0ad93708c2ccc33f5eed61315.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b9c83a5e00994e8df85d4672576f6228/a8a6bfa55dbb6b533501e05c0d6f393e.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Black/White",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Bolt is a stunning black Siberian Husky with bright blue eyes that stop everyone in their tracks. He was recently rescued from the Lancaster Animal Shelter, where his future was uncertain. Now safe and thriving, Bolt is ready to find the forever home he truly deserves.\n\nBolt has a wonderful, lively spirit and the classic Husky charm that makes the breed so loved. He’s curious, intelligent, and expressive, with a playful energy that shines through as he settles into a safe and loving environment. His gorgeous coat and piercing blue eyes give him a unique, unforgettable look, but it’s his sweet personality that really wins hearts.\n\nHe’s eager to bond with people, enjoys attention, and is excited to start a new chapter filled with love, adventure, and stability. With routine, guidance, and affection, Bolt will grow into a loyal and joyful companion.\n\nIf you’re searching for a handsome Husky with a big heart and a fresh start ahead of him, Bolt is ready to join your family and light up your life.",
+      "PreviousIds": [
+        {
+          "IdValue": "A5738666",
+          "IssuingShelter": "Apple Valley Animal Shelter",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000019978699",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1763798400"
+        }
+      ],
+      "LastIntakeUnixTime": "1763943919",
+      "Attributes": [
+        {
+          "Internal-ID": "267852",
+          "AttributeName": "Not Good with Cats",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "569251",
+          "AttributeName": "Running Buddy",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290744",
+          "AttributeName": "Athletic",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "575645",
+          "AttributeName": "Would love a dog brother or sister",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "575643",
+          "AttributeName": "Energetic",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1770965657"
+    },
+    {
+      "ID": "138",
+      "Internal-ID": "212397320",
+      "Name": "Raja",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Molly",
+        "LastName": "Higgins",
+        "OutDateUnixTime": "1764738165",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "90",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1385971200,
+      "Age": 148,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/f2d31c4c369545585585874292020670/4b699a247ec72f1b277e0ccd1a345364.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/f2d31c4c369545585585874292020670/4b699a247ec72f1b277e0ccd1a345364.png",
+        "https://new-s3.shelterluv.com/profile-pictures/534e3a7b5b3b5d8db2fb814f975c9628/043fe10007b3bec58c312cff72ed31c9.png",
+        "https://new-s3.shelterluv.com/profile-pictures/558358673d18133183074028f5ba462a/521954bf932c926b28540ba2059c0019.png",
+        "https://new-s3.shelterluv.com/profile-pictures/983efb087aad29f71cf857672d320000/7b37381304c030e8d800c93af840fb44.png",
+        "https://new-s3.shelterluv.com/profile-pictures/3c6ee00cfb3a64f0428120aea3c75f10/0842dc69a99876bd94e5868c58a1ca93.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian/Retriever, Labrador",
+      "Color": "Grey/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 67320,
+        "Name": "Senior adoption fee",
+        "Price": 200,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Raja is a gentle, dignified senior husky–lab mix who has already lived a long story and is ready for the happiest chapter yet. He was found wandering the streets, tired, hungry, and clearly searching for a safe place to land. The moment he was brought into rescue, his whole body relaxed, as if he knew he was finally home.\n\nRaja is the kind of dog who wins you over quietly. He has a calm, soulful presence, soft eyes full of gratitude, and a sweetness that feels almost magical. He loves slow walks, comfy beds, and being near his person. He doesn’t ask for much—just kindness, routine, and someone who sees the value in a loyal, older companion.\n\nRaja enjoys easy strolls around the neighborhood. He loves napping in sunny spots. He leans in gently for affection. He adores quiet evenings with his human nearby.\n\nDespite whatever he endured before rescue, he remains incredibly trusting and gentle. He gets along well with calm dogs and would thrive in a peaceful home where he can feel safe and loved. Raja doesn’t need adventure; he just needs a soft place to land and someone who will cherish him for the rest of his days.\n\nIf you’re looking for a faithful friend with a heart of gold, Raja is waiting to meet you. Give this sweet senior the loving home he’s been searching for.",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1764738165",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1771353869"
+    },
+    {
+      "ID": "139",
+      "Internal-ID": "212397355",
+      "Name": "Simba",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jena",
+        "LastName": "Lane",
+        "OutDateUnixTime": "1767479640",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "31",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1733126400,
+      "Age": 16,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/dc4f2b1a77472bac9211f5052cbac914/ae978cdb6eff35ffe5b749c88af7749d.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/dc4f2b1a77472bac9211f5052cbac914/ae978cdb6eff35ffe5b749c88af7749d.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6b24b3fdbad5f28ac8ac24113573e4f9/81d0d6919952d1ee3a275646b72a264c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/838d01f0c3e8c1c7964a5865e349204f/278e647e5f5a1f5be1f846db7c5275f0.png",
+        "https://new-s3.shelterluv.com/profile-pictures/2271cae57d22494842d335e64f6df32a/a2c9c88484d6917d56a67d9926db524e.png",
+        "https://new-s3.shelterluv.com/profile-pictures/6a2272c6444776aafe85a18653c27f49/c60d8f5f00e5c5c33b142b4ea1118d75.png",
+        "https://new-s3.shelterluv.com/profile-pictures/bd6749b1429d5ea7b90be8b3ff9e4983/4c2dc715b206d275cf24deeb64940161.png",
+        "https://new-s3.shelterluv.com/profile-pictures/9b563c61c216459911b5671c3fe472d6/9347adbca21606fed2f2a79b49e83ac5.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e559d9dcb4b1dcee37a900b9144f69d6/a7fed55c82d0aa9710e76d2ac1f22234.png",
+        "https://new-s3.shelterluv.com/profile-pictures/36a6cb7306f2fdf1824505db20b9e0f2/6ea82455dcf400f70029af6737a98281.png",
+        "https://new-s3.shelterluv.com/profile-pictures/915a24a86eb01837e7c8c4f234ea24b7/81f7e76b0feb12cc9e71c697e70acb8d.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e34bc90524463c3b17198b5813613859/df6ace7eabca86ec5c7cbf3115170b0c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/1b74ed6ec9ed1f94011e0f5dfd2bf698/1a6a389faf31c0e803e45c99a948b77a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/1ee70de3d5ce3538e6b2759ce787d0bc/d24c701cffc5505a4ee2618f023d88b5.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/4e33e00073f7840c452e97aa074671a0/6c5108531acc352d49d6cc33cc511cac.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/a4f749aa945150deb343b418d12aca54/75f0f42f743641b61c104dea59f94696.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Pug/Terrier",
+      "Color": "White/Cream",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Simba is a charming white Pug mix with a heart as big as his adorable round eyes! This sweet boy loves everyone he meets and has a gentle, affectionate personality that makes him impossible not to love.\n\nSimba enjoys cuddles, calm moments, and being close to his people. Whether he’s lounging beside you on the couch or following you around the house with his signature happy tail wag, he’s always ready to brighten your day.\n\nHe’s the perfect companion for someone looking for a loyal, loving friend who will happily fit right into your home and your heart.\n\nIf you’re looking for a sweet, snuggly pup who will shower you with love, Simba is your guy. Come meet him—you’ll fall in love instantly!",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "941000030326067",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1764717558"
+        }
+      ],
+      "LastIntakeUnixTime": "1764744792",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1773974112"
+    },
+    {
+      "ID": "146",
+      "Internal-ID": "212450399",
+      "Name": "Bowser",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Eva",
+        "LastName": "Idiarte",
+        "OutDateUnixTime": "1765860118",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "70",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1513324800,
+      "Age": 99,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/51914c2f66e1bbeaefbbbea3d72ab6a5/6d3180fe980438da88e4890b63a5fd6f.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/51914c2f66e1bbeaefbbbea3d72ab6a5/6d3180fe980438da88e4890b63a5fd6f.png",
+        "https://new-s3.shelterluv.com/profile-pictures/4e652d45398f3a4e1b02ca91b9fce780/e2194779c6038376c101a6aae5b44f8b.png",
+        "https://new-s3.shelterluv.com/profile-pictures/408f2db16c068f24a0242ed211c50fd9/b0027f4a2b23187d43e71ea43a28783b.png",
+        "https://new-s3.shelterluv.com/profile-pictures/d1c9e891b2d80d37675df30648fecbf5/7d67a07a54ef47e0189a5b009b3dec19.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ca33abf55b78769864388cb7a462f507/87707f1ab69cd91680c80db643bf9b40.png",
+        "https://new-s3.shelterluv.com/profile-pictures/8ac2050c1c29c0e517946d8b6ff4fb78/95bf92cce320edd9a917fde89cdc6d6b.png",
+        "https://new-s3.shelterluv.com/profile-pictures/d1b12e685b6ab7633a4976e12c6c791c/382689633e5bc73eef2db2247b18e0ec.png",
+        "https://new-s3.shelterluv.com/profile-pictures/79fdf71fd3262b3e142ffd978def5389/b7386f334516481a6374faa384e7fdc6.png",
+        "https://new-s3.shelterluv.com/profile-pictures/00035c92640328bc6c917e8816169e00/452ab7b0b9b465013c0dabeef6f531f4.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Bowser is an 8-year-old husky with a heart far bigger than the challenges he’s faced. Blind, gentle, and incredibly resilient, Bowser was heartbreakingly dumped by the family he trusted most—alongside his bonded sibling, Malice, a beautiful 5-year-old white German shepherd. Through it all, Bowser has remained calm, affectionate, and full of quiet strength.\n\nDespite being blind, Bowser navigates the world with impressive confidence, especially when Malice is by his side. He memorizes his surroundings quickly, follows familiar voices, and relies on his other senses to guide him. He loves soft beds, calm routines, and being near his people. Bowser is incredibly sweet and trusting, leaning in for affection and soaking up every gentle word and touch.\n\nMalice has been Bowser’s anchor and protector, helping him feel safe as they adjust to this new chapter together. She is loyal, attentive, and deeply bonded to her brother, and the two find comfort and confidence in one another. Because of this strong bond, Bowser and Malice are looking for a home together where they can continue to thrive side by side.\n\nBowser would do best in a loving, patient home that understands his blindness does not define him—it simply means he experiences the world a little differently. He doesn’t need pity; he needs kindness, stability, and someone willing to see how special he truly is.\n\nIf you have room in your heart and home for two incredible souls, Bowser and Malice are ready to show you what unconditional love really looks like.\n",
+      "PreviousIds": [
+        {
+          "IdValue": "A5740182",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Castaic Shelter",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020031731262",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1765832020"
+        }
+      ],
+      "LastIntakeUnixTime": "1765860118",
+      "Attributes": [
+        {
+          "Internal-ID": "569253",
+          "AttributeName": "Blind",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290747",
+          "AttributeName": "Couch potato",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290756",
+          "AttributeName": "Loyal",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290759",
+          "AttributeName": "Quiet",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1772598639"
+    },
+    {
+      "ID": "150",
+      "Internal-ID": "212465356",
+      "Name": "Max",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Kristina",
+        "LastName": "Mellen",
+        "OutDateUnixTime": "1768367661",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "54",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1702886400,
+      "Age": 27,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/42a690ae6323649da9a7a20687e7ca12/a26a81da05f02d710f21a8587efd7bd0.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/42a690ae6323649da9a7a20687e7ca12/a26a81da05f02d710f21a8587efd7bd0.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/4be4ce31bb47c086b1f6cb987f5688b6/129488233ba7aebcb20e16d57aff118b.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ad1fcaf783143b888722d59803532f74/568d19e01bbb568b28458d924359a779.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b59e2e346aadfcc6a998ac38def72f68/0c2aa6b6761580328971a24062494277.png",
+        "https://new-s3.shelterluv.com/profile-pictures/418cd434f3d3c7dc82975f5ec44c2dd9/9cecd66df928a5133a4fa87acfb5abfc.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Blue Black/White",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Max is a stunning 2-year-old Husky with soulful eyes and a heart that just wants to belong. He quickly became a shelter favorite thanks to his friendly personality, playful spirit, and affectionate nature.\n\nSadly, Max was dumped by his previous owners through no fault of his own. Despite that rough start, he hasn’t lost his trust in people and is eager for a fresh beginning with a family who will love him forever.\n\nMax is everything you’d expect from a young Husky—smart, energetic, and full of personality. He loves attention, enjoys getting out for walks and adventures, and would thrive with an active home that understands the Husky breed and can keep him mentally and physically engaged.\n\nHe’s ready to trade his kennel days for couch cuddles, daily exercise, and a family who won’t give up on him. If you’re looking for a loyal companion who will keep you smiling and moving, Max might just be your perfect match.",
+      "PreviousIds": [
+        {
+          "IdValue": "A5613667",
+          "IssuingShelter": "Palmdale Animal Care Center",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000015274011",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1734595200"
+        }
+      ],
+      "LastIntakeUnixTime": "1766105116",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1773928997"
+    },
+    {
+      "ID": "151",
+      "Internal-ID": "212479278",
+      "Name": "Junior",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Nick",
+        "LastName": "Argueta",
+        "OutDateUnixTime": "1770534393",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "50",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1703232000,
+      "Age": 27,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/0ebabcad954ff9cb87632befb9007418/10e63b8f031405e816f312f9b834af00.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/0ebabcad954ff9cb87632befb9007418/10e63b8f031405e816f312f9b834af00.png",
+        "https://new-s3.shelterluv.com/profile-pictures/c24ecd13ba18a434841b64340033fc73/6f821fb526cb4ce207536cfe761ac6ea.png",
+        "https://new-s3.shelterluv.com/profile-pictures/1a120a0a3e702078df80e59b1bd1db31/429910c9295e8c83c89c361ef9ad6687.png",
+        "https://new-s3.shelterluv.com/profile-pictures/9c102da110cf573011ffdb7df5df8e37/dd7dd9627b3bc6bbd9f83f1a8d9ce1fe.png",
+        "https://new-s3.shelterluv.com/profile-pictures/c6b240b1e8a3fbf51c422edbb3c656eb/8ec4619aff186a439b6393fce4858519.png",
+        "https://new-s3.shelterluv.com/profile-pictures/d27094366af2dc87a97d34c40d7c8d39/fb420965c7bccaaabc288a2e95074d9f.png"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, White German/Husky",
+      "Color": "Apricot",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Junior is a handsome cream-colored shepsky with a gentle soul and just the right sprinkle of puppy charm. He may still be young, but he’s already showing what a well-mannered, thoughtful boy he’s going to be.\n\nJunior is crate trained and potty trained, and he does great with his routine — happily heading outside to do his business and then returning calmly to his crate. He’s still getting the hang of leash walking, but he’s improving and taking it all in stride. Outside, Junior likes to do his own thing, exploring at his own pace with curiosity and confidence.\n\nAt home, he’s the perfect balance of playful and relaxed. Junior loves to play and soak up affection, but he also knows when it’s time to wind down. When things are calm, you’ll find him happily chewing on a bone or entertaining himself with his toys. He has a wonderful ability to respect boundaries and settle himself, which makes him a joy to have around.\n\nJunior would thrive in a home that’s ready to guide a young dog as he continues to grow, learn, and blossom. With his loving nature, good habits, and sweet personality, he’s ready to be someone’s loyal companion and best friend.",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "981020063110046",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1767209399"
+        }
+      ],
+      "LastIntakeUnixTime": "1766463796",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1771353405"
+    },
+    {
+      "ID": "152",
+      "Internal-ID": "212479281",
+      "Name": "Athena",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Nick",
+        "LastName": "Argueta",
+        "OutDateUnixTime": "1770534317",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "40",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1671696000,
+      "Age": 39,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/86f18b6952f232c56ce858d1c5abbaf0/e01e6e9dfe94386121a9fd6e4b5e4c65.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/86f18b6952f232c56ce858d1c5abbaf0/e01e6e9dfe94386121a9fd6e4b5e4c65.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/99046d1819b5575c1e927977b6041a71/bd42c1ccf2508dff05c73eced306cd63.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a52470bed5e842b63f815ff80edb91f6/6fc5bd4479a53748d6df81b3ab9ea764.png",
+        "https://new-s3.shelterluv.com/profile-pictures/1ea24ae454f85f1ba41504369e8a2a75/37b38f11eebe3b932521216ef30f265c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/f150366218c48222730683bcdadd03c3/160b9fc00cbb5079999bc4baf8d8ad4b.png",
+        "https://new-s3.shelterluv.com/profile-pictures/975ea4d9dfc590b4d73f15f3d37534e4/f929fca36528372c69aba342791fe267.png",
+        "https://new-s3.shelterluv.com/profile-pictures/269a8293257055ba4ab15304c42cf708/61d96222ffe757f6d26d4e1bb7f499aa.png",
+        "https://new-s3.shelterluv.com/profile-pictures/53c8d6227ff7a2b35a7fdea1ce501070/a8bfea7ca3bae0a97aa584066f150adf.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/760cf79c9d4f2e4db133ba1702d201b2/b7f09f5e7cfd0aac450bcd732579aa8c.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/ef8670ee49bc8515cabdff38c6583b8d/f9276a50eaf4eb4f0bca4537def9024a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6e99cb3a8bee3e763a9ddb035e125a1b/8b4aa05a5d937fbf697f736edeb2ed95.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German/Husky, Siberian",
+      "Color": "Brown/Black",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Athena is a beautiful brown-and-black shepsky with a petite shepherd build and the sweetest, most gentle heart. From the moment she arrived, she showed just how loving and soft-natured she is, warming up quickly and happily leaning into affection and companionship.\n\nAthena is wonderfully well-mannered and eager to please. She already knows sit, paw, and up, and she’s both crate trained and potty trained. She does an excellent job going outside to take care of her business and then calmly returning to her crate, making her routine easy and stress-free.\n\nWhen it comes to activity, Athena is full of joyful energy and absolutely loves to play. She could happily spend her days running, romping, and engaging with her people or canine friends. At the same time, she has a great off switch — when it’s time to relax, she settles beautifully, chewing on her bones or entertaining herself with toys.\n\nAthena is also fantastic on leash and truly enjoys her evening walks, whether she’s strolling with the pack or heading out one-on-one for some quality time. She respects boundaries well, is incredibly sweet and submissive in nature, and brings a calm, loving presence to the home.\n\nAthena would thrive in a home that’s ready to enjoy her playful spirit while appreciating her gentle, well-balanced temperament. She’s the kind of dog who fits seamlessly into family life and is ready to give her whole heart to the people lucky enough to call her theirs.",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "981020063120609",
+          "Issuer": "PetNet",
+          "ImplantUnixTime": "1767208884"
+        }
+      ],
+      "LastIntakeUnixTime": "1766463947",
+      "Attributes": [
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290744",
+          "AttributeName": "Athletic",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290759",
+          "AttributeName": "Quiet",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "288191",
+          "AttributeName": "Small Dog Friendly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290760",
+          "AttributeName": "Smart",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290756",
+          "AttributeName": "Loyal",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1773685902"
+    },
+    {
+      "ID": "160",
+      "Internal-ID": "212737671",
+      "Name": "Adam",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Gisel",
+        "LastName": "Diaz",
+        "OutDateUnixTime": "1768592580",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "56",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1734422400,
+      "Age": 15,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/e74cb75987612b60cdc0702ede2f18af/bd2313866983e63dcf3097bb072a6fd8.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/e74cb75987612b60cdc0702ede2f18af/bd2313866983e63dcf3097bb072a6fd8.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/fe33a008d53806f32430e0c205f6d13d/ddd10a488e5cf1a27ba529def2cc2f5f.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/afd5aaa19554d947cd0bad1457cfb253/a9d5ddfd92d525c4ca9fc1fc94f3d3a7.png",
+        "https://new-s3.shelterluv.com/profile-pictures/f5c07962099198245884b4d6f6220ba2/486b3778b0729b7e384549fbf7821b6f.png",
+        "https://new-s3.shelterluv.com/profile-pictures/db54a292023c58983d8b9f23a20173f9/10ef0f059aa17b202e8398addd7fccf9.png",
+        "https://new-s3.shelterluv.com/profile-pictures/6b1a05f40ec318c3e1aaba5981879dc6/0e7f37b178856d784d1d02d23e02abed.png",
+        "https://new-s3.shelterluv.com/profile-pictures/1ab5f72108317d80b39f63b8afd5e6dd/457b4a68489b126a828b2bd02402d781.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/4fce381dc2f6bd288f4ee6fcb40cbac6/fe56ec291cf4b1d50c7bba4e98945109.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/8c1b3cc209115a1236b572bcb5760c17/ca453fa83f9f3dc517e6300c06a87f01.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "White/Grey",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Adam is a stunning gray and white Husky who was recently rescued from the Palmdale Animal Shelter, and he is already winning hearts with his good looks and growing personality. With his bright expressive eyes, fluffy coat, and undeniably handsome face, Adam is the kind of dog who makes you stop scrolling and smile.\n\nSince settling into rescue, Adam has really come out of his shell. He is a vocal pup who loves being outdoors and enjoys taking in the world around him. He has that classic Husky spirit and curiosity and would thrive in a home that appreciates his talkative nature and adventurous side.\n\nAdam is very affectionate and is truly a Velcro pup who loves being close to his people. He enjoys cozy spots and is happiest curled up on couches, beds, or dog beds once playtime is over. He is playful, social, and dog friendly, making him a great companion for another friendly dog.\n\nAdam can be a bit of an escape artist and does not enjoy being crated, so he will do best in a home that can provide supervision, secure outdoor spaces, and positive structure. With the right environment, exercise, and enrichment, Adam will shine.\n\nAdam is ready to leave shelter life behind and start fresh with a family who will love him for who he is. If you are looking for a loyal, affectionate, fun loving Husky with a big personality and an even bigger heart, Adam may be your perfect match. Come meet him and see just how special he truly is.",
+      "PreviousIds": [
+        {
+          "IdValue": "A5746566",
+          "IssuingShelter": "Palmdale Animal Care Center",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000019502342",
+          "Issuer": "AKC Reunite",
+          "ImplantUnixTime": "1768689014"
+        }
+      ],
+      "LastIntakeUnixTime": "1768592580",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1772503714"
+    },
+    {
+      "ID": "163",
+      "Internal-ID": "212741105",
+      "Name": "Archie",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Edward",
+        "LastName": "Hatley",
+        "OutDateUnixTime": "1771215600",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "84",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1579334400,
+      "Age": 74,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/dd1e48870911bebcbcfb98a2ee2da3f8/d8f63a4ec7e4034d8bcf9883151286a7.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/dd1e48870911bebcbcfb98a2ee2da3f8/d8f63a4ec7e4034d8bcf9883151286a7.png",
+        "https://new-s3.shelterluv.com/profile-pictures/c953bc2cd508dd2c35be33d36be5ccfe/a003b935701669fc1d95bfe420958de2.png",
+        "https://new-s3.shelterluv.com/profile-pictures/6349659f610f7802c20beb7f483b701e/a0264cf82f37eb542c521b57c3125092.png",
+        "https://new-s3.shelterluv.com/profile-pictures/95cd100d79748212f1593ae75f6fea06/727f8291832bf104b9de66a6e46d30e8.png"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German",
+      "Color": "Fawn/Black",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Archie is a handsome German Shepherd whose journey hasn’t been easy. Like his friend Hazel, Archie was pulled from a shelter with the promise of safety—only to be abandoned when the same rescue failed to follow through. Through no fault of his own, Archie was left in limbo until Love’s Legacy Rescue stepped in to make sure he wasn’t forgotten.\n\nArchie is everything people love about German Shepherds: smart, loyal, and eager to bond with his people. Despite the uncertainty he’s experienced, he remains resilient and ready to trust again. With structure, patience, and love, Archie has all the potential to become a deeply devoted companion and lifelong best friend.\n\nNow safe and supported, Archie is looking for a forever home that will give him the stability he’s been denied and the future he deserves. If you believe in second chances and are ready for a loyal companion, Archie is waiting for you through Love’s Legacy Rescue.",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "941010002936245",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1767600000"
+        }
+      ],
+      "LastIntakeUnixTime": "1768787522",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1771788388"
+    },
+    {
+      "ID": "169",
+      "Internal-ID": "212846237",
+      "Name": "Sassy",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Evelyn",
+        "LastName": "Wang",
+        "OutDateUnixTime": "1769044267",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "42.1",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1643443200,
+      "Age": 50,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/2d2f2a8747bbd1a24d738c5a45d67e02/763678e5c1df698fdc322617bf217690.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/2d2f2a8747bbd1a24d738c5a45d67e02/763678e5c1df698fdc322617bf217690.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/bac0097ceaabca7d77d50df2b66c9738/8534091691ca75f26700c3ef1004a236.png",
+        "https://new-s3.shelterluv.com/profile-pictures/8946e5d1852dd76267ed589a8012c46d/e4e8776f29d46ad2e9cb88d0efe820ab.png",
+        "https://new-s3.shelterluv.com/profile-pictures/820c6405203227c283c90f92d7507371/e9aea0411f1973c5a15f64da5ebe13d4.png",
+        "https://new-s3.shelterluv.com/profile-pictures/7618d495a9199cc771c8dcd1475a5988/86de737a7c43b2bae5b4f3efe4b46ff8.png",
+        "https://new-s3.shelterluv.com/profile-pictures/5fe561ec704272b144ede85a5c73a03b/7d11034ada96ccc4ee78b8fad1606596.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a88aeca008076beb2f4032f332a74821/a6ee560f0c90786cda88dde6cd1c8d2e.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b5d452fe072cee20bb2c097111f4629f/86078d123588d10b2a094b7abe47fce8.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b10c3fd85eb45fa1bad212efb3898787/c34e8d1d72744aad4e80213024817833.png",
+        "https://new-s3.shelterluv.com/profile-pictures/f9ec0c7769259ab414d28d2184455673/3f0f06f216857d4dd1990bb516021e93.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/1a38e99bdba987e5b6862542f49413b1/09c1b79af5a9418ad024dbf4778d2a3b.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/a8d2fe65981cf1def91d8fa6236ad558/3e80b1c3eba409247a62863b28dba107.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Blue Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Sassy (formerly Blueberry Muffin) 🫐🐺\n\nSassy is a gorgeous black and white Husky with a big personality and an even bigger heart. Originally known at the shelter as Blueberry Muffin, this sweet girl has since embraced her new name and it fits her perfectly. With her striking coat and expressive face, Sassy is impossible to ignore.\n\nSassy has that classic Husky charm: playful, curious, and full of life. She is ready to trade shelter days for a home where she can run, explore, and soak up love from her people. Whether she is showing off her personality or leaning in for affection, Sassy is sure to keep life fun and full of smiles.\n\nNow safe and ready for her next chapter, Sassy is looking for a forever family who will appreciate her beauty, spirit, and lovable Husky attitude. If you are searching for a stunning companion with a touch of sass and a whole lot of love, Sassy might just be your girl. 🖤🤍🐾",
+      "PreviousIds": [
+        {
+          "IdValue": "804459",
+          "IssuingShelter": "Animal Friends of the Valleys",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "985113007047142",
+          "Issuer": "Home Again",
+          "ImplantUnixTime": "1768377600"
+        }
+      ],
+      "LastIntakeUnixTime": "1769044267",
+      "Attributes": [
+        {
+          "Internal-ID": "267824",
+          "AttributeName": "Good with Cats",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267842",
+          "AttributeName": "Good with Kids",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1773192363"
+    },
+    {
+      "ID": "172",
+      "Internal-ID": "212864623",
+      "Name": "Betsy",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Kasso ",
+        "LastName": "Harvey ",
+        "OutDateUnixTime": "1772315415",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "37",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1674720000,
+      "Age": 38,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/0609823d8b81fbd0e5ce52e88c1dd679/2c1da891de653bd4c1cd4da6801a5629.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/0609823d8b81fbd0e5ce52e88c1dd679/2c1da891de653bd4c1cd4da6801a5629.png",
+        "https://new-s3.shelterluv.com/profile-pictures/99f8ce46b3257cd9b3c343c7befb53e1/b2e8cd3475091ca266fd676fdce5bf85.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b57e0899933c2cb4c718a0a0a6394999/b4ed8effa74388dbb84cd14a1ef7be43.png",
+        "https://new-s3.shelterluv.com/profile-pictures/d22bf16c455175a1e3ef3f995f903bc5/d92c935b676fe74a971593e06f9a5f1c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/77f4f6d4c84d63f888538802676fb8ec/6a4561c7686a3d53ab54311b1f1eaa59.png",
+        "https://new-s3.shelterluv.com/profile-pictures/290a37f00a7012ac946fe40f911d80b8/48e03f1010261753cb07cb783ebf7af1.png"
+      ],
+      "Videos": [],
+      "Breed": "Bulldog, English",
+      "Color": "Brindle/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Betsy is a gentle bulldog mix who is just beginning her journey toward the happy, healthy life she deserves. She came to us very underweight and clearly in need of care, but even after everything she has been through, her sweet and loving nature shines through.\n\nIt appears that Betsy recently had puppies and was living in the car of a neighbor of the person who found her before she was brought to safety. Despite this difficult start, Betsy has shown nothing but kindness and quiet resilience. She is currently in recovery, gaining weight, and learning what it means to be safe, warm, and cared for.\n\nBetsy has a calm, tender personality and seems grateful for every gentle word and kind touch. She is still building her strength, but her affectionate spirit is already very clear. With continued care, patience, and love, she will make a deeply loyal and devoted companion.\n\nBetsy is looking for a home that will give her the time and understanding she needs as she continues to heal. In return, she will offer endless gratitude, gentle affection, and a heart full of love. If you are ready to give a deserving dog a second chance, Betsy would be so grateful to meet you.",
+      "PreviousIds": [],
+      "Microchips": [
+        {
+          "Id": "985113011973245",
+          "Issuer": "Home Again",
+          "ImplantUnixTime": "1769516635"
+        }
+      ],
+      "LastIntakeUnixTime": "1769497220",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1773974581"
+    },
+    {
+      "ID": "177",
+      "Internal-ID": "212953958",
+      "Name": "Johnson",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Nicky",
+        "LastName": "Mirahmadi",
+        "OutDateUnixTime": "1770785940",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "43",
+      "Size": "Medium (25-59)",
+      "Altered": "No",
+      "DOBUnixTime": 1676016000,
+      "Age": 37,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/67ebc6a5021395d6367cf1455a0b27ed/7b5003b70b3937c2c7212e692f7cfad8.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/67ebc6a5021395d6367cf1455a0b27ed/7b5003b70b3937c2c7212e692f7cfad8.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/7e97e8e2a2794ea9c0c85bf1178e8776/4f3a7fa8704cef0d64aafc8f59c3844e.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/0bbfd9b1b1a4373da75c3ad8d29dc972/524d202fe2729b8794bdf53366aff5d6.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/9fb169008164a29ab9450cdfbc6e80bc/38b8bbd006327f798348b7caecadf04f.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/fd6c0b29a1dd8a5175a2c9534b57e9ff/2ff61c1c5550fbc839d9c4335b9feb51.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/445f561715e084a29f8210a408e042ca/7b3d8dbd3e23fcfe9c2f2a4e4f2b45d8.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e5bd34e32026a8c1256f41df32ed8011/651d49f9011843e10e862cab03cbec8a.png",
+        "https://new-s3.shelterluv.com/profile-pictures/4ae80e234d5ba22c5d34aec5aac0a219/b0bb1ae23cc566c09ef8fbec39962c0a.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "If you’ve ever watched a Disney movie and thought, “I need that adorable animated husky in my life,”—well, here he is. Meet Johnson.\n\nWith his sparkling eyes, perfectly fluffy coat, and that expressive “I have something important to say” husky face, Johnson looks like he trotted straight out of an animated film. He’s got the charm, the drama, and yes… the vocals to match.\n\nJohnson is as sweet as he is handsome. He loves being around his people and will happily follow you from room to room like your loyal (and slightly talkative) sidekick. Whether he’s zooming around the yard, posing for his next close-up, or leaning into you for pets, Johnson brings joy wherever he goes.\n\nTrue to his husky roots, he’s playful, smart, and full of personality. He would thrive with an active family who appreciates adventure, laughter, and maybe a little bit of husky commentary. Long walks, hikes, playtime, and mental stimulation will keep this prince happy and shining.\n\nIf you’re ready for a best friend who turns heads, steals hearts, and makes every day feel a little more magical, Johnson is ready to be your happily ever after.\n\nApply to meet Johnson today — your Disney dream dog is waiting. ",
+      "PreviousIds": [
+        {
+          "IdValue": "A5747191",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Baldwin Park",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000019949268",
+          "Issuer": "AKC Reunite",
+          "ImplantUnixTime": "1770278400"
+        }
+      ],
+      "LastIntakeUnixTime": "1770784186",
+      "Attributes": [
+        {
+          "Internal-ID": "290746",
+          "AttributeName": "Brave",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267833",
+          "AttributeName": "Good with Dogs",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267842",
+          "AttributeName": "Good with Kids",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290760",
+          "AttributeName": "Smart",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775106321"
+    },
+    {
+      "ID": "178",
+      "Internal-ID": "212953979",
+      "Name": "Gandolf",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Nicky",
+        "LastName": "Mirahmadi",
+        "OutDateUnixTime": "1770785940",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "42",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1707552000,
+      "Age": 25,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/2b749ded7a7f0a111840ce021c543c3e/d25d9e3b3405d1e91f0de000d01eb742.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/2b749ded7a7f0a111840ce021c543c3e/d25d9e3b3405d1e91f0de000d01eb742.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/2a3f9e6982bb04ebc9aac4c8c7025802/1663a1cd54fa5fa797137cb5bfcc621d.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/2912133fd0b12f7d2f8b12fdabaa9431/016a090c567fe7037db1ee7a56dda83c.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/126ff439d2a4cd1cee4c0eef8a07e1f2/6d68da06592499133fde9a84a08f31a9.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Brown/Cream",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "A wizard is never late… and Gandolf has arrived precisely when your heart needed him.\n\nThis stunning little husky is pure enchantment — a warm blend of brown and fiery orange with soft cream highlights, topped off with the most mesmerizing ice-blue eyes you’ve ever seen. He looks like autumn and winter teamed up to create something truly special.\n\nAnd yes — Gandolf is a proud three-legged pup.\n\nBut don’t let that fool you. This brave little wizard doesn’t see himself as missing anything. He runs, plays, explores, and lives life with joyful determination. Three legs just mean he’s 25% more legendary. 💫\n\nGandolf is curious, affectionate, and full of husky personality. He loves adventures (at his own pace), investigating his kingdom (aka your backyard), and then curling up near his people after a day of quests. He’s smart, expressive, and may bless you with the occasional husky “spell” (you know… those adorable dramatic conversations).\n\nHe would thrive in a loving home that appreciates his resilient spirit and is ready to give him moderate exercise, mental enrichment, and lots of encouragement. Tripod dogs adapt beautifully — and Gandolf is proof that magic comes in wonderfully unique forms.\n\nIf you’re looking for a companion who is resilient, breathtakingly beautiful, and full of heart, Gandolf is ready to be your most loyal sidekick.\n\nThree legs. Two blue eyes. One unforgettable best friend. 🐺✨",
+      "PreviousIds": [
+        {
+          "IdValue": "A5745908",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Baldwin Park",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "941000028091258",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1768896000"
+        }
+      ],
+      "LastIntakeUnixTime": "1770785269",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1772502534"
+    },
+    {
+      "ID": "180",
+      "Internal-ID": "213029834",
+      "Name": "Rufus",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Lesley",
+        "LastName": "Pearce",
+        "OutDateUnixTime": "1772315282",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "60",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1550908800,
+      "Age": 85,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/2ba58acba2706991359c613f76fc597d/45b77370adf9a97662d5463df1d44aeb.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/2ba58acba2706991359c613f76fc597d/45b77370adf9a97662d5463df1d44aeb.png",
+        "https://new-s3.shelterluv.com/profile-pictures/8f5735f8274ee6b43da3e719959b7b3a/dd4581efc4ee69578e8966dadcada5c8.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/263eef0ff913bce3ef52fa4237923712/0eca6faedda1e870891565bc0d528a85.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/4b4da5d0be5c120b5708e8c77acb0450/58bc30f17985ec830f3b5f3732967fe9.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a839ff881c2fea75536bec4a7330ef77/68a90b15fd6e9713093798d927e92a68.png",
+        "https://new-s3.shelterluv.com/profile-pictures/422bb65114f943834b68b6aacb166afe/bb412d71879da871f97010b6ba44b1e8.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Malamute, Alaskan/Husky, Siberian",
+      "Color": "Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Rufus 🤍\n\nRufus is a stunning Husky/Malamute mix with a heart as big as his fluffy coat. He was found abandoned at the downtown Stockton transit center near Sutter and Weber, waiting patiently and hoping someone would come back for him. Sadly, no one did. Now, this sweet boy is looking for the forever family he deserves.\n\nDespite everything he’s been through, Rufus is incredibly friendly, gentle, and calm. He has been loved on by multiple people and has soaked up every bit of attention. He’s affectionate, well-mannered, and does a wonderful job following basic commands. Rufus has an easygoing nature and a warm, trusting personality that makes everyone fall in love with him.\n\nHe enjoys being around people, walks nicely, and seems happiest just being close to his humans. Rufus would make a wonderful companion for someone looking for a loyal, loving, and steady presence in their life.\n\nRufus is ready to leave his past behind and start fresh with a family who will never give up on him. If you’re looking for a sweet, devoted best friend, Rufus may be the perfect match for you.\n\nApply to adopt Rufus today and give this deserving boy the forever home he’s been waiting for. 🐾🤍",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1771886523",
+      "Attributes": [
+        {
+          "Internal-ID": "290746",
+          "AttributeName": "Brave",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "575643",
+          "AttributeName": "Energetic",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1774567915"
+    },
+    {
+      "ID": "182",
+      "Internal-ID": "213073723",
+      "Name": "Cash",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Wendy",
+        "LastName": "Bellissimo",
+        "OutDateUnixTime": "1771982762",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "56",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1708761600,
+      "Age": 25,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/e39a015833bd94e5648c65e40e9558ba/a6908f655bc2c373c0cd4c6aba1e3ec3.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/e39a015833bd94e5648c65e40e9558ba/a6908f655bc2c373c0cd4c6aba1e3ec3.png",
+        "https://new-s3.shelterluv.com/profile-pictures/7ded7dfea679660cfcd8366e07f7c020/df578cd97e26a6b022af28af9654e778.png",
+        "https://new-s3.shelterluv.com/profile-pictures/c98ecdafae54b7ebf300976008da2c07/1f01815f52314de5ff7b2400d890cf0e.png",
+        "https://new-s3.shelterluv.com/profile-pictures/aafd8e81095ea5f42d618989607cefe0/51dda5a582a838e08fbb9c38e070b49b.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian/Malamute, Alaskan",
+      "Color": "Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Cash formerly Oswaldo 🐾\n\nCash is a 2 year old Husky mix with a big personality and an even bigger heart. This handsome guy has the striking looks and playful spirit you would expect from a Husky, paired with a sweet and affectionate side that makes him an instant favorite.\n\nCash is in the prime of his life energetic, curious, and always ready for an adventure. Whether it is long walks, hikes, playtime in the yard, or learning new tricks, he is happiest when he is active and engaged. He is a smart boy as most Huskies are and would thrive in a home that can continue providing structure, enrichment, and plenty of exercise.\n\nDespite his adventurous streak, Cash loves his people. After a good day of activity, he is more than happy to settle down and soak up attention. Belly rubs Yes please. Being part of the action Absolutely.\n\nCash would do best with an adopter who understands the Husky breed or is ready to embrace an active, intelligent dog who enjoys both physical and mental stimulation. With the right home, he is going to make an incredibly loyal and fun loving companion.\n\nIf you are looking for a best friend who will keep life exciting and fill your days with love and maybe a little Husky sass, Cash is your guy.\n\nCome meet him. He is ready to start his next adventure with you 🐶💙",
+      "PreviousIds": [
+        {
+          "IdValue": "26-07022",
+          "IssuingShelter": "SEAACA (Southeast Area Animal Control Authority)",
+          "Type": null
+        }
+      ],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1771982762",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1772689695"
+    },
+    {
+      "ID": "186",
+      "Internal-ID": "213166670",
+      "Name": "Winnie",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Michelle",
+        "LastName": "Kandler",
+        "OutDateUnixTime": "1773201500",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "60",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1552287600,
+      "Age": 84,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/affae46e20f31575fc3c3637f3d7012d/22e7a302df685e5c80e4a8c22515e545.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/affae46e20f31575fc3c3637f3d7012d/22e7a302df685e5c80e4a8c22515e545.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/b5c78c051015efe8e5999dcf6b1524be/0863a3c74c3794054b2c23c7b872f4b3.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/80586aad81f39e6d78b594805da50978/fe90a358254e286c464ac465134108da.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/c0f3ba563a42a9d0a949db1b272cba3e/29ad04e028d422f07a3b2775c66a3979.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/cd81cb72a36f863eead896324e3341f5/f5d72660d5b26e5992bd290f1484f80c.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/15107f5fb061ad8709d9028235c9e118/0d4ac833c4d81a0aae9f45e7356c7d1a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/5b5fea03cfeda2f7a7446f4fd832bbe5/9091d22824108ffc1a094e04290f988c.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Bulldog, English",
+      "Color": "White/Red/Mahogany",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "",
+      "PreviousIds": [
+        {
+          "IdValue": "A5756135",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Baldwin Park",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "911002001480403",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1771142400"
+        }
+      ],
+      "LastIntakeUnixTime": "1773201500",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775176198"
+    },
+    {
+      "ID": "189",
+      "Internal-ID": "213229644",
+      "Name": "Moose",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Scott",
+        "LastName": "Filley",
+        "OutDateUnixTime": "1774453020",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "85",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1755500400,
+      "Age": 7,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/721477378905cd0b86ffef1d48f189fc/bc9295ee3bc1975329007bb51cae838c.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/721477378905cd0b86ffef1d48f189fc/bc9295ee3bc1975329007bb51cae838c.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/32e94286cac5dddfb0bad2d039db1b73/3179b8ffe05006dc1324746c97c675a9.JPG",
+        "https://new-s3.shelterluv.com/profile-pictures/8fb8444ceb80801e2cf64de07e48121a/d59969727225b503f01f8c136a47054e.JPG",
+        "https://new-s3.shelterluv.com/profile-pictures/ac5532fcd57de90dccd55653b4213a78/72de422bb0132bc1ad399d565f82a3e3.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/fc4d7b9479f17174d2a59f04b5b75d42/389d0e5eca6bb5bbba889dcc6aff9bce.JPEG",
+        "https://new-s3.shelterluv.com/profile-pictures/9f06363daffef69e14ee98bc429d10f4/e60cc437c33ec9c686627672c0959336.JPEG"
+      ],
+      "Videos": [],
+      "Breed": "Pyrenees, Great",
+      "Color": "White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Moose 🐾🤍\n\nMoose is a 10-month-old Great Pyrenees puppy with a heart as big as his fluffy paws—and it shows in everything he does. Once found as a stray, this sweet boy has held onto his loving, hopeful spirit and is now ready to find the forever family he’s been waiting for.\n\nMoose is the perfect blend of playful puppy and gentle companion. He has a goofy, joyful personality and loves playing with toys—especially balls! Even better, he’s happy to share them with his dog friends (a rare and wonderful trait). He’s currently living with a Golden Retriever buddy, and the two have started playing together beautifully.\n\nDespite having to wear a cone most of the time, Moose doesn’t let it dampen his spirit. If a toy gets stuck or lost under his cone, he simply moves on with a happy, easygoing attitude—this boy truly takes life in stride.\n\nMoose absolutely adores people. He greets everyone with warmth and enthusiasm and can’t get enough pets, hugs, and affection. At home, he’s a sweet, sensitive soul who loves to stay close to his person, quietly asking to go outside or coming over for reassurance and love. His soft, clean coat makes all those cuddle sessions even better.\n\nHe’s making great progress with his manners—he’s learning not to jump, is listening better every day, and is especially responsive indoors. He’s still working on his recall outside when there are exciting things to explore, but he’s a smart, focused pup who will thrive with continued guidance.\n\nOne of Moose’s standout qualities is how wonderful he is on leash. He walks calmly without pulling and keeps his attention on his person, making him a joy to take out and about.\n\nMoose does have a little insecurity in the car and would prefer to be as close to his people as possible (ideally in the front seat!), so he’ll need some continued training and reassurance there.\n\nThis loving, loyal boy would do best in a home with space to roam, a securely fenced yard, and a family who understands and appreciates large guardian breeds. With patience, structure, and love, Moose will grow into an incredibly devoted companion.\n\n✨ If you’re looking for a sweet, sensitive, slightly goofy best friend who will stick by your side through everything, Moose is ready to meet you—and he just might be your perfect match.",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1773898138",
+      "Attributes": [
+        {
+          "Internal-ID": "290749",
+          "AttributeName": "Dignified",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290748",
+          "AttributeName": "Cuddly",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290753",
+          "AttributeName": "Funny",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290750",
+          "AttributeName": "Goofy",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775162851"
+    },
+    {
+      "ID": "195",
+      "Internal-ID": "213255784",
+      "Name": "Javier",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Cassie",
+        "LastName": "Morales",
+        "OutDateUnixTime": "1775158055",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "41",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1742713200,
+      "Age": 12,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/f922df75e1de04e179fdcdd215382e2d/81bc3a7498c26b81bd8a44c677c8ccde.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/f922df75e1de04e179fdcdd215382e2d/81bc3a7498c26b81bd8a44c677c8ccde.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/a2a2c921558a97b95cdf401e0768db8b/f7af1e3ec660574f89ddbd96fe3784c6.png",
+        "https://new-s3.shelterluv.com/profile-pictures/45ce3aa4ed7bac4f30c8b1cb2d8b7ec3/476ec48a70f46e069ffe6b39ff360222.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, Australian",
+      "Color": "Beige/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Javier is a stunning cream Australian Shepherd with soft, soulful eyes that seem to ask the same question every day: “When is it my turn?”\n\nHe was the last member of his family left behind at the shelter — watching one by one as his siblings found homes and he stayed behind. Despite the confusion and heartbreak he must have felt, Javier has remained incredibly gentle, hopeful, and loving toward everyone he meets.\n\nThis sweet boy has the classic intelligence and loyalty Aussies are known for. He’s attentive, eager to connect, and happiest when he’s near his people. Javier would thrive in a home that can give him guidance, patience, and the love he’s been waiting so patiently for. Whether it’s learning new tricks, going on adventures, or simply curling up at your feet at the end of the day, Javier is ready to be someone’s devoted companion.\n\nHe is still young at heart and will benefit from continued structure, enrichment, and exercise — but most of all, he just needs someone who will choose him.\n\n💛 Javier has already waited longer than he should have. Now he’s ready to leave the shelter behind and start the life he deserves — one filled with security, affection, and belonging.\n\nIf you’re looking for a loyal best friend with a gentle spirit and a beautiful soul, Javier is waiting to meet you. 🐾",
+      "PreviousIds": [
+        {
+          "IdValue": "A5760287",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Lancaster",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000019937447",
+          "Issuer": "AKC Reunite",
+          "ImplantUnixTime": "1773990000"
+        }
+      ],
+      "LastIntakeUnixTime": "1774327810",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775162479"
+    },
+    {
+      "ID": "196",
+      "Internal-ID": "213345991",
+      "Name": "Jack skeling ",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Dara",
+        "LastName": "Buggay",
+        "OutDateUnixTime": "1774646176",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "53.5",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1742972400,
+      "Age": 12,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/06a358e099cad8cf1c55646b5e74917b/1f074f49f0faebab01691b7917ecb578.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/06a358e099cad8cf1c55646b5e74917b/1f074f49f0faebab01691b7917ecb578.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/5d15481e495437f2be60eadd907b1363/161ad5bd0e32ba4d69dc3ce723801b5c.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/ebbeb055f0605cf912d32f07e9b8c151/f114598e35b265c0c62dd3d363b1f247.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/8eb1802de21722a4016d60e2aeac2277/06d394d07d4cb402c3eb840f9e79cff3.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/b65c2705ab080021fe276bd8f610b9cf/4cfbf7e15034ecb687855ccceb094891.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/ec4b3821769f9872a5f7fbaebfb947ed/df053696e95c85d10d7de8ea2c22426f.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Samoyed/Husky, Siberian",
+      "Color": "White/Black",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 36936,
+        "Name": "Special Adoption Fee",
+        "Price": 500,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "",
+      "PreviousIds": [
+        {
+          "IdValue": "A839195",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "941000029491562",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1774422000"
+        }
+      ],
+      "LastIntakeUnixTime": "1774592805",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775089507"
+    },
+    {
+      "ID": "197",
+      "Internal-ID": "213351032",
+      "Name": "Bart",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Becky",
+        "LastName": "Seid",
+        "OutDateUnixTime": "1775104554",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "45",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1648364400,
+      "Age": 48,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/314d8dc032d7e6924e12927d45cc6cde/183bd2ad169a769fd889ab823ececcfc.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/314d8dc032d7e6924e12927d45cc6cde/183bd2ad169a769fd889ab823ececcfc.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/9fc9466af3a50c0f6ffef9f08f037312/bd8cd8e4f7be3b74d36e964e1143c8dc.png",
+        "https://new-s3.shelterluv.com/profile-pictures/9da4169487da0957611e43796f5e8ce4/9575a0e7d6013a294f081a439b5d7f3e.png"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian/Husky, Alaskan",
+      "Color": "Black/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "If you’ve ever wondered what it looks like when a snowstorm comes to life… meet Bart. This stunning black-and-white Husky has a coat that looks like it was painted by a blizzard itself — bold, dramatic, and absolutely unforgettable.\n\nBut Bart is more than just his striking looks. Beneath that icy, wolf-like exterior is a playful, spirited boy who’s ready to find his person. He’s got that classic Husky personality — curious, expressive, and just the right amount of mischievous to keep life interesting. Whether he’s trotting proudly by your side or flashing those bright, intelligent eyes your way, Bart has a way of making every moment feel a little more alive.\n\nHe’s dreaming of a home that will embrace both his beauty and his big personality — someone who will give him the exercise, adventure, and love he deserves. In return, Bart will bring excitement, companionship, and a whole lot of “wow, your dog is gorgeous” wherever you go.\n\nIf you’re ready for a dog who looks like a winter storm and loves like a loyal best friend, Bart is waiting to sweep into your life",
+      "PreviousIds": [
+        {
+          "IdValue": "A5762304",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Lancaster",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000019970793",
+          "Issuer": "AKC Reunite",
+          "ImplantUnixTime": "1774335600"
+        }
+      ],
+      "LastIntakeUnixTime": "1774656187",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775104564"
+    },
+    {
+      "ID": "198",
+      "Internal-ID": "213351063",
+      "Name": "Romance",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Melissa",
+        "LastName": "Bravo",
+        "OutDateUnixTime": "1774656958",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "22",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1760252400,
+      "Age": 5,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/564f24f176b0166deb923f3914e458d4/45a48449597252563fbae89b4fb24b03.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/564f24f176b0166deb923f3914e458d4/45a48449597252563fbae89b4fb24b03.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/78eac4aff45103e8eb5699c3d45e36ac/280b4322e99e371b574256fb11670fd7.png"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German/American Blue Heeler",
+      "Color": "Fawn/Black",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 36936,
+        "Name": "Special Adoption Fee",
+        "Price": 500,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "True to his name, Romance is all about stealing hearts. This adorable little pup was found as a stray alongside his mom and littermates, sticking close together and looking out for one another. Despite his rough start, Romance has nothing but love to give — his sweet, gentle nature shines through in everything he does.\n\nNow, this precious boy is getting a second chance and making his way to the East Coast with his family, hoping to find a forever home where he’ll never have to worry again. He’s still just a puppy, which means he’s full of curiosity, playfulness, and that irresistible clumsy charm that makes every day brighter.\n\nRomance would thrive in a home ready for all the joys (and a little bit of chaos!) that come with raising a puppy — from learning the ropes to growing into the loyal companion he’s meant to be. With love, patience, and guidance, he’s sure to blossom into an incredible dog.\n\nIf you’re looking for a best friend who will grow up loving you with his whole heart, Romance is ready to begin his happily ever after with you 💖",
+      "PreviousIds": [
+        {
+          "IdValue": "A839201",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020063164113",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1774335600"
+        }
+      ],
+      "LastIntakeUnixTime": "1774656958",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775159787"
+    },
+    {
+      "ID": "199",
+      "Internal-ID": "213355259",
+      "Name": "Thriller",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Melissa",
+        "LastName": "Bravo",
+        "OutDateUnixTime": "1774769332",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "22",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1761721200,
+      "Age": 5,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/e3cc630363cd44d7a79fc08983693155/807e38fb6ce69e5432fc41b6006eafb6.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/e3cc630363cd44d7a79fc08983693155/807e38fb6ce69e5432fc41b6006eafb6.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b68062d68564fa8868caf5707b464cf7/e0b8c2a1290f77da05323ac476612b66.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German/American Blue Heeler",
+      "Color": "Fawn/Black",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 36936,
+        "Name": "Special Adoption Fee",
+        "Price": 500,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "With a name like Thriller, you might expect a little drama — but this sweet boy is all heart. Thriller was found as a stray alongside his mom and littermates, sticking close to his family and showing just how resilient and loving he is, even after a tough start.\n\nNow he’s getting his fresh start and heading to the East Coast with his siblings, ready to trade uncertainty for belly rubs, cozy beds, and a forever family of his very own. Like any puppy, Thriller is full of curiosity, playful energy, and that irresistible goofy charm that will keep you smiling every single day.\n\nHe’s looking for a home that’s ready to guide him as he grows — someone who will help him learn, explore, and blossom into the loyal companion he’s meant to be. With a little patience and a lot of love, Thriller is sure to become your best friend for life.\n\nIf you’re ready for a pup who will keep your heart racing in the best way, Thriller is waiting to meet you",
+      "PreviousIds": [
+        {
+          "IdValue": "A839202",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020063180286",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1774508400"
+        }
+      ],
+      "LastIntakeUnixTime": "1774769332",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775159696"
+    },
+    {
+      "ID": "200",
+      "Internal-ID": "213355269",
+      "Name": "Fiction",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Male",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Melissa",
+        "LastName": "Bravo",
+        "OutDateUnixTime": "1774770130",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "22",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1761721200,
+      "Age": 5,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/6cd4c71e97e604ad06a6dc9386897530/c91e0894db45a16a4b14c8f8c3ba3768.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/6cd4c71e97e604ad06a6dc9386897530/c91e0894db45a16a4b14c8f8c3ba3768.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German/American Blue Heeler",
+      "Color": "Chocolate/Black",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 36936,
+        "Name": "Special Adoption Fee",
+        "Price": 500,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "His name might be Fiction, but his story is very real — and it’s just getting started. This sweet little boy was found as a stray with his mom and littermates, sticking close to his family and showing a quiet resilience beyond his young age.\n\nNow Fiction is turning the page and heading to the East Coast with his siblings, ready for a brand new chapter filled with love, safety, and a forever home of his own. Like any puppy, he’s curious, playful, and full of that endearing clumsy charm that makes every day feel a little brighter.\n\nFiction is looking for a family who will help him write the rest of his story — one filled with patience, guidance, and lots of cuddles. With the right home, he’s sure to grow into a loyal, loving companion who will be by your side through every chapter of life.\n\nIf you’re ready for a story that turns into a lifelong bond, Fiction is ready to make you his happy ending ✨🐶",
+      "PreviousIds": [
+        {
+          "IdValue": "A839200",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020063259149",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1774508400"
+        }
+      ],
+      "LastIntakeUnixTime": "1774770130",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775179154"
+    },
+    {
+      "ID": "202",
+      "Internal-ID": "213355275",
+      "Name": "Dutchess",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Heather",
+        "LastName": "Berry",
+        "OutDateUnixTime": "1775093316",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "30.6",
+      "Size": "Medium (25-59)",
+      "Altered": "Unknown",
+      "DOBUnixTime": 1727593200,
+      "Age": 18,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/3d6dd59c3acc0691850537c5b5ba5930/a00c5c3de56e482d41527cbece60ff85.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/3d6dd59c3acc0691850537c5b5ba5930/a00c5c3de56e482d41527cbece60ff85.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6a565cc783313fb0fd253ed27a398e4b/9bb34c09854e4c7ed328c865475a4a9e.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, Dutch/Whippet",
+      "Color": "Brindle/Cream",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Dutchess is a beautiful shepherd girl with a tender heart that’s still learning the world can be a safe place. Right now, she’s very scared — the kind of scared that makes her try to make herself as small and far away as possible when someone approaches her crate. It’s clear she hasn’t had an easy start, and everything feels new and overwhelming.\n\nBut even in her fear, Dutchess is trying. She allows her leash to be put on and will come out with gentle guidance, showing just how much quiet bravery she has inside. One of her biggest moments so far? When the crate door was open to the yard, with a calm environment and a familiar dog nearby, she found the courage to step outside on her own, go potty, and return to her safe space. It may seem small, but for Dutchess, that was huge.\n\nRight now, her crate is where she feels safest — she’s even pushed all the blankets aside to lay on the plastic bottom, seeking comfort in what feels predictable and secure. She’s not ready for the world just yet, but she wants to get there.\n\nDutchess is looking for a very patient, understanding home — one that will give her the time and space she needs to build trust at her own pace. A calm environment, possibly with another gentle, confident dog, could help her continue to come out of her shell. She doesn’t need perfection — she just needs someone willing to meet her where she is and celebrate every tiny victory along the way.\n\nWatching Dutchess learn to feel safe will be a journey, but it will also be an incredibly rewarding one. Beneath the fear is a sweet soul just waiting for her chance to shine.\n\nIf you have a quiet home and a big heart for a dog who needs a little extra love, Dutchess is waiting for you",
+      "PreviousIds": [
+        {
+          "IdValue": "A607909",
+          "IssuingShelter": "Stanislaus County Animal Shelter",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "941010004611469",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1773298800"
+        }
+      ],
+      "LastIntakeUnixTime": "1774772031",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775093331"
+    },
+    {
+      "ID": "203",
+      "Internal-ID": "213355276",
+      "Name": "Mystery",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Melissa",
+        "LastName": "Bravo",
+        "OutDateUnixTime": "1774772558",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "22",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1760166000,
+      "Age": 5,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/bb198f8558f5a16fefc1b50e77c9a66a/3feb376fff2f8d7c58540206e87b780f.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/bb198f8558f5a16fefc1b50e77c9a66a/3feb376fff2f8d7c58540206e87b780f.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/b3ed8e524ddc8586e068137128281eae/3a36378621ed0f4de45101c371cd109a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/620af3b3e7315a41b1f379579273210d/1dc4c9f2d633296fa12449c06c993b7a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/a874277e1209b2fa3e7598d95f61ca07/3bfc586c2d2d3a08a868a42f105d733c.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German/American Blue Heeler",
+      "Color": "Fawn/Black",
+      "Pattern": "Spotted",
+      "AdoptionFeeGroup": {
+        "Id": 36936,
+        "Name": "Special Adoption Fee",
+        "Price": 500,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Mystery is a little pup with a look as unique as her name — her adorable speckled face makes her stand out in the sweetest, most unforgettable way. One glance at her and you can’t help but wonder what kind of beautiful dog she’s going to grow into.\n\nShe’s part of Thriller’s litter, found together with her mom and siblings, and now she’s getting her chance at a whole new life. Despite her uncertain start, Mystery is everything a puppy should be — curious, playful, and full of that irresistible charm that makes you fall in love instantly.\n\nMystery is the kind of pup who will keep you guessing in the best way — one minute she’s exploring the world around her, the next she’s melting into a cuddle like she’s known you forever. She’s still learning, growing, and discovering just how big and exciting life can be.\n\nShe’s looking for a home ready to guide her as she blossoms — a family who will give her patience, love, and plenty of adventures along the way. In return, Mystery will give you a lifetime of companionship and moments that make your heart smile.\n\nIf you’re ready to solve the sweetest little “mystery” of all, she’s waiting to meet you",
+      "PreviousIds": [
+        {
+          "IdValue": "A839199",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020063170467",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1773817200"
+        }
+      ],
+      "LastIntakeUnixTime": "1774772558",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1774833395"
+    },
+    {
+      "ID": "204",
+      "Internal-ID": "213355277",
+      "Name": "Drama",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Melissa",
+        "LastName": "Bravo",
+        "OutDateUnixTime": "1774773179",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "25",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1760166000,
+      "Age": 5,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/0a2bb0ebda171cdb46f52c2bbe48ca72/b501b9a5d72e7da301bbaa7449ac8eac.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/0a2bb0ebda171cdb46f52c2bbe48ca72/b501b9a5d72e7da301bbaa7449ac8eac.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/d793c68a01e10012009eebb359638d8b/0d25a83110152fc4ba2664b5f8019cbc.png"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German/American Blue Heeler",
+      "Color": "",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 36936,
+        "Name": "Special Adoption Fee",
+        "Price": 500,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Don’t let the name fool you — while she may be called Drama, this little girl is all sweetness with just a touch of playful flair. As part of the same litter as Thriller, Mystery, and her siblings, Drama was found with her mom after a rough start, but she’s ready to trade that past for a life full of love and security.\n\nDrama is everything you’d hope for in a puppy: curious, bouncy, and full of personality. She has that adorable way of making every moment feel exciting — whether she’s discovering a new toy, tumbling around with her siblings, or soaking up attention from her humans. If there’s any “drama” about her, it’s just how dramatically lovable she is.\n\nShe’s still learning about the world and will need a home ready to guide her as she grows — with patience, consistency, and lots of affection. With the right family, Drama is sure to blossom into a confident, loving companion who will keep life fun and full of joy.\n\nIf you’re looking for a puppy who brings a little sparkle, a lot of love, and just the right amount of personality, Drama is ready to take center stage in your heart",
+      "PreviousIds": [
+        {
+          "IdValue": "A839196",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020063166336",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1774422000"
+        }
+      ],
+      "LastIntakeUnixTime": "1774773179",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1774833662"
+    },
+    {
+      "ID": "206",
+      "Internal-ID": "213392313",
+      "Name": "Aspen",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Jackie ",
+        "LastName": "Brazil",
+        "OutDateUnixTime": "1775093700",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "62",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1585724400,
+      "Age": 72,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/5c0f0a075bf24d0bef166064b931da4d/2f6a77e8b7dea4e26e370fa141804773.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/5c0f0a075bf24d0bef166064b931da4d/2f6a77e8b7dea4e26e370fa141804773.png",
+        "https://new-s3.shelterluv.com/profile-pictures/1a96a397f55b34d943933080bffdb814/ff6990866e0adda8252c729e02f0969a.png",
+        "https://new-s3.shelterluv.com/profile-pictures/c1cd391f23e6c9bb30e1ec3deb177346/742e670fc936a5040f3561ea8d312c1e.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ce3c8bdc7658ea231a27e5688c5c4593/a360a79e944cd08114851060b30699d1.png"
+      ],
+      "Videos": [],
+      "Breed": "American Blue Heeler/Rottweiler",
+      "Color": "Black/Red/Mahogany",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Meet Aspen 🖤🐾\n\nSometimes, one moment is all it takes to save a life.\n\nAspen, a beautiful adult Heeler mix (possibly with a touch of Rottie), was just hours away from being euthanized at the shelter. Overlooked and out of time, her story was about to end… until a volunteer saw her. There was something in Aspen’s eyes—a quiet, soulful look that said she wasn’t ready to give up. And because someone chose to see her, Aspen is here today.\n\nNow safe, Aspen is beginning to decompress and learn what it means to be given a second chance.\n\nShe can be a little unsure at first, taking in new people and surroundings with a thoughtful, cautious approach. But underneath that is a deeply loyal, sensitive dog who just needs a little time to feel secure. Once she starts to trust you, you’ll see her true heart—gentle, devoted, and incredibly connected.\n\nAspen is smart and observant, always watching and learning. She has that classic working-dog intelligence paired with a steady, grounding presence. She wants to understand her person, to bond, to belong.\n\nThere’s something really special about Aspen. She isn’t just another dog—she’s a survivor, a second-chance soul who is ready to give her whole heart to someone willing to meet her where she is.\n\nShe didn’t ask for her past, but she’s holding onto hope for her future.\n\n✨ If you’re looking for a loyal companion, a quiet shadow, and a dog whose love will mean that much more because it was earned, Aspen is waiting to meet you.",
+      "PreviousIds": [
+        {
+          "IdValue": "26-07989",
+          "IssuingShelter": "SEAACA (Southeast Area Animal Control Authority)",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "985113011892952",
+          "Issuer": "Home Again",
+          "ImplantUnixTime": "1772611200"
+        }
+      ],
+      "LastIntakeUnixTime": "1775093700",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775094521"
+    },
+    {
+      "ID": "207",
+      "Internal-ID": "213416588",
+      "Name": "Olympia",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {},
+      "Sex": "Female",
+      "Status": "Available In-Foster",
+      "InFoster": true,
+      "AssociatedPerson": {
+        "FirstName": "Rochelle",
+        "LastName": "Bridgeman",
+        "OutDateUnixTime": "1775177572",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "37",
+      "Size": "Medium (25-59)",
+      "Altered": "Unknown",
+      "DOBUnixTime": 1680418800,
+      "Age": 36,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/1d451a031260e36a22f93ced4313e245/9a926cbb6534525861d5250085d1a8c4.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/1d451a031260e36a22f93ced4313e245/9a926cbb6534525861d5250085d1a8c4.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/da5f5589993c2dba250d1975abe176b7/b5d2b0b001ca012728d8b3ae420cd577.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/1e65c9607c16e44302e0b0f0ac76efcd/8d837a4eabb5720f1a5f7cc37af5c322.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Bulldog, American/Terrier, Pit Bull",
+      "Color": "Brindle",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Olympia’s story is one of survival against unimaginable odds.\n\nThis beautiful Bulldog/Pit Bull mix was found wandering alone in the California desert—starving, exhausted, and fighting to stay alive. When she was finally brought to safety, the truth of what she had endured was heartbreaking… her stomach was filled with sand and rocks, the desperate result of trying to survive with nothing.\n\nAnd yet—Olympia is still here. Still loving. Still trusting.\n\nDespite everything she’s been through, Olympia has the gentlest, most forgiving soul. She greets people with a soft, hopeful warmth, leaning in for affection as if she’s been waiting her whole life to feel safe. There is no bitterness in her, only quiet gratitude and a deep desire to be close to her people.\n\nShe’s a calm, affectionate girl who would much rather be by your side than anywhere else. Whether it’s resting her head on your lap or soaking up belly rubs, Olympia is all about connection, comfort, and love.\n\nAfter everything she’s endured, Olympia deserves a home where she will never have to wonder where her next meal is coming from… or whether she’s safe. She deserves soft beds, full bowls, gentle hands, and a family who will cherish her the way she’s always deserved.\n\nHer past may be painful, but it does not define her—her resilience, her sweetness, and her capacity to love do.\n\n✨ If you’re ready to give a truly special dog the life she fought so hard for, Olympia is waiting to meet you.",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1775177572",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775177716"
+    },
+    {
+      "ID": "147",
+      "Internal-ID": "212450414",
+      "Name": "Alice",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Female",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {
+        "FirstName": "Tatiyana",
+        "LastName": "Abarro",
+        "OutDateUnixTime": "1767652202",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "85.1",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1608019200,
+      "Age": 63,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/0af4662a329912809da5149bc957e222/37ef3004fc83fc54fcb53f0d19d960ef.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/0af4662a329912809da5149bc957e222/37ef3004fc83fc54fcb53f0d19d960ef.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/4ce913c812a7622b2c33579dacee01db/e6cba52a996d19c4ffcd206367e940df.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/524f2412a673c1de9a11c46395f39497/eba681a746f1b833037d0d5f295cddac.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/89a9dcc0c3439a554238767e1d5b59b8/c392e3dad245d333af1888add5b5022f.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ff6b08e0a8daeb7313990594fa8b5798/15a1b8a700441919ebc6a6c6dbef4161.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ebc8698a659ba7123365c718a8543595/8af58e8ac911d48a3ba5095fb87a2a9f.png",
+        "https://new-s3.shelterluv.com/profile-pictures/33907da29b3f2857f811939126f66f15/10fdc85747145463b706dc4caeca322a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/aaf55b2dc039140bb842368123404201/a5d40f1b4c8e65f5822c65394c3a4cde.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, White German/Husky, Siberian",
+      "Color": "White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Alice is a stunning 5-year-old white German Shepherd with a loyal heart and a deeply gentle soul. After being heartbreakingly dumped by the family she trusted, Alice has shown remarkable resilience and grace as she navigates this next chapter of her life.\n\nAlice is intelligent, attentive, and incredibly devoted to her people. She forms strong connections and takes comfort in being near those she loves. Calm and observant, she has a steady presence and a naturally thoughtful demeanor that makes her wonderful company in both quiet and active moments.\n\nDespite everything she’s been through, Alice remains affectionate and eager to please. She enjoys gentle walks, relaxed time outdoors, and peaceful moments at home. She would thrive in a stable, loving environment where she can settle in, decompress, and continue growing into the confident, caring dog she truly is.\n\nAlice is looking for a home where she can feel safe, valued, and included as a true companion. If you’re searching for a devoted, gentle shepherd with a heart full of love, Alice is ready to meet you and start this next chapter by your side.",
+      "PreviousIds": [
+        {
+          "IdValue": "A5740179",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Castaic Shelter",
+          "Type": null
+        }
+      ],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1765861324",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1773194116"
+    },
+    {
+      "ID": "162",
+      "Internal-ID": "212741084",
+      "Name": "Hazel",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Female",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "45",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1705564800,
+      "Age": 26,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/85aa8dbbbe79fc3e68de4cc412509a6f/02d8caf8ca0acb2e3c6c769cd0b33433.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/85aa8dbbbe79fc3e68de4cc412509a6f/02d8caf8ca0acb2e3c6c769cd0b33433.png",
+        "https://new-s3.shelterluv.com/profile-pictures/494367ef1de791f450e66d534c396de4/cc884a98d08982170ff197821a0a5ae4.png",
+        "https://new-s3.shelterluv.com/profile-pictures/87395038df22ded7f2803183073f0f20/1cb524309507d3e5821f6f941a0f52e8.png",
+        "https://new-s3.shelterluv.com/profile-pictures/245f88be2a14bbbfe3972c10911ce93d/95df466be92d00d06f326fdb892e64be.png",
+        "https://new-s3.shelterluv.com/profile-pictures/bddefc5eb466d5202c5a85a74b490b07/9f6e0dcf6f98d592aa114da97bfd715f.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/9467476d3a228a96e0b0410de2c81d79/e5246d854acb3b3cd1efcd57b0fe5ef0.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/9e388fe1295f3b3d86448ca8acb0ad80/62206d4692a69af5d0880aad5484d0c5.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/2ca0cc1d18d0980f057d6fa6ade2c29c/4f9b827152e4f0686a9c0bd1b3950a7e.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German",
+      "Color": "Fawn/Black",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Hazel is a beautiful German Shepherd whose journey is a powerful testament to resilience. She was pulled from a shelter with the promise of safety, only to be heartbreakingly abandoned again when another rescue failed to follow through. Just when it seemed like she might be forgotten, Love’s Legacy Rescue stepped in and refused to let her story end that way.\n\nDespite the instability she’s experienced, Hazel remains gentle, intelligent, and full of heart. She has the classic German Shepherd loyalty and soulful eyes, and she’s ready to learn what it truly means to feel safe and loved. With patience, consistency, and kindness, Hazel will blossom into an incredibly devoted companion.\n\nHazel is now safe, supported, and finally surrounded by people who believe in her. All she needs is a forever home that will show her that this time, she’s home for good.\n\nIf you’re looking for a loyal best friend and believe in second chances, Hazel is waiting for you through Love’s Legacy Rescue. 💛🐶",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1768786897",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775158952"
+    },
+    {
+      "ID": "166",
+      "Internal-ID": "212742986",
+      "Name": "Ocean",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Male",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {
+        "FirstName": "Kevin",
+        "LastName": "Ferreira",
+        "OutDateUnixTime": "1770259631",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "50",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1674115200,
+      "Age": 38,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/a2f4b31d64ad5c85fc222d0a00ee609c/02cda5ae070ff82e3667d2ae2af183ad.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/a2f4b31d64ad5c85fc222d0a00ee609c/02cda5ae070ff82e3667d2ae2af183ad.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/590481a80e3c9d7047f03ee357c2affd/ef56748941340063268aa51389426728.png",
+        "https://new-s3.shelterluv.com/profile-pictures/02b18a20583293273f0fd3720fe73ac0/ee57191de99a08bda09176a347ced7fc.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e597cdabd7251da4ce0b53b2a6f54097/cbe8ceca21bf9b2f1761b7330d7f9f85.png",
+        "https://new-s3.shelterluv.com/profile-pictures/183eddd8251f7cb1b9de8c972459bad0/20d640453d9f292c4bb24f82ac9bd58a.png",
+        "https://new-s3.shelterluv.com/profile-pictures/3cd61b55896b04fa781e89be75f9365d/0f422a90091703a5997396fa0d667f96.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a36d4f75e64a9b03a2428e3b732c88bd/427c076114acdd883f15cab43abeb9f5.png",
+        "https://new-s3.shelterluv.com/profile-pictures/4290cebbef3c27acf43acce2d3c931f1/9a73fb78c8dff9bd80aa8c287eb99d34.png",
+        "https://new-s3.shelterluv.com/profile-pictures/89cad2dd45aa1243321a5c5399aec046/6e72bc7b77222fca78d725c354370048.png",
+        "https://new-s3.shelterluv.com/profile-pictures/40a791df77821075c40581d5c3a148f8/452a42d6ae96f6d2587a12834859c0c7.png",
+        "https://new-s3.shelterluv.com/profile-pictures/cb832618549483a1d16e0c6b43f7f904/4d5b1894e4b87fffe2f66a4096f8893c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/209161fa524068953708e7a1ebc2f93c/c199fa6ea021ed84623398a4d410c82b.png",
+        "https://new-s3.shelterluv.com/profile-pictures/6016dfeccd81d0452dae93f4e19707b3/ecac8e0c6a64f5d607657e1c9826ed50.png",
+        "https://new-s3.shelterluv.com/profile-pictures/80c77bf4d70187286ed168027c4aefab/da743b6d4fa0cd338ad8083d40e94e89.png",
+        "https://new-s3.shelterluv.com/profile-pictures/e171054d16514823d4591fe491b8eaca/ce38ed5e5404c458dceea9d3ba8c9c3c.png",
+        "https://new-s3.shelterluv.com/profile-pictures/eab381d7d5b11dfd95481236735d3ce8/ff8f911b48351a8bbbfeb8616d0b1cfd.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/eed23835a9c34b5608e567d90325df45/2d50014523bef6ddb8f934c46c52a09f.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/84c6ce050c4abbac2d93ff41904e6d4d/269717707968dad3da4b7848d97b4ae9.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/71f04688f4ba95160e53249a91b1006b/620288ad22dd5af6da61314a7215cfd9.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/e9dd3efe685793e450537ac04131403d/36becd94e2ccba1878266d8bcf507a1e.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/39c30510024b076023d6a582333a32f9/ca9a91832adb918c68ee242d2d5b51fb.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/87f2670ff2fdf5fec4cbf442c5a20565/17fce3a30f7c10646c457edb9e13186a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6559f73dd6932f77aa7ce7a478c8d327/2894ba929dd87996f0bd9cfb55be0ee3.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/0d1710b113c3edaff305415a3d7553b1/7bd4b0cfedc04c7dc919fbd9ec8d03fb.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6ec1b9d6258417a9e89e590dc238de3c/747ddddba424f3809a74ed91f4cf22a0.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/489770d16af809d78bf480be34b601b3/7d937d5f4589832f0c7ca0c643ea2eb3.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Apricot/Black",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Ocean is a beautiful Husky mix with striking blue eyes and a heart just as soft as his gaze. He was pulled from a shelter with the promise of safety, only to be heartbreakingly abandoned when the rescue that took him in failed to follow through. Through no fault of his own, Ocean found himself in limbo—until caring hands stepped in to make sure he wasn’t forgotten.\n\nDespite what he’s been through, Ocean is extremely gentle and kind-natured. He has a calm presence, sweet manners, and an easygoing personality that makes him a joy to be around. His soulful blue eyes seem to reflect both his resilience and his hope for a better future.\n\nOcean is ready to trade uncertainty for stability and is looking for a home where he can feel safe, loved, and truly part of a family. If you’re searching for a gentle companion with stunning looks and a tender heart, Ocean may be the perfect match for you. ",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1768847816",
+      "Attributes": [
+        {
+          "Internal-ID": "290754",
+          "AttributeName": "Gentle",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290750",
+          "AttributeName": "Goofy",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290745",
+          "AttributeName": "Affectionate",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290757",
+          "AttributeName": "Playful",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1772598886"
+    },
+    {
+      "ID": "167",
+      "Internal-ID": "212743016",
+      "Name": "Rocket",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Female",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "50",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1737273600,
+      "Age": 14,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/f3d1aefd2494656dd9d3fb86c23937d8/b4b439f7307a2149feb1f5e7fd2e0850.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/f3d1aefd2494656dd9d3fb86c23937d8/b4b439f7307a2149feb1f5e7fd2e0850.png",
+        "https://new-s3.shelterluv.com/profile-pictures/27ab6ed644e87a2db61b75277d82b61e/33df0d93dd5cdc2e1c4621d16de2b2d2.png",
+        "https://new-s3.shelterluv.com/profile-pictures/506947580d61492349971288c17f4d96/7a9d633a887fd1722676dbd491c0ce9a.png",
+        "https://new-s3.shelterluv.com/profile-pictures/cefcf5c386669d8a89ead255248b9f63/1fa1643d0be3b30cb005997e58360431.png",
+        "https://new-s3.shelterluv.com/profile-pictures/f3db3cc163a03f04f51048f5266bed46/21c31ab2d0f72b8e3dc2deef21f60d21.png",
+        "https://new-s3.shelterluv.com/profile-pictures/567179cf3d2057120ce4f4ce6df45f8a/bd91d50eb71dce389757b1e5ebc77f7e.png",
+        "https://new-s3.shelterluv.com/profile-pictures/b028a7c566361df6b6fa2c5309ad3a86/33e96a59f83991174a9434df28b0322a.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ae350159ba2f37a1114119dfb8ba6748/a8a05770d84243a951a3ce1bbb9992fc.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/97afd1f44cc8d262d52f5ed5c030c6fa/894a977af18c47cfae5004267e080a71.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/c7fa85a8362fb313df60314ab4801ecf/ecc1ad1245c73b153a9d47b4c51cd29a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/16f814e915892cf6a863e93fe00092d9/1b9dd8773bce79d25d9cd8d1ac67973e.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German",
+      "Color": "Brown/Black",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Rocket is a beautiful German Shepherd who has already learned what it means to be let down—but she hasn’t lost her spirit. She was pulled from a shelter with the promise of safety, only to be abandoned when the rescue that took responsibility for her failed to follow through. Thankfully, Rocket didn’t give up, and neither did the people who stepped in to make sure she got the second chance she deserves.\n\nRocket is intelligent, loyal, and eager to bond—everything German Shepherd lovers adore. She has a bright, attentive nature and is ready to thrive in a home that offers structure, consistency, and love. Despite the instability she’s experienced, Rocket remains resilient and full of potential.\n\nNow safe and supported, Rocket is searching for a forever home where she’ll never be left behind again. If you’re looking for a devoted companion and believe in second chances, Rocket is waiting to launch into her new life with you. ",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1768848249",
+      "Attributes": [
+        {
+          "Internal-ID": "267806",
+          "AttributeName": "Bonded",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775158857"
+    },
+    {
+      "ID": "168",
+      "Internal-ID": "212743055",
+      "Name": "Zeus",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Male",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "60",
+      "Size": "Large (60-99)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1642579200,
+      "Age": 50,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/49a5a0dc5894b634edd6ae5ec50cdc8f/9de41a5c005005fc4b49aa9d3e8294e5.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/49a5a0dc5894b634edd6ae5ec50cdc8f/9de41a5c005005fc4b49aa9d3e8294e5.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/b24ebb8f9cf1433f630cb09252da85c9/63c8979b071e738ec1a5793b447681bc.png",
+        "https://new-s3.shelterluv.com/profile-pictures/6cdcf184a381aca2c7095694448b280b/ed708527b8bb7f5fbe509b7cef882fcc.png",
+        "https://new-s3.shelterluv.com/profile-pictures/69e59eb84960969b273ac54467208b9c/b287ab5d79bc7e1271a1243e4c20e82f.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/06606f64f7d5950207d8fd4d2a366582/dd9b82d1c6bd1b9ad0a72098e1b25a1f.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/2df2c4912afefe026ac845f402be5f6a/530f27e0c1c2bb26fc2dfacf8396aada.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6bf3362e5799b6da663f6a9806704592/28a2c5ff431713aad20cfe1955793938.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/afaee503890077f4a204c8e80e5ff1c8/171ccb95c791eb06e85bb97b90cc7f79.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/7f430f1d272bb821c53294f601a8a2de/8febf68fa5ebb3664c219ca607b67e5a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/b6e579cd95f99414083d7414a1914e71/3011da888b50798ea5b412b5470a87ce.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/ec2d521ae4af35f7c8d5ec4f0d8af6bc/67b6fc2d03fde66bc54be3b50fd3c78a.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6523237a73356d17a81d2b42dfa76ef1/2fc975dd80b711fcf27b01a387dd219b.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/26190329445d96c11049cbec91ffa84e/1b8a1b34d3c04986d43aafbf060aad33.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, German/Rottweiler",
+      "Color": "Black/Brown",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Zeus is a striking Shepherd who has already endured more than he ever should have. He was pulled from a shelter with the promise of safety, only to be abandoned when the rescue responsible failed to follow through. Through no fault of his own, Zeus was left waiting—until compassionate people stepped in to give him the chance he deserves.\n\nZeus embodies the qualities Shepherds are known for: intelligence, loyalty, and a deep desire to connect with his people. He is alert, thoughtful, and ready to thrive in a home that will offer him structure, consistency, and love. Despite his difficult start, Zeus remains resilient and hopeful.\n\nNow safe and cared for, Zeus is looking for a forever home that will finally keep its promise to him. If you believe in second chances and are ready for a devoted companion, Zeus is waiting to meet you. ",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1768848552",
+      "Attributes": [
+        {
+          "Internal-ID": "267806",
+          "AttributeName": "Bonded",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1773375818"
+    },
+    {
+      "ID": "179",
+      "Internal-ID": "212989121",
+      "Name": "Hugo",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Love's Legacy Rescue"
+      },
+      "Sex": "Male",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "40",
+      "Size": "",
+      "Altered": "Unknown",
+      "DOBUnixTime": 1708070400,
+      "Age": 25,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/f553510fada00eb0eb9cb3b0c14f8dc3/071b3b20abba4a5fd73e82d33b922221.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/f553510fada00eb0eb9cb3b0c14f8dc3/071b3b20abba4a5fd73e82d33b922221.png",
+        "https://new-s3.shelterluv.com/profile-pictures/1538cc9a05961c64f8030ca30116eb84/4a7fb157b7f47274d35ac77b19bddf03.png"
+      ],
+      "Videos": [],
+      "Breed": "Bulldog, English/Terrier, Pit Bull",
+      "Color": "Brown/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Hugo’s story almost ended before it truly began. This tiny English Bulldog mix was being wheeled out to be euthanized when someone stepped in and gave him a second chance at life. And we are so grateful, because this little chocolate colored sweetheart is something truly special.\n\nWith his rich cocoa coat, soulful eyes, and adorable smooshy face, Hugo is impossible not to fall in love with. He may be small in size, but his heart is enormous. Despite everything he has been through, Hugo is gentle, affectionate, and happiest when he is close to his people. He is the kind of pup who will gladly curl up in your lap and soak up all the love you are willing to give.\n\nHugo has that classic Bulldog charm, a little goofy, a little stubborn, and completely endearing. He enjoys playful moments and short bursts of energy, followed by quality cuddle time on a soft bed or your couch.\n\nAfter coming so close to losing his chance, Hugo is ready for a forever home where he will be cherished the way he deserves. A family who will see him not as the dog who almost did not make it, but as the little miracle who did.\n\nIf you are looking for a loyal, loving companion with the sweetest chocolate coat and a heart full of gratitude, Hugo is waiting to meet you. ",
+      "PreviousIds": [
+        {
+          "IdValue": "A837479",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1771312405",
+      "Attributes": [
+        {
+          "Internal-ID": "290751",
+          "AttributeName": "More dominant",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "267815",
+          "AttributeName": "Adult-Only Home Preferred",
+          "Publish": "Yes"
+        },
+        {
+          "Internal-ID": "290758",
+          "AttributeName": "Protective",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1774234151"
+    },
+    {
+      "ID": "190",
+      "Internal-ID": "213229652",
+      "Name": "Posie",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Female",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {
+        "FirstName": "Jen",
+        "LastName": "Betchie",
+        "OutDateUnixTime": "1774491895",
+        "RelationshipType": "foster"
+      },
+      "CurrentWeightPounds": "",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1742281200,
+      "Age": 12,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/86e3ac7eefa230cf8444898772ed9e0a/b2a3afb59ded0aebfd1b1368ace05e2e.jpg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/86e3ac7eefa230cf8444898772ed9e0a/b2a3afb59ded0aebfd1b1368ace05e2e.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/5c4eb74c821dd08b5bb656222d3be01e/656a57b314cbde5a898dbb572d9e5a30.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/b047bca2a4962b0d614977dc65796df2/f2bd5360616848d68708ceba5531c695.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/ba32c19dbfb51b18a6b5ec57511f1de5/b0f40ac7242619bf7078013f901657e0.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Shepherd, White German/Husky, Siberian",
+      "Color": "",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Posie is a stunning Shepsky (German Shepherd / Husky mix) with soulful eyes and a story that will truly move you. This young girl was medically alerted at a crowded shelter in San Bernardino and heartbreakingly placed on the euthanasia list, simply because she needed help. Thankfully, she was given the chance to leave the shelter behind — and now she’s ready to start the life she was always meant to have.\n\nDespite everything she’s been through, Posie has shown incredible resilience, sweetness, and a deep desire to connect with her people. She is intelligent, observant, and affectionate once she feels safe. Like many Shepskies, she thrives with both mental stimulation and physical activity, and she will blossom in a home that can provide structure, adventure, and love.\n\nPosie is still rebuilding her confidence and learning that the world can be a kind place. With patience, positive reinforcement, and a committed family, she has the potential to become an exceptionally loyal and devoted companion. She forms strong bonds and will be the type of dog who wants to be by your side through life’s ups and downs.\n\nThis special girl would do best with adopters who understand working or northern breeds and are excited to continue her training and socialization. A secure yard, regular exercise, and enrichment will help her thrive and show just how amazing she truly is.\n\n✨ Posie didn’t get the easiest start — but she’s ready for her happy ending. If you’re looking for a smart, loving, and deeply devoted best friend, Posie is waiting to meet you.",
+      "PreviousIds": [
+        {
+          "IdValue": "A839018",
+          "IssuingShelter": "San Bernardino City Animal Control",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020063633856",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1773644400"
+        }
+      ],
+      "LastIntakeUnixTime": "1773899005",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775104633"
+    },
+    {
+      "ID": "191",
+      "Internal-ID": "213235608",
+      "Name": "Francis",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Female",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "20",
+      "Size": "Small (0-24)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1710831600,
+      "Age": 24,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/d37eb3e8f30efbef10c6f7afd11ec2d3/49c80f5aac5b4aed0ee9c9e2934ea486.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/d37eb3e8f30efbef10c6f7afd11ec2d3/49c80f5aac5b4aed0ee9c9e2934ea486.png",
+        "https://new-s3.shelterluv.com/profile-pictures/a9032bac05854d511991b17880334536/a7326f084d395acba257d5a926bb3e91.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/29e2e2b4737a986fbfe118d393632d30/af6fea2102d8023fe3e13fc409cc8eb3.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/646dc03e8770535e2866e67bd84e5ec2/4609224d8db4405de21ffef4419593e6.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/c531e79fcb6a212f984c2b00f664446e/86f40de8fd5180a5ff51a73363641682.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Pug",
+      "Color": "Fawn/Black",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Francis is a 2-year-old Pug who is ready to leave her shelter days behind and finally find the loving home she deserves. Pulled from the Devore shelter, this sweet girl has shown nothing but gentle gratitude and quiet affection since being rescued.\n\nFrancis is spayed, fully vaccinated, and more than ready to start her new life. She has a calm, easygoing personality and would thrive in a home looking for a loyal companion. She loves to stay close to her people, soaking up attention and giving soft, loving looks that will melt your heart.\n\nShe’s the kind of pup who doesn’t need to be the center of chaos — she’s happiest curled up beside you on the couch, following you from room to room, or enjoying a peaceful stroll. Her sweet nature and affectionate spirit make her a wonderful match for families, singles, or seniors looking for a devoted little friend.\n\nAfter everything she’s been through, Francis is ready for stability, kindness, and a forever home where she can truly shine. Could you be the one to give this precious girl the happy ending she’s been waiting for?\n\n",
+      "PreviousIds": [
+        {
+          "IdValue": "A839169",
+          "IssuingShelter": "Devore Animal Shelter",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "981020063244225",
+          "Issuer": "Petlink / Datamars",
+          "ImplantUnixTime": "1773730800"
+        }
+      ],
+      "LastIntakeUnixTime": "1773973652",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775157027"
+    },
+    {
+      "ID": "192",
+      "Internal-ID": "213247817",
+      "Name": "Ghost",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Love's Legacy Rescue"
+      },
+      "Sex": "Male",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "62",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1616396400,
+      "Age": 60,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/f48026a646ea0d22759bb4d2f45edf94/fe55b6dba0aec4c60afd5378374aaee5.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/f48026a646ea0d22759bb4d2f45edf94/fe55b6dba0aec4c60afd5378374aaee5.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/6f593c3ff074d3b8670c267024c8f1f4/7124799a7015fe579be0ff49f840ee4f.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/a455e919c4c316a7486cff655a458a02/8d1924368abd544df75e2439eb2cb114.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/bfaed81236e732bab7696f48b483a643/317515da0488a825f227584271516ec4.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/1beed85a41c31c2c7d963d8a0adcca3e/de1489ee32d238a50ce8960807a5a850.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian/Malamute, Alaskan",
+      "Color": "White/Black",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Ghost is a strikingly handsome black and white Husky with the most mesmerizing ice-blue eyes you’ve ever seen. This beautiful boy was recently pulled from the shelter to help make space for the hundreds of dogs rescued from a large hoarding situation in Southern California in March 2026 — and now he’s ready for a fresh start and a forever family of his own.\n\nLike many Huskies, Ghost has a gentle spirit paired with a curious, intelligent nature. He’s been through a lot of change recently, but he’s showing everyone just how resilient and loving he can be. With a little patience and understanding, Ghost is already beginning to relax, trust, and let his sweet personality shine through.\n\nGhost would thrive with an adopter who appreciates the Husky breed — someone who can provide structure, enrichment, exercise, and most importantly, love. Whether he’s exploring the outdoors, learning new routines, or simply soaking up affection, Ghost is ready to bond deeply with his person.\n\nThis stunning boy didn’t just make room for other dogs to be saved — now it’s his turn to be the one whose life is changed. If you’re looking for a loyal companion with movie-star looks and a heart full of potential, Ghost may be your perfect match.",
+      "PreviousIds": [
+        {
+          "IdValue": "A5472834",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Palmdale",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000013658335",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1773990000"
+        }
+      ],
+      "LastIntakeUnixTime": "1774230624",
+      "Attributes": [
+        {
+          "Internal-ID": "267806",
+          "AttributeName": "Bonded",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775153716"
+    },
+    {
+      "ID": "193",
+      "Internal-ID": "213247821",
+      "Name": "Speckles",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Love's Legacy Rescue"
+      },
+      "Sex": "Female",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "31",
+      "Size": "Medium (25-59)",
+      "Altered": "Yes",
+      "DOBUnixTime": 1761116400,
+      "Age": 5,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/683531c4b88bf0859a1a6b0263720b02/eb8a53ac701590442365d14fdf8f2b97.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/683531c4b88bf0859a1a6b0263720b02/eb8a53ac701590442365d14fdf8f2b97.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/f6614d6a7ba27b3d05ef134dd46b79a7/96b574cf30954ea267e28c59c920594c.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian",
+      "Color": "Beige/Black",
+      "Pattern": null,
+      "AdoptionFeeGroup": null,
+      "Description": "Tiny, delicate, and absolutely unforgettable — Speckles is a petite female Husky with the sweetest face and a gentle soul to match. She was pulled from the shelter to help make room for the hundreds of dogs rescued from the large Southern California hoarding situation in March 2026, and now she’s ready for her own second chance at a beautiful life.\n\nSpeckles may be small in size, but her heart is full of love and quiet bravery. With all the recent changes she’s experienced, she’s taking the world in one careful step at a time. She’s the kind of dog who forms deep, meaningful bonds and will blossom most in a patient, nurturing home where she can feel safe and understood.\n\nThis little Husky would thrive with an adopter who can offer gentle guidance, positive experiences, and the security of a consistent routine. Whether she’s curled up beside you after a day of exploring or softly watching the world from your side, Speckles is sure to become a devoted and loyal companion.\n\nSpeckles helped make space so other dogs could be saved — now she’s hoping someone will make space in their heart for her.",
+      "PreviousIds": [
+        {
+          "IdValue": "A5759743",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Palmdale",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000019480519",
+          "Issuer": "24Petwatch / Pethealth",
+          "ImplantUnixTime": "1773990000"
+        }
+      ],
+      "LastIntakeUnixTime": "1774230911",
+      "Attributes": [
+        {
+          "Internal-ID": "267806",
+          "AttributeName": "Bonded",
+          "Publish": "Yes"
+        }
+      ],
+      "LastUpdatedUnixTime": "1775153401"
+    },
+    {
+      "ID": "194",
+      "Internal-ID": "213247903",
+      "Name": "Milton",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Love's Legacy Rescue"
+      },
+      "Sex": "Male",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "79",
+      "Size": "Large (60-99)",
+      "Altered": "Unknown",
+      "DOBUnixTime": 1677916800,
+      "Age": 36,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/9089d3bb2c3bedcfde137f307ba0704c/a33414820304a07907b8b05a79d9f3e9.jpeg",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/9089d3bb2c3bedcfde137f307ba0704c/a33414820304a07907b8b05a79d9f3e9.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/40b5d684fafc9ec447f30bececebfde6/b9805de95a4be66f0c096930147539de.png",
+        "https://new-s3.shelterluv.com/profile-pictures/ac27ba8d181529d3702270e86daa8427/5db4e461e164ccb0bb3e068e514c58a3.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/4fca5d7ad171d6ca954ce1ccb377b6c3/0579cd60ac43d7f56adaafcc3c2a4926.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/2eddf905e884c476c18589d9be06bfbd/00b8d46509afc560dfdda8243d689a2b.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/30ac1219f34f2cf22db9882ed6231ccf/4fa3bdd71a6a7d9e0a866f307167e64a.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/b05a62d34ad5652550caf59926811521/580c57faaf8e4448ec37044c39675dbe.jpeg"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian/Malamute, Alaskan",
+      "Color": "Grey/White",
+      "Pattern": "None",
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "If you’ve ever dreamed of a Husky with movie-star looks and perfect manners — Milton is your guy.\n\nThis handsome Husky recently got his freedom from the shelter and immediately showed everyone what an incredible companion he is. After being rescued, Milton joined his rescuers for a café outing where he calmly settled under their chairs, slept peacefully while they ate, didn’t beg for food, and behaved like an absolute gentleman from start to finish. Truly, a perfect angel.\n\nMilton has a steady, well-balanced personality that makes him stand out. He’s polite, observant, and seems to understand how to exist beautifully in human spaces. Whether you’re grabbing coffee with friends, working from home, or heading out for a walk, Milton is the kind of dog who will quietly and loyally stay by your side.\n\nAt around three years old, he’s past the chaotic puppy phase but still has plenty of life, love, and adventure ahead of him. He would thrive in a home that appreciates a calm, well-mannered companion, someone who wants a dog they can truly share life with.\n\nMilton waited patiently for his second chance. Now he’s ready to give his whole heart to the person who chooses him.\n",
+      "PreviousIds": [
+        {
+          "IdValue": "A5759879",
+          "IssuingShelter": "Los Angeles Animal Care and Control - Lancaster",
+          "Type": null
+        }
+      ],
+      "Microchips": [
+        {
+          "Id": "956000019938159",
+          "Issuer": "AKC Reunite",
+          "ImplantUnixTime": "1773817200"
+        }
+      ],
+      "LastIntakeUnixTime": "1774232541",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1774233558"
+    },
+    {
+      "ID": "201",
+      "Internal-ID": "213355274",
+      "Name": "Dominique",
+      "LitterGroupId": null,
+      "Type": "Dog",
+      "CurrentLocation": {
+        "Tier1": "Paradise Pet Resort"
+      },
+      "Sex": "Female",
+      "Status": "Available In-Shelter",
+      "InFoster": false,
+      "AssociatedPerson": {},
+      "CurrentWeightPounds": "50",
+      "Size": "",
+      "Altered": "Yes",
+      "DOBUnixTime": 1680073200,
+      "Age": 36,
+      "CoverPhoto": "https://new-s3.shelterluv.com/profile-pictures/dac96ff3d7e6d8303f2cf637b1259b04/e602b13ae1403591f0f749c248b4b569.png",
+      "Photos": [
+        "https://new-s3.shelterluv.com/profile-pictures/dac96ff3d7e6d8303f2cf637b1259b04/e602b13ae1403591f0f749c248b4b569.png",
+        "https://new-s3.shelterluv.com/profile-pictures/9b463882e8543948cbbc44cf037548d7/a4624889251642bba0cff4dc502f388b.jpeg",
+        "https://new-s3.shelterluv.com/profile-pictures/74a05fca2a2faecc56e4daca113c5b65/b92eb3f30ce6c031fb8cd17bc4312998.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/b97d141c42f406be58bbc3bf2b2df618/48c597926d400c6a609075d6bcd6ffb6.png",
+        "https://new-s3.shelterluv.com/profile-pictures/45f88a1f21cbbf50ed5e1188dadb02f4/2f23e4a5e64d864871379e96966c4a6f.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/a57c069a6972d37306a6170aeb3bdab9/6da61807faff860f845dca0f57830df8.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/6dc06514f31e7aa3db7c4d0bf1a3931b/842a5676d75fdaf5ad9a02d3e2ac60d2.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/22e1703fe76fab05e8cf5d48fb686f78/173dc65d922d400d65079d7f3356c163.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/a55ab3ba589f4bc4c503fe6514e70668/0577598bee5971f0bf5739731d69125e.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/cb6d92669922576a339b53d294d4b6c7/647131e91f7dcba37585bb232f21e3aa.jpg",
+        "https://new-s3.shelterluv.com/profile-pictures/f1b3a431f307ca8530013553394aace8/0a20446ae2f7308ce67dcc83d29e67c9.jpg"
+      ],
+      "Videos": [],
+      "Breed": "Husky, Siberian/Cattle Dog, Australian (Blue Heeler)",
+      "Color": "Golden/White",
+      "Pattern": null,
+      "AdoptionFeeGroup": {
+        "Id": 34674,
+        "Name": "Adult dog adoption fee",
+        "Price": 400,
+        "Discount": 0,
+        "Tax": 0
+      },
+      "Description": "Dominique’s story feels a little like fate. This beautiful girl was found as a stray, and from the moment we saw her, we couldn’t believe our eyes — she looks just like another dog we rescued, lovingly named Dom, who has since found her forever home. It’s as if Dominique is continuing a story that already had a happy ending… and now it’s her turn.\n\nWith her striking features and expressive eyes, Dominique has a presence that’s impossible to ignore — but it’s her gentle, soulful nature that truly makes you fall in love. She’s observant and thoughtful, taking in the world around her, then softly leaning in for affection once she knows she’s safe. There’s a quiet sweetness about her that makes you want to give her the life she’s always deserved.\n\nDominique is ready to leave her past behind and start fresh with a family who will cherish her. She’s looking for someone patient and kind, who will help her feel secure and show her just how good life can be — whether that’s peaceful walks, cozy evenings, or simply being by your side.\n\nIf you believe in second chances — and maybe even a little bit of destiny — Dominique is waiting to meet you ",
+      "PreviousIds": [],
+      "Microchips": [],
+      "LastIntakeUnixTime": "1774771598",
+      "Attributes": [],
+      "LastUpdatedUnixTime": "1775161968"
+    }
+  ],
+  "has_more": false,
+  "total_count": 50
+}
